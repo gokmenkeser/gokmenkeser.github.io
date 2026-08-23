@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Gökmen Keser | Apps & Games</title>
-    <meta name="description" content="Official website of Gökmen Keser. Independent mobile apps and games for iOS and Android.">
+
+    <meta name="description"
+          content="Official website of Gökmen Keser. Independent apps and games for iOS and Android.">
 
     <style>
         * {
@@ -15,21 +17,28 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                         Roboto, Helvetica, Arial, sans-serif;
             background: #0b0d12;
             color: #ffffff;
             line-height: 1.6;
         }
 
+        /* HERO */
+
         header {
-            min-height: 65vh;
+            min-height: 58vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 40px 20px;
+            padding: 50px 20px;
+
             background:
-                radial-gradient(circle at top, #1c2740 0%, #0b0d12 55%);
+                radial-gradient(circle at top,
+                #1c2a47 0%,
+                #111722 35%,
+                #0b0d12 70%);
         }
 
         .hero {
@@ -37,61 +46,82 @@
         }
 
         .hero h1 {
-            font-size: 48px;
-            margin-bottom: 12px;
+            font-size: 52px;
+            letter-spacing: -1px;
+            margin-bottom: 8px;
         }
 
         .hero .subtitle {
-            font-size: 22px;
-            color: #aab3c5;
-            margin-bottom: 25px;
+            font-size: 23px;
+            color: #b4bed1;
+            margin-bottom: 24px;
         }
 
         .hero p {
-            color: #858fa3;
-            max-width: 600px;
+            max-width: 570px;
             margin: auto;
+            color: #828da2;
+            font-size: 16px;
         }
 
+        /* CONTENT */
+
         section {
-            max-width: 1000px;
+            max-width: 1050px;
             margin: auto;
-            padding: 70px 20px;
+            padding: 75px 22px;
         }
 
         section h2 {
             text-align: center;
-            font-size: 30px;
-            margin-bottom: 40px;
+            font-size: 31px;
+            margin-bottom: 42px;
         }
+
+        /* APP CARDS */
 
         .apps {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px;
         }
 
         .app-card {
             background: #151922;
             border: 1px solid #252b38;
-            border-radius: 18px;
-            padding: 30px;
-            transition: transform 0.2s ease, border-color 0.2s ease;
+            border-radius: 20px;
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+
+            transition:
+                transform 0.2s ease,
+                border-color 0.2s ease;
         }
 
         .app-card:hover {
-            transform: translateY(-4px);
-            border-color: #3e4c66;
+            transform: translateY(-5px);
+            border-color: #455675;
+        }
+
+        .app-icon {
+            font-size: 42px;
+            margin-bottom: 15px;
         }
 
         .app-card h3 {
-            font-size: 25px;
-            margin-bottom: 10px;
+            font-size: 26px;
+            margin-bottom: 9px;
         }
 
-        .app-card p {
+        .app-card .description {
             color: #9ba5b8;
-            margin-bottom: 22px;
+            margin-bottom: 18px;
+            min-height: 52px;
+        }
+
+        .platforms {
+            margin-bottom: 24px;
         }
 
         .platform {
@@ -102,39 +132,84 @@
             border-radius: 8px;
             font-size: 13px;
             margin-right: 5px;
-            margin-bottom: 20px;
         }
 
-        .links {
-            margin-top: 15px;
+        /* STORE BUTTONS */
+
+        .store-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: auto;
         }
 
-        .links a {
-            display: inline-block;
-            color: #67a4ff;
+        .store-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            min-width: 115px;
+            padding: 11px 18px;
+
+            border-radius: 10px;
+            background: #ffffff;
+            color: #101218;
+
+            font-size: 14px;
+            font-weight: 600;
             text-decoration: none;
-            margin-right: 18px;
-            margin-bottom: 8px;
-            font-weight: 500;
+
+            transition:
+                transform 0.15s ease,
+                opacity 0.15s ease;
         }
 
-        .links a:hover {
-            text-decoration: underline;
+        .store-button:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
         }
+
+        .view-button {
+            background: #3978f6;
+            color: white;
+        }
+
+        /* SUPPORT LINKS */
+
+        .app-links {
+            margin-top: 20px;
+            padding-top: 18px;
+            border-top: 1px solid #252b38;
+        }
+
+        .app-links a {
+            color: #8293ad;
+            font-size: 13px;
+            text-decoration: none;
+            margin-right: 15px;
+        }
+
+        .app-links a:hover {
+            color: #ffffff;
+        }
+
+        /* ABOUT */
 
         .about {
             text-align: center;
-            max-width: 650px;
+            max-width: 680px;
         }
 
         .about p {
             color: #9ba5b8;
         }
 
+        /* FOOTER */
+
         footer {
             border-top: 1px solid #202530;
             text-align: center;
-            padding: 35px 20px;
+            padding: 38px 20px;
             color: #687184;
             font-size: 14px;
         }
@@ -149,17 +224,36 @@
             color: white;
         }
 
+        .copyright {
+            margin-top: 12px;
+        }
+
+        /* MOBILE */
+
         @media (max-width: 600px) {
+
+            header {
+                min-height: 52vh;
+            }
+
             .hero h1 {
-                font-size: 37px;
+                font-size: 39px;
             }
 
             .hero .subtitle {
                 font-size: 19px;
             }
 
-            header {
-                min-height: 55vh;
+            section {
+                padding: 55px 18px;
+            }
+
+            .apps {
+                grid-template-columns: 1fr;
+            }
+
+            .store-button {
+                flex: 1;
             }
         }
     </style>
@@ -167,91 +261,157 @@
 
 <body>
 
+
+<!-- HERO -->
+
 <header>
+
     <div class="hero">
+
         <h1>Gökmen Keser</h1>
-        <div class="subtitle">Apps & Games</div>
+
+        <div class="subtitle">
+            Apps & Games
+        </div>
 
         <p>
-            Independent mobile apps and games developed for iOS and Android.
+            Independent mobile apps and games developed for
+            iOS and Android.
         </p>
+
     </div>
+
 </header>
 
+
+<!-- APPS -->
+
 <section>
+
     <h2>Apps & Games</h2>
 
     <div class="apps">
 
-        <div class="app-card">
-            <h3>🚁 Drone Rush</h3>
 
-            <p>
+        <!-- DRONE RUSH -->
+
+        <div class="app-card">
+
+            <div class="app-icon">🚁</div>
+
+            <h3>Drone Rush</h3>
+
+            <p class="description">
                 A fast-paced arcade drone shooter.
-                Survive enemy waves, defeat bosses and push your score higher.
+                Survive enemy waves, defeat powerful bosses
+                and push your score higher.
             </p>
 
-            <span class="platform">iOS</span>
-            <span class="platform">Android</span>
-
-            <div class="links">
-                <a href="https://apps.apple.com/app/id6763133589" target="_blank">
-                    App Store
-                </a>
-
-                <!-- Play Store linkini buraya ekleyebilirsin -->
-                <!--
-                <a href="PLAY_STORE_LINK" target="_blank">
-                    Google Play
-                </a>
-                -->
+            <div class="platforms">
+                <span class="platform">iOS</span>
+                <span class="platform">Android</span>
             </div>
+
+            <div class="store-buttons">
+
+                <a class="store-button"
+                   href="https://apps.apple.com/app/id6763133589"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                     iOS
+                </a>
+
+                <a class="store-button"
+                   href="https://play.google.com/store/apps/details?id=com.gokmen.dronerush"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    ▶ Android
+                </a>
+
+            </div>
+
         </div>
 
-        <!--
-        GELECEK UYGULAMALAR İÇİN
+
+        <!-- DRIVE RIDE -->
 
         <div class="app-card">
-            <h3>New App</h3>
 
-            <p>
-                Application description.
+            <div class="app-icon">🏍️</div>
+
+            <h3>Drive Ride</h3>
+
+            <p class="description">
+                Ride tracking and route memories.
+                Record your journeys and keep your favorite
+                rides together.
             </p>
 
-            <span class="platform">iOS</span>
-            <span class="platform">Android</span>
+            <div class="platforms">
+                <span class="platform">iOS</span>
+            </div>
+
+            <div class="store-buttons">
+
+                <a class="store-button view-button"
+                   href="/driveride/">
+                    View App
+                </a>
+
+            </div>
+
+            <div class="app-links">
+
+                <a href="/driveride/support.html">
+                    Support
+                </a>
+
+                <a href="/driveride/privacy.html">
+                    Privacy Policy
+                </a>
+
+            </div>
+
         </div>
-        -->
+
 
     </div>
+
 </section>
 
+
+<!-- ABOUT -->
+
 <section class="about">
+
     <h2>About</h2>
 
     <p>
         I'm an independent developer creating mobile applications
         and games for iOS and Android.
-        This website provides official information, support and
-        privacy resources for my applications.
+        This website provides official information, support
+        and privacy resources for my applications.
     </p>
+
 </section>
+
+
+<!-- FOOTER -->
 
 <footer>
 
-    <p>
-        <a href="/support.html">Support</a>
-        <a href="/privacy.html">Privacy Policy</a>
-        <a href="/app-ads.txt">app-ads.txt</a>
-    </p>
+    <div>
+        <a href="/app-ads.txt">
+            app-ads.txt
+        </a>
+    </div>
 
-    <br>
-
-    <p>
+    <div class="copyright">
         © 2026 Gökmen Keser
-    </p>
+    </div>
 
 </footer>
+
 
 </body>
 </html>
