@@ -14,7 +14,6 @@
     <style>
         :root {
             --bg: #0b0d12;
-            --bg-soft: #10141c;
             --card: #151922;
             --card-hover: #181e29;
             --border: #252b38;
@@ -96,9 +95,12 @@
             position: absolute;
             left: 50%;
             bottom: 0;
+
             width: min(900px, 90%);
             height: 1px;
+
             transform: translateX(-50%);
+
             background: linear-gradient(
                 90deg,
                 transparent,
@@ -134,8 +136,11 @@
         .hero-badge-dot {
             width: 7px;
             height: 7px;
+
             border-radius: 50%;
+
             background: var(--cyan);
+
             box-shadow: 0 0 14px rgba(54, 200, 232, 0.7);
         }
 
@@ -144,6 +149,7 @@
             line-height: 1.08;
 
             letter-spacing: -1.7px;
+
             margin-bottom: 11px;
         }
 
@@ -169,6 +175,7 @@
         section {
             max-width: 1120px;
             margin: auto;
+
             padding: 78px 24px;
         }
 
@@ -183,9 +190,11 @@
 
         .section-intro {
             max-width: 600px;
+
             margin: 0 auto 42px;
 
             text-align: center;
+
             color: var(--text-muted);
             font-size: 15px;
         }
@@ -196,8 +205,12 @@
 
         .apps {
             display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
+
+            grid-template-columns:
+                repeat(3, minmax(0, 1fr));
+
             gap: 24px;
+
             align-items: stretch;
         }
 
@@ -233,7 +246,9 @@
 
         .app-card:hover {
             transform: translateY(-5px);
+
             border-color: var(--border-hover);
+
             background-color: var(--card-hover);
 
             box-shadow:
@@ -242,52 +257,36 @@
 
         .card-top {
             display: flex;
+
             align-items: flex-start;
             justify-content: space-between;
+
             gap: 15px;
 
             margin-bottom: 20px;
         }
 
-        /* Reliable icon: no emoji / OS font dependency */
-        .app-mark {
-            width: 58px;
-            height: 58px;
+        /* =====================================================
+           REAL APP ICONS
+        ===================================================== */
 
-            flex: 0 0 58px;
+        .app-icon-image {
+            width: 68px;
+            height: 68px;
 
-            border-radius: 15px;
+            flex: 0 0 68px;
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            object-fit: cover;
 
-            color: #ffffff;
+            border-radius: 16px;
 
-            font-size: 15px;
-            font-weight: 800;
-            letter-spacing: 0.4px;
-
-            border: 1px solid rgba(255, 255, 255, 0.11);
+            border: 1px solid rgba(255, 255, 255, 0.12);
 
             box-shadow:
-                inset 0 1px 0 rgba(255, 255, 255, 0.08),
-                0 10px 25px rgba(0, 0, 0, 0.16);
-        }
+                0 12px 28px rgba(0, 0, 0, 0.30),
+                inset 0 1px 0 rgba(255, 255, 255, 0.08);
 
-        .app-mark.drone {
-            background:
-                linear-gradient(135deg, #243756, #18243a);
-        }
-
-        .app-mark.drive {
-            background:
-                linear-gradient(135deg, #255c72, #173847);
-        }
-
-        .app-mark.equal {
-            background:
-                linear-gradient(135deg, #256e82, #183f50);
+            display: block;
         }
 
         .info-button {
@@ -295,10 +294,12 @@
             height: 36px;
 
             display: inline-flex;
+
             align-items: center;
             justify-content: center;
 
             border-radius: 50%;
+
             border: 1px solid #31394a;
 
             background: #1c222e;
@@ -306,6 +307,7 @@
 
             font-size: 15px;
             font-weight: 700;
+
             font-family: inherit;
 
             cursor: pointer;
@@ -320,13 +322,16 @@
         .info-button:hover {
             background: #273044;
             color: #ffffff;
+
             border-color: #4a5872;
+
             transform: translateY(-1px);
         }
 
         .app-card h3 {
             font-size: 25px;
             line-height: 1.25;
+
             letter-spacing: -0.4px;
 
             margin-bottom: 10px;
@@ -334,9 +339,11 @@
 
         .app-card .description {
             color: var(--text-soft);
+
             font-size: 15px;
 
             margin-bottom: 20px;
+
             min-height: 96px;
         }
 
@@ -347,6 +354,7 @@
         .platforms {
             display: flex;
             flex-wrap: wrap;
+
             gap: 7px;
 
             margin-bottom: 24px;
@@ -377,6 +385,7 @@
             flex-wrap: wrap;
 
             gap: 10px;
+
             margin-top: auto;
         }
 
@@ -385,6 +394,7 @@
             min-width: 125px;
 
             display: inline-flex;
+
             align-items: center;
             justify-content: center;
 
@@ -399,6 +409,7 @@
 
             font-size: 13px;
             font-weight: 700;
+
             letter-spacing: 0.05px;
 
             text-decoration: none;
@@ -411,6 +422,7 @@
 
         .store-button:hover {
             transform: translateY(-2px);
+
             opacity: 0.94;
 
             box-shadow:
@@ -424,6 +436,7 @@
         .coming-soon {
             background: #222937;
             color: #aeb8ca;
+
             border-color: #293143;
 
             cursor: default;
@@ -436,12 +449,13 @@
         }
 
         /* =====================================================
-           SUPPORT / PRIVACY LINKS
+           SUPPORT / PRIVACY
         ===================================================== */
 
         .app-links {
             display: flex;
             flex-wrap: wrap;
+
             gap: 16px;
 
             margin-top: 20px;
@@ -451,8 +465,6 @@
         }
 
         .app-links a {
-            position: relative;
-
             color: #8fa2c4;
 
             font-size: 12px;
@@ -473,6 +485,7 @@
 
         .about {
             max-width: 720px;
+
             text-align: center;
         }
 
@@ -492,11 +505,13 @@
             padding: 38px 20px;
 
             color: #687184;
+
             font-size: 13px;
         }
 
         footer a {
             color: #8e9aaf;
+
             text-decoration: none;
 
             transition: color 0.18s ease;
@@ -517,15 +532,18 @@
         .modal-overlay {
             position: fixed;
             inset: 0;
+
             z-index: 9999;
 
             display: none;
+
             align-items: center;
             justify-content: center;
 
             padding: 24px;
 
             background: var(--overlay);
+
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
 
@@ -544,7 +562,9 @@
 
         .modal {
             width: min(650px, 100%);
-            max-height: min(760px, calc(100vh - 48px));
+
+            max-height:
+                min(760px, calc(100vh - 48px));
 
             overflow-y: auto;
 
@@ -562,7 +582,9 @@
             box-shadow:
                 0 35px 100px rgba(0, 0, 0, 0.55);
 
-            transform: translateY(12px) scale(0.985);
+            transform:
+                translateY(12px) scale(0.985);
+
             opacity: 0;
 
             transition:
@@ -578,14 +600,17 @@
         .modal-header {
             position: sticky;
             top: 0;
+
             z-index: 2;
 
             display: flex;
+
             align-items: center;
             justify-content: space-between;
+
             gap: 18px;
 
-            padding: 24px 26px 20px;
+            padding: 22px 26px;
 
             background: rgba(20, 25, 35, 0.96);
 
@@ -593,6 +618,32 @@
 
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
+        }
+
+        .modal-app-heading {
+            display: flex;
+            align-items: center;
+
+            gap: 15px;
+
+            min-width: 0;
+        }
+
+        .modal-icon {
+            width: 54px;
+            height: 54px;
+
+            flex: 0 0 54px;
+
+            object-fit: cover;
+
+            border-radius: 13px;
+
+            border:
+                1px solid rgba(255, 255, 255, 0.12);
+
+            box-shadow:
+                0 8px 20px rgba(0, 0, 0, 0.25);
         }
 
         .modal-title-wrap {
@@ -606,6 +657,7 @@
             font-weight: 700;
 
             text-transform: uppercase;
+
             letter-spacing: 1.15px;
 
             margin-bottom: 3px;
@@ -614,6 +666,7 @@
         .modal-title {
             font-size: 24px;
             line-height: 1.2;
+
             letter-spacing: -0.4px;
         }
 
@@ -624,16 +677,20 @@
             flex: 0 0 38px;
 
             display: inline-flex;
+
             align-items: center;
             justify-content: center;
 
-            border: 1px solid #333c4d;
+            border:
+                1px solid #333c4d;
+
             border-radius: 50%;
 
             background: #202633;
             color: #b8c2d4;
 
             font-family: inherit;
+
             font-size: 22px;
             line-height: 1;
 
@@ -655,6 +712,7 @@
 
         .modal-description {
             color: #aeb8ca;
+
             font-size: 15px;
 
             margin-bottom: 24px;
@@ -677,14 +735,17 @@
             position: relative;
 
             padding-left: 19px;
+
             margin-bottom: 9px;
 
             color: #9eabc0;
+
             font-size: 14px;
         }
 
         .modal-features li::before {
             content: "";
+
             position: absolute;
 
             left: 0;
@@ -714,6 +775,7 @@
             min-height: 43px;
 
             display: inline-flex;
+
             align-items: center;
             justify-content: center;
 
@@ -736,6 +798,7 @@
 
         .modal-action:hover {
             background: var(--blue-hover);
+
             transform: translateY(-1px);
         }
 
@@ -744,14 +807,38 @@
             color: #c5cede;
         }
 
+        .modal-coming-soon {
+            min-height: 43px;
+
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 10px 17px;
+
+            border-radius: 10px;
+
+            background: #222937;
+            color: #9da9bd;
+
+            font-size: 13px;
+            font-weight: 700;
+
+            border: 1px solid #293143;
+        }
+
         /* =====================================================
            RESPONSIVE
         ===================================================== */
 
         @media (max-width: 950px) {
+
             .apps {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
             }
+
         }
 
         @media (max-width: 680px) {
@@ -792,31 +879,46 @@
 
             .modal-overlay {
                 align-items: flex-end;
+
                 padding: 12px;
             }
 
             .modal {
                 width: 100%;
                 max-height: 90vh;
+
                 border-radius: 20px;
             }
 
             .modal-header {
-                padding: 20px;
+                padding: 18px 20px;
             }
 
             .modal-body {
                 padding: 20px;
             }
+
+            .modal-icon {
+                width: 48px;
+                height: 48px;
+
+                flex-basis: 48px;
+            }
+
+            .modal-title {
+                font-size: 21px;
+            }
         }
 
         @media (prefers-reduced-motion: reduce) {
+
             *,
             *::before,
             *::after {
                 scroll-behavior: auto !important;
                 transition: none !important;
             }
+
         }
     </style>
 </head>
@@ -828,11 +930,15 @@
 ========================================================= -->
 
 <header>
+
     <div class="hero">
 
         <div class="hero-badge">
+
             <span class="hero-badge-dot"></span>
+
             Independent Developer
+
         </div>
 
         <h1>Gökmen Keser</h1>
@@ -848,6 +954,7 @@
         </p>
 
     </div>
+
 </header>
 
 
@@ -875,9 +982,10 @@
 
             <div class="card-top">
 
-                <div class="app-mark drone">
-                    DR
-                </div>
+                <img
+                    class="app-icon-image"
+                    src="images/drone-rush-icon.png"
+                    alt="Drone Rush app icon">
 
                 <button
                     class="info-button"
@@ -898,8 +1006,15 @@
             </p>
 
             <div class="platforms">
-                <span class="platform">iOS</span>
-                <span class="platform">Android</span>
+
+                <span class="platform">
+                    iOS
+                </span>
+
+                <span class="platform">
+                    Android
+                </span>
+
             </div>
 
             <div class="store-buttons">
@@ -951,9 +1066,10 @@
 
             <div class="card-top">
 
-                <div class="app-mark drive">
-                    DRV
-                </div>
+                <img
+                    class="app-icon-image"
+                    src="images/drive-ride-icon.jpeg"
+                    alt="Drive Ride app icon">
 
                 <button
                     class="info-button"
@@ -974,7 +1090,11 @@
             </p>
 
             <div class="platforms">
-                <span class="platform">iOS</span>
+
+                <span class="platform">
+                    iOS
+                </span>
+
             </div>
 
             <div class="store-buttons">
@@ -1018,9 +1138,10 @@
 
             <div class="card-top">
 
-                <div class="app-mark equal">
-                    EC
-                </div>
+                <img
+                    class="app-icon-image"
+                    src="images/equal-cut-icon.png"
+                    alt="Equal Cut app icon">
 
                 <button
                     class="info-button"
@@ -1041,13 +1162,25 @@
             </p>
 
             <div class="platforms">
-                <span class="platform">Android</span>
+
+                <span class="platform">
+                    iOS
+                </span>
+
+                <span class="platform">
+                    Android
+                </span>
+
             </div>
 
             <div class="store-buttons">
 
                 <span class="store-button coming-soon">
-                    Coming Soon
+                    App Store · Coming Soon
+                </span>
+
+                <span class="store-button coming-soon">
+                    Google Play · Coming Soon
                 </span>
 
             </div>
@@ -1095,9 +1228,11 @@
 <footer>
 
     <div>
+
         <a href="https://gokmenkeser.github.io/app-ads.txt">
             app-ads.txt
         </a>
+
     </div>
 
     <div class="copyright">
@@ -1123,16 +1258,26 @@
 
         <div class="modal-header">
 
-            <div class="modal-title-wrap">
+            <div class="modal-app-heading">
 
-                <div class="modal-label">
-                    App Information
+                <img
+                    id="modalIcon"
+                    class="modal-icon"
+                    src=""
+                    alt="">
+
+                <div class="modal-title-wrap">
+
+                    <div class="modal-label">
+                        App Information
+                    </div>
+
+                    <h3
+                        id="modalTitle"
+                        class="modal-title">
+                    </h3>
+
                 </div>
-
-                <h3
-                    id="modalTitle"
-                    class="modal-title">
-                </h3>
 
             </div>
 
@@ -1174,11 +1319,19 @@
 </div>
 
 
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
 <script>
+
     const appData = {
 
         drone: {
+
             title: "Drone Rush",
+
+            icon: "images/drone-rush-icon.png",
 
             description:
                 "Drone Rush is a fast-paced arcade combat game where reflexes, movement and smart upgrades determine how long you survive. Take control of a high-tech combat drone, fight through increasingly intense enemy waves and face powerful bosses while trying to push your score higher with every run.",
@@ -1193,25 +1346,32 @@
             ],
 
             actions: [
+
                 {
                     label: "App Store",
                     url: "https://apps.apple.com/us/app/drone-rush/id6763133589"
                 },
+
                 {
                     label: "Google Play",
                     url: "https://play.google.com/store/apps/details?id=com.gokmen.dronerush"
                 },
+
                 {
                     label: "Support",
                     url: "https://gokmenkeser.github.io/drone-rush-support/",
                     secondary: true
                 }
+
             ]
         },
 
 
         drive: {
+
             title: "Drive Ride",
+
+            icon: "images/drive-ride-icon.jpeg",
 
             description:
                 "Drive Ride is a route-tracking app designed for motorcycle rides, road trips and everyday journeys. Start a ride with one tap, record your route in real time and keep important moments connected to the places where they happened. Review completed trips on a map and turn your journeys into route images or videos that are easy to share.",
@@ -1229,26 +1389,33 @@
             ],
 
             actions: [
+
                 {
                     label: "App Store",
                     url: "https://apps.apple.com/us/app/drive-ride-gps-routes/id6799442279"
                 },
+
                 {
                     label: "Support",
                     url: "https://gokmenkeser.github.io/driveride/support/",
                     secondary: true
                 },
+
                 {
                     label: "Privacy Policy",
                     url: "https://gokmenkeser.github.io/driveride/privacy/",
                     secondary: true
                 }
+
             ]
         },
 
 
         equal: {
+
             title: "Equal Cut",
+
+            icon: "images/equal-cut-icon.png",
 
             description:
                 "Equal Cut is a precision-based puzzle game where every line matters. Your goal is to slice each shape as accurately as possible according to the target ratio. Simple controls make it easy to start, while increasingly difficult shapes challenge your precision and spatial thinking.",
@@ -1259,25 +1426,51 @@
                 "Instant cut accuracy results",
                 "Multiple shapes and levels",
                 "Increasing difficulty",
-                "Quick and replayable puzzle gameplay"
+                "Quick and replayable puzzle gameplay",
+                "Available for iOS and Android"
             ],
 
             actions: [
+
+                {
+                    label: "App Store · Coming Soon",
+                    comingSoon: true
+                },
+
+                {
+                    label: "Google Play · Coming Soon",
+                    comingSoon: true
+                },
+
                 {
                     label: "Privacy Policy",
                     url: "https://gokmenkeser.github.io/equalcut/",
                     secondary: true
                 }
+
             ]
         }
+
     };
 
 
-    const modal = document.getElementById("appModal");
-    const modalTitle = document.getElementById("modalTitle");
-    const modalDescription = document.getElementById("modalDescription");
-    const modalFeatures = document.getElementById("modalFeatures");
-    const modalActions = document.getElementById("modalActions");
+    const modal =
+        document.getElementById("appModal");
+
+    const modalIcon =
+        document.getElementById("modalIcon");
+
+    const modalTitle =
+        document.getElementById("modalTitle");
+
+    const modalDescription =
+        document.getElementById("modalDescription");
+
+    const modalFeatures =
+        document.getElementById("modalFeatures");
+
+    const modalActions =
+        document.getElementById("modalActions");
 
 
     function openAppInfo(appKey) {
@@ -1289,17 +1482,26 @@
         }
 
 
-        modalTitle.textContent = app.title;
-        modalDescription.textContent = app.description;
+        modalIcon.src = app.icon;
+        modalIcon.alt = app.title + " app icon";
+
+        modalTitle.textContent =
+            app.title;
+
+        modalDescription.textContent =
+            app.description;
 
 
         modalFeatures.innerHTML = "";
 
+
         app.features.forEach(feature => {
 
-            const item = document.createElement("li");
+            const item =
+                document.createElement("li");
 
-            item.textContent = feature;
+            item.textContent =
+                feature;
 
             modalFeatures.appendChild(item);
 
@@ -1308,20 +1510,48 @@
 
         modalActions.innerHTML = "";
 
+
         app.actions.forEach(action => {
 
-            const link = document.createElement("a");
+            if (action.comingSoon) {
 
-            link.href = action.url;
-            link.target = "_blank";
-            link.rel = "noopener noreferrer";
+                const item =
+                    document.createElement("span");
+
+                item.className =
+                    "modal-coming-soon";
+
+                item.textContent =
+                    action.label;
+
+                modalActions.appendChild(item);
+
+                return;
+            }
+
+
+            const link =
+                document.createElement("a");
+
+            link.href =
+                action.url;
+
+            link.target =
+                "_blank";
+
+            link.rel =
+                "noopener noreferrer";
+
 
             link.className =
                 action.secondary
                     ? "modal-action secondary"
                     : "modal-action";
 
-            link.textContent = action.label;
+
+            link.textContent =
+                action.label;
+
 
             modalActions.appendChild(link);
 
@@ -1330,7 +1560,9 @@
 
         modal.classList.add("active");
 
-        document.body.classList.add("modal-open");
+        document.body.classList.add(
+            "modal-open"
+        );
 
 
         requestAnimationFrame(() => {
@@ -1338,6 +1570,7 @@
             modal.classList.add("visible");
 
         });
+
     }
 
 
@@ -1345,7 +1578,9 @@
 
         modal.classList.remove("visible");
 
-        document.body.classList.remove("modal-open");
+        document.body.classList.remove(
+            "modal-open"
+        );
 
 
         setTimeout(() => {
@@ -1353,6 +1588,7 @@
             modal.classList.remove("active");
 
         }, 180);
+
     }
 
 
@@ -1363,21 +1599,26 @@
             closeAppInfo();
 
         }
+
     }
 
 
-    document.addEventListener("keydown", event => {
+    document.addEventListener(
+        "keydown",
+        event => {
 
-        if (
-            event.key === "Escape" &&
-            modal.classList.contains("active")
-        ) {
+            if (
+                event.key === "Escape" &&
+                modal.classList.contains("active")
+            ) {
 
-            closeAppInfo();
+                closeAppInfo();
+
+            }
 
         }
+    );
 
-    });
 </script>
 
 </body>
