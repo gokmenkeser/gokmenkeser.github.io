@@ -9,206 +9,497 @@
     <meta name="description"
           content="Official website of Gökmen Keser. Independent apps and games for iOS and Android.">
 
+    <meta name="theme-color" content="#0b0d12">
+
     <style>
+        :root {
+            --bg: #0b0d12;
+            --bg-soft: #10141c;
+            --card: #151922;
+            --card-hover: #181e29;
+            --border: #252b38;
+            --border-hover: #455675;
+            --text: #ffffff;
+            --text-soft: #9ba5b8;
+            --text-muted: #727e93;
+            --blue: #3978f6;
+            --blue-hover: #4c88ff;
+            --cyan: #36c8e8;
+            --chip: #222937;
+            --overlay: rgba(0, 0, 0, 0.72);
+        }
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
-                         Roboto, Helvetica, Arial, sans-serif;
-            background: #0b0d12;
-            color: #ffffff;
-            line-height: 1.6;
+        html {
+            scroll-behavior: smooth;
         }
 
+        body {
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Helvetica,
+                Arial,
+                sans-serif;
+
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        body.modal-open {
+            overflow: hidden;
+        }
+
+        a,
+        button {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
         header {
+            position: relative;
             min-height: 58vh;
+
             display: flex;
             align-items: center;
             justify-content: center;
+
             text-align: center;
-            padding: 50px 20px;
+            padding: 60px 20px;
+
+            overflow: hidden;
+
             background:
-                radial-gradient(circle at top,
-                #1c2a47 0%,
-                #111722 35%,
-                #0b0d12 70%);
+                radial-gradient(
+                    circle at 50% 0%,
+                    rgba(52, 91, 157, 0.42) 0%,
+                    rgba(23, 34, 52, 0.42) 34%,
+                    rgba(11, 13, 18, 0) 68%
+                ),
+                var(--bg);
+        }
+
+        header::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            width: min(900px, 90%);
+            height: 1px;
+            transform: translateX(-50%);
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.12),
+                transparent
+            );
         }
 
         .hero {
-            max-width: 750px;
+            position: relative;
+            z-index: 1;
+            max-width: 760px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+
+            margin-bottom: 22px;
+            padding: 7px 13px;
+
+            border: 1px solid #2c3545;
+            border-radius: 999px;
+
+            background: rgba(24, 30, 42, 0.72);
+            color: #aeb9cc;
+
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .hero-badge-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--cyan);
+            box-shadow: 0 0 14px rgba(54, 200, 232, 0.7);
         }
 
         .hero h1 {
-            font-size: 52px;
-            letter-spacing: -1px;
-            margin-bottom: 8px;
+            font-size: clamp(42px, 6vw, 62px);
+            line-height: 1.08;
+
+            letter-spacing: -1.7px;
+            margin-bottom: 11px;
         }
 
         .hero .subtitle {
-            font-size: 23px;
+            font-size: clamp(19px, 3vw, 24px);
             color: #b4bed1;
+
             margin-bottom: 24px;
         }
 
         .hero p {
-            max-width: 570px;
+            max-width: 600px;
             margin: auto;
+
             color: #828da2;
             font-size: 16px;
         }
 
+        /* =====================================================
+           SECTIONS
+        ===================================================== */
+
         section {
-            max-width: 1050px;
+            max-width: 1120px;
             margin: auto;
-            padding: 75px 22px;
+            padding: 78px 24px;
         }
 
         section h2 {
             text-align: center;
-            font-size: 31px;
-            margin-bottom: 42px;
+
+            font-size: 32px;
+            letter-spacing: -0.5px;
+
+            margin-bottom: 12px;
         }
+
+        .section-intro {
+            max-width: 600px;
+            margin: 0 auto 42px;
+
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 15px;
+        }
+
+        /* =====================================================
+           APP GRID
+        ===================================================== */
 
         .apps {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 24px;
+            align-items: stretch;
         }
 
         .app-card {
-            background: #151922;
-            border: 1px solid #252b38;
-            border-radius: 20px;
-            padding: 32px;
+            position: relative;
+
+            min-height: 100%;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    rgba(255, 255, 255, 0.018),
+                    rgba(255, 255, 255, 0)
+                ),
+                var(--card);
+
+            border: 1px solid var(--border);
+            border-radius: 22px;
+
+            padding: 30px;
+
             display: flex;
             flex-direction: column;
+
+            overflow: hidden;
+
             transition:
-                transform 0.2s ease,
-                border-color 0.2s ease;
+                transform 0.22s ease,
+                border-color 0.22s ease,
+                background 0.22s ease,
+                box-shadow 0.22s ease;
         }
 
         .app-card:hover {
             transform: translateY(-5px);
-            border-color: #455675;
+            border-color: var(--border-hover);
+            background-color: var(--card-hover);
+
+            box-shadow:
+                0 22px 60px rgba(0, 0, 0, 0.20);
         }
 
-        .app-icon {
-            font-size: 42px;
-            margin-bottom: 15px;
+        .card-top {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 15px;
+
+            margin-bottom: 20px;
+        }
+
+        /* Reliable icon: no emoji / OS font dependency */
+        .app-mark {
+            width: 58px;
+            height: 58px;
+
+            flex: 0 0 58px;
+
+            border-radius: 15px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: #ffffff;
+
+            font-size: 15px;
+            font-weight: 800;
+            letter-spacing: 0.4px;
+
+            border: 1px solid rgba(255, 255, 255, 0.11);
+
+            box-shadow:
+                inset 0 1px 0 rgba(255, 255, 255, 0.08),
+                0 10px 25px rgba(0, 0, 0, 0.16);
+        }
+
+        .app-mark.drone {
+            background:
+                linear-gradient(135deg, #243756, #18243a);
+        }
+
+        .app-mark.drive {
+            background:
+                linear-gradient(135deg, #255c72, #173847);
+        }
+
+        .app-mark.equal {
+            background:
+                linear-gradient(135deg, #256e82, #183f50);
+        }
+
+        .info-button {
+            width: 36px;
+            height: 36px;
+
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+            border: 1px solid #31394a;
+
+            background: #1c222e;
+            color: #afbad0;
+
+            font-size: 15px;
+            font-weight: 700;
+            font-family: inherit;
+
+            cursor: pointer;
+
+            transition:
+                background 0.18s ease,
+                color 0.18s ease,
+                border-color 0.18s ease,
+                transform 0.18s ease;
+        }
+
+        .info-button:hover {
+            background: #273044;
+            color: #ffffff;
+            border-color: #4a5872;
+            transform: translateY(-1px);
         }
 
         .app-card h3 {
-            font-size: 26px;
-            margin-bottom: 9px;
+            font-size: 25px;
+            line-height: 1.25;
+            letter-spacing: -0.4px;
+
+            margin-bottom: 10px;
         }
 
         .app-card .description {
-            color: #9ba5b8;
-            margin-bottom: 18px;
-            min-height: 52px;
+            color: var(--text-soft);
+            font-size: 15px;
+
+            margin-bottom: 20px;
+            min-height: 96px;
         }
 
+        /* =====================================================
+           PLATFORMS
+        ===================================================== */
+
         .platforms {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+
             margin-bottom: 24px;
         }
 
         .platform {
-            display: inline-block;
-            background: #222937;
-            color: #bec7d7;
+            display: inline-flex;
+            align-items: center;
+
+            background: var(--chip);
+            color: #c4cde0;
+
             padding: 5px 11px;
+
+            border: 1px solid #293143;
             border-radius: 8px;
-            font-size: 13px;
-            margin-right: 5px;
+
+            font-size: 12px;
+            font-weight: 600;
         }
+
+        /* =====================================================
+           STORE BUTTONS
+        ===================================================== */
 
         .store-buttons {
             display: flex;
             flex-wrap: wrap;
+
             gap: 10px;
             margin-top: auto;
         }
 
         .store-button {
+            min-height: 45px;
+            min-width: 125px;
+
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            min-width: 115px;
-            padding: 11px 18px;
-            border-radius: 10px;
+
+            padding: 11px 17px;
+
+            border-radius: 11px;
+
             background: #ffffff;
             color: #101218;
-            font-size: 14px;
-            font-weight: 600;
+
+            border: 1px solid rgba(255, 255, 255, 0.1);
+
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.05px;
+
             text-decoration: none;
+
             transition:
-                transform 0.15s ease,
-                opacity 0.15s ease;
+                transform 0.16s ease,
+                opacity 0.16s ease,
+                box-shadow 0.16s ease;
         }
 
         .store-button:hover {
             transform: translateY(-2px);
-            opacity: 0.9;
+            opacity: 0.94;
+
+            box-shadow:
+                0 9px 22px rgba(0, 0, 0, 0.18);
         }
 
-        .view-button {
-            background: #3978f6;
-            color: white;
+        .store-button.google {
+            background: #f8f9fb;
         }
 
         .coming-soon {
             background: #222937;
-            color: #bec7d7;
+            color: #aeb8ca;
+            border-color: #293143;
+
             cursor: default;
         }
 
         .coming-soon:hover {
             transform: none;
             opacity: 1;
+            box-shadow: none;
         }
 
+        /* =====================================================
+           SUPPORT / PRIVACY LINKS
+        ===================================================== */
+
         .app-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+
             margin-top: 20px;
             padding-top: 18px;
-            border-top: 1px solid #252b38;
+
+            border-top: 1px solid var(--border);
         }
 
         .app-links a {
-            color: #8293ad;
-            font-size: 13px;
+            position: relative;
+
+            color: #8fa2c4;
+
+            font-size: 12px;
+            font-weight: 500;
+
             text-decoration: none;
-            margin-right: 15px;
+
+            transition: color 0.18s ease;
         }
 
         .app-links a:hover {
             color: #ffffff;
         }
 
+        /* =====================================================
+           ABOUT
+        ===================================================== */
+
         .about {
+            max-width: 720px;
             text-align: center;
-            max-width: 680px;
         }
 
         .about p {
-            color: #9ba5b8;
+            color: var(--text-soft);
         }
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
 
         footer {
             border-top: 1px solid #202530;
+
             text-align: center;
+
             padding: 38px 20px;
+
             color: #687184;
-            font-size: 14px;
+            font-size: 13px;
         }
 
         footer a {
             color: #8e9aaf;
             text-decoration: none;
-            margin: 0 8px;
+
+            transition: color 0.18s ease;
         }
 
         footer a:hover {
@@ -219,29 +510,312 @@
             margin-top: 12px;
         }
 
-        @media (max-width: 600px) {
+        /* =====================================================
+           INFO MODAL
+        ===================================================== */
+
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+
+            display: none;
+            align-items: center;
+            justify-content: center;
+
+            padding: 24px;
+
+            background: var(--overlay);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+
+            opacity: 0;
+
+            transition: opacity 0.18s ease;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-overlay.visible {
+            opacity: 1;
+        }
+
+        .modal {
+            width: min(650px, 100%);
+            max-height: min(760px, calc(100vh - 48px));
+
+            overflow-y: auto;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    rgba(255, 255, 255, 0.025),
+                    rgba(255, 255, 255, 0)
+                ),
+                #141923;
+
+            border: 1px solid #30394b;
+            border-radius: 22px;
+
+            box-shadow:
+                0 35px 100px rgba(0, 0, 0, 0.55);
+
+            transform: translateY(12px) scale(0.985);
+            opacity: 0;
+
+            transition:
+                transform 0.2s ease,
+                opacity 0.2s ease;
+        }
+
+        .modal-overlay.visible .modal {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+        }
+
+        .modal-header {
+            position: sticky;
+            top: 0;
+            z-index: 2;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+
+            padding: 24px 26px 20px;
+
+            background: rgba(20, 25, 35, 0.96);
+
+            border-bottom: 1px solid #293142;
+
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .modal-title-wrap {
+            min-width: 0;
+        }
+
+        .modal-label {
+            color: #74839d;
+
+            font-size: 11px;
+            font-weight: 700;
+
+            text-transform: uppercase;
+            letter-spacing: 1.15px;
+
+            margin-bottom: 3px;
+        }
+
+        .modal-title {
+            font-size: 24px;
+            line-height: 1.2;
+            letter-spacing: -0.4px;
+        }
+
+        .modal-close {
+            width: 38px;
+            height: 38px;
+
+            flex: 0 0 38px;
+
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            border: 1px solid #333c4d;
+            border-radius: 50%;
+
+            background: #202633;
+            color: #b8c2d4;
+
+            font-family: inherit;
+            font-size: 22px;
+            line-height: 1;
+
+            cursor: pointer;
+
+            transition:
+                background 0.18s ease,
+                color 0.18s ease;
+        }
+
+        .modal-close:hover {
+            background: #2d3545;
+            color: #ffffff;
+        }
+
+        .modal-body {
+            padding: 26px;
+        }
+
+        .modal-description {
+            color: #aeb8ca;
+            font-size: 15px;
+
+            margin-bottom: 24px;
+        }
+
+        .modal-subtitle {
+            font-size: 13px;
+            font-weight: 700;
+
+            letter-spacing: 0.4px;
+
+            margin: 24px 0 12px;
+        }
+
+        .modal-features {
+            list-style: none;
+        }
+
+        .modal-features li {
+            position: relative;
+
+            padding-left: 19px;
+            margin-bottom: 9px;
+
+            color: #9eabc0;
+            font-size: 14px;
+        }
+
+        .modal-features li::before {
+            content: "";
+            position: absolute;
+
+            left: 0;
+            top: 9px;
+
+            width: 6px;
+            height: 6px;
+
+            border-radius: 50%;
+
+            background: var(--cyan);
+        }
+
+        .modal-actions {
+            display: flex;
+            flex-wrap: wrap;
+
+            gap: 10px;
+
+            margin-top: 27px;
+            padding-top: 22px;
+
+            border-top: 1px solid #293142;
+        }
+
+        .modal-action {
+            min-height: 43px;
+
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 10px 17px;
+
+            border-radius: 10px;
+
+            background: var(--blue);
+            color: #ffffff;
+
+            font-size: 13px;
+            font-weight: 700;
+
+            text-decoration: none;
+
+            transition:
+                background 0.18s ease,
+                transform 0.18s ease;
+        }
+
+        .modal-action:hover {
+            background: var(--blue-hover);
+            transform: translateY(-1px);
+        }
+
+        .modal-action.secondary {
+            background: #222937;
+            color: #c5cede;
+        }
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 950px) {
+            .apps {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 680px) {
+
             header {
-                min-height: 52vh;
+                min-height: 48vh;
+                padding: 50px 20px;
             }
 
             .hero h1 {
-                font-size: 39px;
-            }
-
-            .hero .subtitle {
-                font-size: 19px;
+                letter-spacing: -1px;
             }
 
             section {
-                padding: 55px 18px;
+                padding: 58px 18px;
+            }
+
+            section h2 {
+                font-size: 28px;
             }
 
             .apps {
                 grid-template-columns: 1fr;
             }
 
+            .app-card {
+                padding: 26px;
+            }
+
+            .app-card .description {
+                min-height: unset;
+            }
+
             .store-button {
                 flex: 1;
+                min-width: 0;
+            }
+
+            .modal-overlay {
+                align-items: flex-end;
+                padding: 12px;
+            }
+
+            .modal {
+                width: 100%;
+                max-height: 90vh;
+                border-radius: 20px;
+            }
+
+            .modal-header {
+                padding: 20px;
+            }
+
+            .modal-body {
+                padding: 20px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                transition: none !important;
             }
         }
     </style>
@@ -249,8 +823,18 @@
 
 <body>
 
+<!-- =========================================================
+     HERO
+========================================================= -->
+
 <header>
     <div class="hero">
+
+        <div class="hero-badge">
+            <span class="hero-badge-dot"></span>
+            Independent Developer
+        </div>
+
         <h1>Gökmen Keser</h1>
 
         <div class="subtitle">
@@ -259,27 +843,58 @@
 
         <p>
             Independent mobile apps and games developed for
-            iOS and Android.
+            iOS and Android, focused on simple experiences,
+            useful tools and engaging gameplay.
         </p>
+
     </div>
 </header>
 
+
+<!-- =========================================================
+     APPS
+========================================================= -->
+
 <section>
+
     <h2>Apps & Games</h2>
+
+    <p class="section-intro">
+        Explore my published mobile apps and games.
+        Select a store to download, or use Info to learn more.
+    </p>
 
     <div class="apps">
 
-        <!-- DRONE RUSH -->
-        <div class="app-card">
 
-            <div class="app-icon">🚁</div>
+        <!-- =================================================
+             DRONE RUSH
+        ================================================== -->
+
+        <article class="app-card">
+
+            <div class="card-top">
+
+                <div class="app-mark drone">
+                    DR
+                </div>
+
+                <button
+                    class="info-button"
+                    type="button"
+                    aria-label="More information about Drone Rush"
+                    onclick="openAppInfo('drone')">
+                    i
+                </button>
+
+            </div>
 
             <h3>Drone Rush</h3>
 
             <p class="description">
-                A fast-paced arcade drone shooter.
+                A fast-paced arcade combat game.
                 Survive enemy waves, defeat powerful bosses
-                and push your score higher.
+                and upgrade your drone to push your score higher.
             </p>
 
             <div class="platforms">
@@ -289,52 +904,73 @@
 
             <div class="store-buttons">
 
-                <a class="store-button"
-                   href="https://apps.apple.com/app/id6763133589"
-                   target="_blank"
-                   rel="noopener noreferrer">
-                     iOS
+                <a
+                    class="store-button"
+                    href="https://apps.apple.com/us/app/drone-rush/id6763133589"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    App Store
                 </a>
 
-                <a class="store-button"
-                   href="https://play.google.com/store/apps/details?id=com.gokmen.dronerush"
-                   target="_blank"
-                   rel="noopener noreferrer">
-                    ▶ Android
+                <a
+                    class="store-button google"
+                    href="https://play.google.com/store/apps/details?id=com.gokmen.dronerush"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    Google Play
                 </a>
 
             </div>
 
             <div class="app-links">
 
-                <a href="https://gokmenkeser.github.io/drone-rush-support/"
-                   target="_blank"
-                   rel="noopener noreferrer">
+                <a
+                    href="https://gokmenkeser.github.io/drone-rush-support/"
+                    target="_blank"
+                    rel="noopener noreferrer">
                     Support
                 </a>
 
-                <a href="https://gokmenkeser.github.io/drone-rush-support/"
-                   target="_blank"
-                   rel="noopener noreferrer">
+                <a
+                    href="https://gokmenkeser.github.io/drone-rush-support/"
+                    target="_blank"
+                    rel="noopener noreferrer">
                     Privacy Policy
                 </a>
 
             </div>
 
-        </div>
+        </article>
 
 
-        <!-- DRIVE RIDE -->
-        <div class="app-card">
+        <!-- =================================================
+             DRIVE RIDE
+        ================================================== -->
 
-            <div class="app-icon">🏍️</div>
+        <article class="app-card">
+
+            <div class="card-top">
+
+                <div class="app-mark drive">
+                    DRV
+                </div>
+
+                <button
+                    class="info-button"
+                    type="button"
+                    aria-label="More information about Drive Ride"
+                    onclick="openAppInfo('drive')">
+                    i
+                </button>
+
+            </div>
 
             <h3>Drive Ride</h3>
 
             <p class="description">
-                Ride tracking and route memories.
-                Record your journeys and keep your favorite
-                rides together.
+                Track your rides, save routes, attach photos
+                and turn your favorite journeys into memories
+                you can revisit and share.
             </p>
 
             <div class="platforms">
@@ -343,45 +979,65 @@
 
             <div class="store-buttons">
 
-                <a class="store-button"
-                   href="https://apps.apple.com/us/app/drive-ride-gps-routes/id6799442279"
-                   target="_blank"
-                   rel="noopener noreferrer">
-                     iOS
+                <a
+                    class="store-button"
+                    href="https://apps.apple.com/us/app/drive-ride-gps-routes/id6799442279"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    App Store
                 </a>
 
             </div>
 
             <div class="app-links">
 
-                <a href="https://gokmenkeser.github.io/driveride/support/"
-                   target="_blank"
-                   rel="noopener noreferrer">
+                <a
+                    href="https://gokmenkeser.github.io/driveride/support/"
+                    target="_blank"
+                    rel="noopener noreferrer">
                     Support
                 </a>
 
-                <a href="https://gokmenkeser.github.io/driveride/privacy/"
-                   target="_blank"
-                   rel="noopener noreferrer">
+                <a
+                    href="https://gokmenkeser.github.io/driveride/privacy/"
+                    target="_blank"
+                    rel="noopener noreferrer">
                     Privacy Policy
                 </a>
 
             </div>
 
-        </div>
+        </article>
 
 
-        <!-- EQUAL CUT -->
-        <div class="app-card">
+        <!-- =================================================
+             EQUAL CUT
+        ================================================== -->
 
-            <div class="app-icon">✂️</div>
+        <article class="app-card">
+
+            <div class="card-top">
+
+                <div class="app-mark equal">
+                    EC
+                </div>
+
+                <button
+                    class="info-button"
+                    type="button"
+                    aria-label="More information about Equal Cut"
+                    onclick="openAppInfo('equal')">
+                    i
+                </button>
+
+            </div>
 
             <h3>Equal Cut</h3>
 
             <p class="description">
-                A precision puzzle game where every cut counts.
-                Slice shapes as close to a perfect 50/50 split
-                as possible.
+                A precision puzzle where every cut counts.
+                Slice shapes as close to the target split
+                as possible and master increasingly difficult levels.
             </p>
 
             <div class="platforms">
@@ -391,26 +1047,32 @@
             <div class="store-buttons">
 
                 <span class="store-button coming-soon">
-                    ▶ Coming Soon
+                    Coming Soon
                 </span>
 
             </div>
 
             <div class="app-links">
 
-                <a href="https://gokmenkeser.github.io/equalcut/"
-                   target="_blank"
-                   rel="noopener noreferrer">
+                <a
+                    href="https://gokmenkeser.github.io/equalcut/"
+                    target="_blank"
+                    rel="noopener noreferrer">
                     Privacy Policy
                 </a>
 
             </div>
 
-        </div>
+        </article>
 
     </div>
+
 </section>
 
+
+<!-- =========================================================
+     ABOUT
+========================================================= -->
 
 <section class="about">
 
@@ -419,12 +1081,16 @@
     <p>
         I'm an independent developer creating mobile applications
         and games for iOS and Android.
-        This website provides official information, support
-        and privacy resources for my applications.
+        This website provides official information, download links,
+        support resources and privacy information for my applications.
     </p>
 
 </section>
 
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
 
 <footer>
 
@@ -439,6 +1105,280 @@
     </div>
 
 </footer>
+
+
+<!-- =========================================================
+     INFO MODAL
+========================================================= -->
+
+<div
+    id="appModal"
+    class="modal-overlay"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modalTitle"
+    onclick="overlayClick(event)">
+
+    <div class="modal">
+
+        <div class="modal-header">
+
+            <div class="modal-title-wrap">
+
+                <div class="modal-label">
+                    App Information
+                </div>
+
+                <h3
+                    id="modalTitle"
+                    class="modal-title">
+                </h3>
+
+            </div>
+
+            <button
+                class="modal-close"
+                type="button"
+                aria-label="Close"
+                onclick="closeAppInfo()">
+                ×
+            </button>
+
+        </div>
+
+        <div class="modal-body">
+
+            <p
+                id="modalDescription"
+                class="modal-description">
+            </p>
+
+            <div class="modal-subtitle">
+                Highlights
+            </div>
+
+            <ul
+                id="modalFeatures"
+                class="modal-features">
+            </ul>
+
+            <div
+                id="modalActions"
+                class="modal-actions">
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+    const appData = {
+
+        drone: {
+            title: "Drone Rush",
+
+            description:
+                "Drone Rush is a fast-paced arcade combat game where reflexes, movement and smart upgrades determine how long you survive. Take control of a high-tech combat drone, fight through increasingly intense enemy waves and face powerful bosses while trying to push your score higher with every run.",
+
+            features: [
+                "Fast and responsive arcade gameplay",
+                "Enemy waves and challenging boss battles",
+                "Permanent weapon and ability upgrades",
+                "Energy-based combat mechanics",
+                "Touch and tilt control support",
+                "Score-driven replayable gameplay"
+            ],
+
+            actions: [
+                {
+                    label: "App Store",
+                    url: "https://apps.apple.com/us/app/drone-rush/id6763133589"
+                },
+                {
+                    label: "Google Play",
+                    url: "https://play.google.com/store/apps/details?id=com.gokmen.dronerush"
+                },
+                {
+                    label: "Support",
+                    url: "https://gokmenkeser.github.io/drone-rush-support/",
+                    secondary: true
+                }
+            ]
+        },
+
+
+        drive: {
+            title: "Drive Ride",
+
+            description:
+                "Drive Ride is a route-tracking app designed for motorcycle rides, road trips and everyday journeys. Start a ride with one tap, record your route in real time and keep important moments connected to the places where they happened. Review completed trips on a map and turn your journeys into route images or videos that are easy to share.",
+
+            features: [
+                "Real-time GPS route tracking",
+                "Background tracking during an active ride",
+                "Stops and location pins",
+                "Photos attached to locations",
+                "Distance, duration and speed statistics",
+                "Standard and satellite map views",
+                "Route image and video creation",
+                "Ride history stored on your device",
+                "No account required"
+            ],
+
+            actions: [
+                {
+                    label: "App Store",
+                    url: "https://apps.apple.com/us/app/drive-ride-gps-routes/id6799442279"
+                },
+                {
+                    label: "Support",
+                    url: "https://gokmenkeser.github.io/driveride/support/",
+                    secondary: true
+                },
+                {
+                    label: "Privacy Policy",
+                    url: "https://gokmenkeser.github.io/driveride/privacy/",
+                    secondary: true
+                }
+            ]
+        },
+
+
+        equal: {
+            title: "Equal Cut",
+
+            description:
+                "Equal Cut is a precision-based puzzle game where every line matters. Your goal is to slice each shape as accurately as possible according to the target ratio. Simple controls make it easy to start, while increasingly difficult shapes challenge your precision and spatial thinking.",
+
+            features: [
+                "Simple and intuitive slicing controls",
+                "Precision-based target challenges",
+                "Instant cut accuracy results",
+                "Multiple shapes and levels",
+                "Increasing difficulty",
+                "Quick and replayable puzzle gameplay"
+            ],
+
+            actions: [
+                {
+                    label: "Privacy Policy",
+                    url: "https://gokmenkeser.github.io/equalcut/",
+                    secondary: true
+                }
+            ]
+        }
+    };
+
+
+    const modal = document.getElementById("appModal");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalDescription = document.getElementById("modalDescription");
+    const modalFeatures = document.getElementById("modalFeatures");
+    const modalActions = document.getElementById("modalActions");
+
+
+    function openAppInfo(appKey) {
+
+        const app = appData[appKey];
+
+        if (!app) {
+            return;
+        }
+
+
+        modalTitle.textContent = app.title;
+        modalDescription.textContent = app.description;
+
+
+        modalFeatures.innerHTML = "";
+
+        app.features.forEach(feature => {
+
+            const item = document.createElement("li");
+
+            item.textContent = feature;
+
+            modalFeatures.appendChild(item);
+
+        });
+
+
+        modalActions.innerHTML = "";
+
+        app.actions.forEach(action => {
+
+            const link = document.createElement("a");
+
+            link.href = action.url;
+            link.target = "_blank";
+            link.rel = "noopener noreferrer";
+
+            link.className =
+                action.secondary
+                    ? "modal-action secondary"
+                    : "modal-action";
+
+            link.textContent = action.label;
+
+            modalActions.appendChild(link);
+
+        });
+
+
+        modal.classList.add("active");
+
+        document.body.classList.add("modal-open");
+
+
+        requestAnimationFrame(() => {
+
+            modal.classList.add("visible");
+
+        });
+    }
+
+
+    function closeAppInfo() {
+
+        modal.classList.remove("visible");
+
+        document.body.classList.remove("modal-open");
+
+
+        setTimeout(() => {
+
+            modal.classList.remove("active");
+
+        }, 180);
+    }
+
+
+    function overlayClick(event) {
+
+        if (event.target === modal) {
+
+            closeAppInfo();
+
+        }
+    }
+
+
+    document.addEventListener("keydown", event => {
+
+        if (
+            event.key === "Escape" &&
+            modal.classList.contains("active")
+        ) {
+
+            closeAppInfo();
+
+        }
+
+    });
+</script>
 
 </body>
 </html>
