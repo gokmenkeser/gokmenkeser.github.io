@@ -84,6 +84,82 @@
 
 
         /* =====================================================
+           LANGUAGE SWITCHER
+        ===================================================== */
+
+        .language-switcher {
+            position: fixed;
+
+            top: 22px;
+            right: 24px;
+
+            z-index: 5000;
+
+            display: flex;
+
+            align-items: center;
+
+            padding: 4px;
+
+            border: 1px solid rgba(255,255,255,0.11);
+
+            border-radius: 11px;
+
+            background: rgba(18, 23, 34, 0.78);
+
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+
+            box-shadow:
+                0 8px 26px rgba(0,0,0,0.22);
+        }
+
+        .language-button {
+            min-width: 40px;
+            height: 32px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 0 10px;
+
+            border: 0;
+            border-radius: 8px;
+
+            background: transparent;
+
+            color: #75839a;
+
+            font-size: 11px;
+            font-weight: 750;
+
+            letter-spacing: 0.6px;
+
+            cursor: pointer;
+
+            transition:
+                color 0.18s ease,
+                background 0.18s ease,
+                box-shadow 0.18s ease;
+        }
+
+        .language-button:hover {
+            color: #ffffff;
+        }
+
+        .language-button.active {
+            background: #252e3e;
+
+            color: #ffffff;
+
+            box-shadow:
+                0 3px 10px rgba(0,0,0,0.20);
+        }
+
+
+        /* =====================================================
            HERO
         ===================================================== */
 
@@ -287,8 +363,6 @@
 
         /* =====================================================
            APP CARD
-
-           Bütün kartlar birebir aynı yapıya sahip.
         ===================================================== */
 
         .app-card {
@@ -379,11 +453,6 @@
 
             pointer-events: none;
         }
-
-        /*
-           Kart artık hover sırasında hareket ETMİYOR.
-           Böylece üç kartın üst ve alt çizgisi sürekli eşit.
-        */
 
         .app-card:hover {
             border-color:
@@ -611,8 +680,6 @@
 
         /* =====================================================
            STORE BUTTONS
-
-           Üç kartta da her zaman iki sütun.
         ===================================================== */
 
         .store-buttons {
@@ -684,20 +751,6 @@
 
 
         /* =====================================================
-           GOOGLE PLAY LOGO
-        ===================================================== */
-
-        .play-logo {
-            width: 22px;
-            height: 22px;
-
-            flex: 0 0 22px;
-
-            display: block;
-        }
-
-
-        /* =====================================================
            STORE TEXT
         ===================================================== */
 
@@ -760,7 +813,6 @@
             flex-direction: column;
 
             align-items: center;
-
             justify-content: center;
 
             text-align: center;
@@ -787,8 +839,6 @@
 
         /* =====================================================
            SUPPORT / PRIVACY
-
-           Her kartın alt çizgisi ve linkleri birebir aynı yerde.
         ===================================================== */
 
         .app-links {
@@ -1223,11 +1273,16 @@
 
         @media (max-width: 680px) {
 
+            .language-switcher {
+                top: 14px;
+                right: 14px;
+            }
+
             header {
                 min-height: auto;
 
                 padding:
-                    62px 20px 52px;
+                    76px 20px 52px;
             }
 
             .hero h1 {
@@ -1246,11 +1301,6 @@
             .apps {
                 grid-template-columns: 1fr;
             }
-
-            /*
-               Mobilde sabit yükseklik gereksiz.
-               Tek sütunda içerik doğal uzayabilir.
-            */
 
             .app-card {
                 height: auto;
@@ -1348,6 +1398,35 @@
 
 
 <!-- =========================================================
+     LANGUAGE SWITCHER
+========================================================= -->
+
+<div
+    class="language-switcher"
+    role="group"
+    aria-label="Language">
+
+    <button
+        id="langTR"
+        class="language-button"
+        type="button"
+        onclick="setLanguage('tr')">
+        TR
+    </button>
+
+    <button
+        id="langEN"
+        class="language-button active"
+        type="button"
+        onclick="setLanguage('en')">
+        EN
+    </button>
+
+</div>
+
+
+
+<!-- =========================================================
      HERO
 ========================================================= -->
 
@@ -1359,17 +1438,21 @@
 
             <span class="hero-badge-dot"></span>
 
-            Independent Developer
+            <span data-i18n="developerBadge">
+                Independent Developer
+            </span>
 
         </div>
 
         <h1>Gökmen Keser</h1>
 
-        <div class="subtitle">
+        <div
+            class="subtitle"
+            data-i18n="heroSubtitle">
             Apps & Games
         </div>
 
-        <p>
+        <p data-i18n="heroDescription">
             Independent mobile apps and games for iOS and Android,
             built around useful ideas, focused experiences
             and simple, enjoyable gameplay.
@@ -1387,9 +1470,13 @@
 
 <section id="apps">
 
-    <h2>Apps & Games</h2>
+    <h2 data-i18n="appsTitle">
+        Apps & Games
+    </h2>
 
-    <p class="section-intro">
+    <p
+        class="section-intro"
+        data-i18n="appsIntro">
         Explore my published mobile apps and games.
         Download from the official stores or view more details
         about each project.
@@ -1428,7 +1515,9 @@
             </div>
 
 
-            <div class="app-category">
+            <div
+                class="app-category"
+                data-i18n="droneCategory">
                 Arcade Action
             </div>
 
@@ -1438,10 +1527,14 @@
             </h3>
 
 
-            <p class="description">
+            <p
+                class="description"
+                data-i18n="droneDescription">
+
                 Fast-paced drone combat with enemy waves,
                 powerful bosses, upgrades and score-driven
                 arcade gameplay.
+
             </p>
 
 
@@ -1480,7 +1573,9 @@
 
                     <span class="store-text">
 
-                        <span class="store-small">
+                        <span
+                            class="store-small"
+                            data-i18n="appStoreSmall">
                             Download on the
                         </span>
 
@@ -1501,7 +1596,9 @@
                             Google Play
                         </span>
 
-                        <span class="coming-label">
+                        <span
+                            class="coming-label"
+                            data-i18n="comingSoon">
                             Coming Soon
                         </span>
 
@@ -1517,14 +1614,16 @@
                 <a
                     href="https://gokmenkeser.github.io/drone-rush-support/"
                     target="_blank"
-                    rel="noopener noreferrer">
+                    rel="noopener noreferrer"
+                    data-i18n="support">
                     Support
                 </a>
 
                 <a
                     href="https://gokmenkeser.github.io/drone-rush-support/"
                     target="_blank"
-                    rel="noopener noreferrer">
+                    rel="noopener noreferrer"
+                    data-i18n="privacy">
                     Privacy Policy
                 </a>
 
@@ -1563,7 +1662,9 @@
             </div>
 
 
-            <div class="app-category">
+            <div
+                class="app-category"
+                data-i18n="driveCategory">
                 GPS & Travel
             </div>
 
@@ -1573,10 +1674,14 @@
             </h3>
 
 
-            <p class="description">
+            <p
+                class="description"
+                data-i18n="driveDescription">
+
                 Record your rides, save routes and photos,
                 review trip statistics and turn memorable
                 journeys into shareable route stories.
+
             </p>
 
 
@@ -1615,7 +1720,9 @@
 
                     <span class="store-text">
 
-                        <span class="store-small">
+                        <span
+                            class="store-small"
+                            data-i18n="appStoreSmall">
                             Download on the
                         </span>
 
@@ -1636,7 +1743,9 @@
                             Google Play
                         </span>
 
-                        <span class="coming-label">
+                        <span
+                            class="coming-label"
+                            data-i18n="comingSoon">
                             Coming Soon
                         </span>
 
@@ -1652,14 +1761,16 @@
                 <a
                     href="https://gokmenkeser.github.io/driveride/support/"
                     target="_blank"
-                    rel="noopener noreferrer">
+                    rel="noopener noreferrer"
+                    data-i18n="support">
                     Support
                 </a>
 
                 <a
                     href="https://gokmenkeser.github.io/driveride/privacy/"
                     target="_blank"
-                    rel="noopener noreferrer">
+                    rel="noopener noreferrer"
+                    data-i18n="privacy">
                     Privacy Policy
                 </a>
 
@@ -1698,7 +1809,9 @@
             </div>
 
 
-            <div class="app-category">
+            <div
+                class="app-category"
+                data-i18n="equalCategory">
                 Precision Puzzle
             </div>
 
@@ -1708,10 +1821,14 @@
             </h3>
 
 
-            <p class="description">
+            <p
+                class="description"
+                data-i18n="equalDescription">
+
                 Test your precision by slicing shapes as close
                 as possible to the target ratio across increasingly
                 challenging puzzle levels.
+
             </p>
 
 
@@ -1750,7 +1867,9 @@
 
                     <span class="store-text">
 
-                        <span class="store-small">
+                        <span
+                            class="store-small"
+                            data-i18n="appStoreSmall">
                             Download on the
                         </span>
 
@@ -1771,7 +1890,9 @@
                             Google Play
                         </span>
 
-                        <span class="coming-label">
+                        <span
+                            class="coming-label"
+                            data-i18n="comingSoon">
                             Coming Soon
                         </span>
 
@@ -1784,12 +1905,11 @@
 
             <div class="app-links">
 
-                <span></span>
-
                 <a
                     href="https://gokmenkeser.github.io/equalcut/"
                     target="_blank"
-                    rel="noopener noreferrer">
+                    rel="noopener noreferrer"
+                    data-i18n="privacy">
                     Privacy Policy
                 </a>
 
@@ -1809,13 +1929,17 @@
 
 <section class="about">
 
-    <div class="about-label">
+    <div
+        class="about-label"
+        data-i18n="aboutLabel">
         Independent Development
     </div>
 
-    <h2>About</h2>
+    <h2 data-i18n="aboutTitle">
+        About
+    </h2>
 
-    <p>
+    <p data-i18n="aboutDescription">
         I'm an independent developer creating mobile applications
         and games for iOS and Android. This website is the official
         home for my published projects, including download links,
@@ -1836,20 +1960,23 @@
 
         <div class="footer-links">
 
-            <a href="#apps">
+            <a
+                href="#apps"
+                data-i18n="appsTitle">
                 Apps & Games
             </a>
 
             <a
                 href="https://gokmenkeser.github.io/"
                 target="_blank"
-                rel="noopener noreferrer">
+                rel="noopener noreferrer"
+                data-i18n="website">
                 Website
             </a>
 
         </div>
 
-        <div>
+        <div data-i18n="copyright">
             © 2026 Gökmen Keser · Independent Developer
         </div>
 
@@ -1886,7 +2013,9 @@
 
                 <div>
 
-                    <div class="modal-label">
+                    <div
+                        class="modal-label"
+                        id="modalLabel">
                         App Information
                     </div>
 
@@ -1919,7 +2048,9 @@
             </p>
 
 
-            <div class="modal-subtitle">
+            <div
+                id="modalSubtitle"
+                class="modal-subtitle">
                 Highlights
             </div>
 
@@ -1943,7 +2074,184 @@
 
 
 
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
 <script>
+
+    let currentLanguage = "en";
+    let currentOpenApp = null;
+
+
+    /* =====================================================
+       PAGE TRANSLATIONS
+    ===================================================== */
+
+    const translations = {
+
+        en: {
+
+            developerBadge:
+                "Independent Developer",
+
+            heroSubtitle:
+                "Apps & Games",
+
+            heroDescription:
+                "Independent mobile apps and games for iOS and Android, built around useful ideas, focused experiences and simple, enjoyable gameplay.",
+
+            appsTitle:
+                "Apps & Games",
+
+            appsIntro:
+                "Explore my published mobile apps and games. Download from the official stores or view more details about each project.",
+
+
+            droneCategory:
+                "Arcade Action",
+
+            droneDescription:
+                "Fast-paced drone combat with enemy waves, powerful bosses, upgrades and score-driven arcade gameplay.",
+
+
+            driveCategory:
+                "GPS & Travel",
+
+            driveDescription:
+                "Record your rides, save routes and photos, review trip statistics and turn memorable journeys into shareable route stories.",
+
+
+            equalCategory:
+                "Precision Puzzle",
+
+            equalDescription:
+                "Test your precision by slicing shapes as close as possible to the target ratio across increasingly challenging puzzle levels.",
+
+
+            appStoreSmall:
+                "Download on the",
+
+            comingSoon:
+                "Coming Soon",
+
+            support:
+                "Support",
+
+            privacy:
+                "Privacy Policy",
+
+
+            aboutLabel:
+                "Independent Development",
+
+            aboutTitle:
+                "About",
+
+            aboutDescription:
+                "I'm an independent developer creating mobile applications and games for iOS and Android. This website is the official home for my published projects, including download links, support resources and privacy information.",
+
+
+            website:
+                "Website",
+
+            copyright:
+                "© 2026 Gökmen Keser · Independent Developer",
+
+
+            modalLabel:
+                "App Information",
+
+            modalSubtitle:
+                "Highlights"
+
+        },
+
+
+        tr: {
+
+            developerBadge:
+                "Bağımsız Geliştirici",
+
+            heroSubtitle:
+                "Uygulamalar & Oyunlar",
+
+            heroDescription:
+                "iOS ve Android için kullanışlı fikirler, odaklanmış deneyimler ve sade, keyifli oynanış üzerine geliştirdiğim bağımsız mobil uygulamalar ve oyunlar.",
+
+            appsTitle:
+                "Uygulamalar & Oyunlar",
+
+            appsIntro:
+                "Yayınlanan mobil uygulama ve oyunlarımı keşfedin. Resmî mağazalardan indirebilir veya her proje hakkında daha fazla bilgi alabilirsiniz.",
+
+
+            droneCategory:
+                "Arcade Aksiyon",
+
+            droneDescription:
+                "Düşman dalgaları, güçlü boss savaşları, geliştirmeler ve yüksek skor odaklı hızlı tempolu drone aksiyonu.",
+
+
+            driveCategory:
+                "GPS & Seyahat",
+
+            driveDescription:
+                "Sürüşlerinizi kaydedin, rotalarınızı ve fotoğraflarınızı saklayın, yolculuk istatistiklerini inceleyin ve unutulmaz rotalarınızı paylaşın.",
+
+
+            equalCategory:
+                "Hassasiyet Bulmacası",
+
+            equalDescription:
+                "Şekilleri hedeflenen orana mümkün olduğunca yakın keserek hassasiyetinizi test edin ve giderek zorlaşan bulmaca seviyelerinde ustalaşın.",
+
+
+            appStoreSmall:
+                "Şuradan indirin",
+
+            comingSoon:
+                "Çok Yakında",
+
+            support:
+                "Destek",
+
+            privacy:
+                "Gizlilik Politikası",
+
+
+            aboutLabel:
+                "Bağımsız Geliştirme",
+
+            aboutTitle:
+                "Hakkımda",
+
+            aboutDescription:
+                "iOS ve Android için mobil uygulamalar ve oyunlar geliştiren bağımsız bir geliştiriciyim. Bu site, yayınladığım projeler için indirme bağlantıları, destek kaynakları ve gizlilik bilgilerini içeren resmî web sitemdir.",
+
+
+            website:
+                "Web Sitesi",
+
+            copyright:
+                "© 2026 Gökmen Keser · Bağımsız Geliştirici",
+
+
+            modalLabel:
+                "Uygulama Bilgileri",
+
+            modalSubtitle:
+                "Öne Çıkanlar"
+
+        }
+
+    };
+
+
+
+    /* =====================================================
+       APP MODAL DATA
+    ===================================================== */
 
     const appData = {
 
@@ -1955,38 +2263,69 @@
             icon:
                 "images/drone-rush-icon.png",
 
-            description:
-                "Drone Rush is a fast-paced arcade combat game where reflexes, movement and smart upgrades determine how long you survive. Fight through increasingly intense enemy waves, face powerful bosses and push your score higher with every run.",
+            description: {
 
-            features: [
-                "Fast and responsive arcade gameplay",
-                "Enemy waves and challenging boss battles",
-                "Permanent weapon and ability upgrades",
-                "Energy-based combat mechanics",
-                "Touch and tilt control support",
-                "Available for iOS and Android"
-            ],
+                en:
+                    "Drone Rush is a fast-paced arcade combat game where reflexes, movement and smart upgrades determine how long you survive. Fight through increasingly intense enemy waves, face powerful bosses and push your score higher with every run.",
+
+                tr:
+                    "Drone Rush; reflekslerinizi, hareket kabiliyetinizi ve doğru geliştirme seçimlerinizi test eden hızlı tempolu bir arcade savaş oyunudur. Giderek zorlaşan düşman dalgalarıyla savaşın, güçlü boss'larla karşılaşın ve her oyunda daha yüksek skora ulaşmaya çalışın."
+
+            },
+
+            features: {
+
+                en: [
+                    "Fast and responsive arcade gameplay",
+                    "Enemy waves and challenging boss battles",
+                    "Permanent weapon and ability upgrades",
+                    "Energy-based combat mechanics",
+                    "Touch and tilt control support",
+                    "Available for iOS and Android"
+                ],
+
+                tr: [
+                    "Hızlı ve akıcı arcade oynanış",
+                    "Düşman dalgaları ve zorlu boss savaşları",
+                    "Kalıcı silah ve yetenek geliştirmeleri",
+                    "Enerji tabanlı savaş mekanikleri",
+                    "Dokunmatik ve eğim kontrolü desteği",
+                    "iOS ve Android desteği"
+                ]
+
+            },
 
             actions: [
 
                 {
-                    label: "App Store",
+                    label: {
+                        en: "App Store",
+                        tr: "App Store"
+                    },
+
                     url:
                         "https://apps.apple.com/us/app/drone-rush/id6763133589"
                 },
 
                 {
-                    label:
-                        "Google Play · Coming Soon",
+                    label: {
+                        en: "Google Play · Coming Soon",
+                        tr: "Google Play · Çok Yakında"
+                    },
+
                     comingSoon:
                         true
                 },
 
                 {
-                    label:
-                        "Support",
+                    label: {
+                        en: "Support",
+                        tr: "Destek"
+                    },
+
                     url:
                         "https://gokmenkeser.github.io/drone-rush-support/",
+
                     secondary:
                         true
                 }
@@ -1994,6 +2333,7 @@
             ]
 
         },
+
 
 
         drive: {
@@ -2004,50 +2344,86 @@
             icon:
                 "images/drive-ride-icon.jpeg",
 
-            description:
-                "Drive Ride is a route-tracking app designed for motorcycle rides, road trips and everyday journeys. Record your route, save important moments and review completed trips with useful ride statistics.",
+            description: {
 
-            features: [
-                "Real-time GPS route tracking",
-                "Background tracking",
-                "Stops and location pins",
-                "Photos attached to locations",
-                "Distance, duration and speed statistics",
-                "Route image and video creation",
-                "Available for iOS and Android",
-                "No account required"
-            ],
+                en:
+                    "Drive Ride is a route-tracking app designed for motorcycle rides, road trips and everyday journeys. Record your route, save important moments and review completed trips with useful ride statistics.",
+
+                tr:
+                    "Drive Ride; motosiklet sürüşleri, yolculuklar ve günlük rotalar için geliştirilmiş bir rota takip uygulamasıdır. Rotanızı kaydedin, önemli anları saklayın ve tamamladığınız sürüşleri detaylı istatistiklerle inceleyin."
+
+            },
+
+            features: {
+
+                en: [
+                    "Real-time GPS route tracking",
+                    "Background tracking",
+                    "Stops and location pins",
+                    "Photos attached to locations",
+                    "Distance, duration and speed statistics",
+                    "Route image and video creation",
+                    "Available for iOS and Android",
+                    "No account required"
+                ],
+
+                tr: [
+                    "Gerçek zamanlı GPS rota takibi",
+                    "Arka planda rota kaydı",
+                    "Duraklar ve konum işaretleri",
+                    "Konumlara fotoğraf ekleme",
+                    "Mesafe, süre ve hız istatistikleri",
+                    "Rota görseli ve video oluşturma",
+                    "iOS ve Android desteği",
+                    "Hesap oluşturma gerektirmez"
+                ]
+
+            },
 
             actions: [
 
                 {
-                    label:
-                        "App Store",
+                    label: {
+                        en: "App Store",
+                        tr: "App Store"
+                    },
+
                     url:
                         "https://apps.apple.com/us/app/drive-ride-gps-routes/id6799442279"
                 },
 
                 {
-                    label:
-                        "Google Play · Coming Soon",
+                    label: {
+                        en: "Google Play · Coming Soon",
+                        tr: "Google Play · Çok Yakında"
+                    },
+
                     comingSoon:
                         true
                 },
 
                 {
-                    label:
-                        "Support",
+                    label: {
+                        en: "Support",
+                        tr: "Destek"
+                    },
+
                     url:
                         "https://gokmenkeser.github.io/driveride/support/",
+
                     secondary:
                         true
                 },
 
                 {
-                    label:
-                        "Privacy Policy",
+                    label: {
+                        en: "Privacy Policy",
+                        tr: "Gizlilik Politikası"
+                    },
+
                     url:
                         "https://gokmenkeser.github.io/driveride/privacy/",
+
                     secondary:
                         true
                 }
@@ -2055,6 +2431,7 @@
             ]
 
         },
+
 
 
         equal: {
@@ -2065,40 +2442,71 @@
             icon:
                 "images/equal-cut-icon.png",
 
-            description:
-                "Equal Cut is a precision-based puzzle game where every line matters. Slice each shape as accurately as possible according to the target ratio and master increasingly difficult levels.",
+            description: {
 
-            features: [
-                "Simple and intuitive slicing controls",
-                "Precision-based challenges",
-                "Instant cut accuracy results",
-                "Multiple shapes and levels",
-                "Increasing difficulty",
-                "Quick replayable puzzle gameplay",
-                "Available for iOS and Android"
-            ],
+                en:
+                    "Equal Cut is a precision-based puzzle game where every line matters. Slice each shape as accurately as possible according to the target ratio and master increasingly difficult levels.",
+
+                tr:
+                    "Equal Cut, her kesimin önemli olduğu hassasiyet odaklı bir bulmaca oyunudur. Şekilleri verilen hedef orana mümkün olduğunca yakın kesin ve giderek zorlaşan seviyelerde ustalaşın."
+
+            },
+
+            features: {
+
+                en: [
+                    "Simple and intuitive slicing controls",
+                    "Precision-based challenges",
+                    "Instant cut accuracy results",
+                    "Multiple shapes and levels",
+                    "Increasing difficulty",
+                    "Quick replayable puzzle gameplay",
+                    "Available for iOS and Android"
+                ],
+
+                tr: [
+                    "Basit ve sezgisel kesme kontrolleri",
+                    "Hassasiyet odaklı görevler",
+                    "Anlık kesim doğruluk sonuçları",
+                    "Farklı şekiller ve seviyeler",
+                    "Giderek artan zorluk",
+                    "Kısa ve tekrar oynanabilir bulmaca deneyimi",
+                    "iOS ve Android desteği"
+                ]
+
+            },
 
             actions: [
 
                 {
-                    label:
-                        "App Store",
+                    label: {
+                        en: "App Store",
+                        tr: "App Store"
+                    },
+
                     url:
                         "https://apps.apple.com/tr/app/equal-cut-slice-puzzle/id6804606321?l=tr"
                 },
 
                 {
-                    label:
-                        "Google Play · Coming Soon",
+                    label: {
+                        en: "Google Play · Coming Soon",
+                        tr: "Google Play · Çok Yakında"
+                    },
+
                     comingSoon:
                         true
                 },
 
                 {
-                    label:
-                        "Privacy Policy",
+                    label: {
+                        en: "Privacy Policy",
+                        tr: "Gizlilik Politikası"
+                    },
+
                     url:
                         "https://gokmenkeser.github.io/equalcut/",
+
                     secondary:
                         true
                 }
@@ -2109,6 +2517,11 @@
 
     };
 
+
+
+    /* =====================================================
+       DOM
+    ===================================================== */
 
     const modal =
         document.getElementById("appModal");
@@ -2128,11 +2541,110 @@
     const modalActions =
         document.getElementById("modalActions");
 
+    const modalLabel =
+        document.getElementById("modalLabel");
 
-    function openAppInfo(appKey) {
+    const modalSubtitle =
+        document.getElementById("modalSubtitle");
+
+
+
+    /* =====================================================
+       LANGUAGE
+    ===================================================== */
+
+    function setLanguage(language) {
+
+        if (
+            language !== "en" &&
+            language !== "tr"
+        ) {
+            return;
+        }
+
+
+        currentLanguage =
+            language;
+
+
+        document.documentElement.lang =
+            language;
+
+
+        localStorage.setItem(
+            "site-language",
+            language
+        );
+
+
+        document
+            .querySelectorAll("[data-i18n]")
+            .forEach(element => {
+
+                const key =
+                    element.dataset.i18n;
+
+                const translatedText =
+                    translations[language][key];
+
+
+                if (
+                    translatedText !== undefined
+                ) {
+
+                    element.textContent =
+                        translatedText;
+
+                }
+
+            });
+
+
+        document
+            .getElementById("langTR")
+            .classList.toggle(
+                "active",
+                language === "tr"
+            );
+
+
+        document
+            .getElementById("langEN")
+            .classList.toggle(
+                "active",
+                language === "en"
+            );
+
+
+        modalLabel.textContent =
+            translations[language].modalLabel;
+
+
+        modalSubtitle.textContent =
+            translations[language].modalSubtitle;
+
+
+        if (currentOpenApp) {
+
+            populateModal(
+                currentOpenApp
+            );
+
+        }
+
+    }
+
+
+
+    /* =====================================================
+       MODAL CONTENT
+    ===================================================== */
+
+    function populateModal(appKey) {
 
         const app =
             appData[appKey];
+
 
         if (!app) {
             return;
@@ -2142,22 +2654,25 @@
         modalIcon.src =
             app.icon;
 
+
         modalIcon.alt =
             app.title + " app icon";
+
 
         modalTitle.textContent =
             app.title;
 
+
         modalDescription.textContent =
-            app.description;
+            app.description[currentLanguage];
 
 
         modalFeatures.innerHTML =
             "";
 
 
-        app.features.forEach(
-            feature => {
+        app.features[currentLanguage]
+            .forEach(feature => {
 
                 const item =
                     document.createElement("li");
@@ -2169,8 +2684,7 @@
                     item
                 );
 
-            }
-        );
+            });
 
 
         modalActions.innerHTML =
@@ -2180,20 +2694,27 @@
         app.actions.forEach(
             action => {
 
+
                 if (action.comingSoon) {
 
                     const item =
-                        document.createElement("span");
+                        document.createElement(
+                            "span"
+                        );
+
 
                     item.className =
                         "modal-coming-soon";
 
+
                     item.textContent =
-                        action.label;
+                        action.label[currentLanguage];
+
 
                     modalActions.appendChild(
                         item
                     );
+
 
                     return;
 
@@ -2201,24 +2722,31 @@
 
 
                 const link =
-                    document.createElement("a");
+                    document.createElement(
+                        "a"
+                    );
+
 
                 link.href =
                     action.url;
 
+
                 link.target =
                     "_blank";
 
+
                 link.rel =
                     "noopener noreferrer";
+
 
                 link.className =
                     action.secondary
                         ? "modal-action secondary"
                         : "modal-action";
 
+
                 link.textContent =
-                    action.label;
+                    action.label[currentLanguage];
 
 
                 modalActions.appendChild(
@@ -2228,10 +2756,42 @@
             }
         );
 
+    }
+
+
+
+    /* =====================================================
+       OPEN MODAL
+    ===================================================== */
+
+    function openAppInfo(appKey) {
+
+        if (!appData[appKey]) {
+            return;
+        }
+
+
+        currentOpenApp =
+            appKey;
+
+
+        populateModal(
+            appKey
+        );
+
+
+        modalLabel.textContent =
+            translations[currentLanguage].modalLabel;
+
+
+        modalSubtitle.textContent =
+            translations[currentLanguage].modalSubtitle;
+
 
         modal.classList.add(
             "active"
         );
+
 
         document.body.classList.add(
             "modal-open"
@@ -2251,15 +2811,25 @@
     }
 
 
+
+    /* =====================================================
+       CLOSE MODAL
+    ===================================================== */
+
     function closeAppInfo() {
 
         modal.classList.remove(
             "visible"
         );
 
+
         document.body.classList.remove(
             "modal-open"
         );
+
+
+        currentOpenApp =
+            null;
 
 
         setTimeout(
@@ -2276,9 +2846,16 @@
     }
 
 
+
+    /* =====================================================
+       OVERLAY CLICK
+    ===================================================== */
+
     function overlayClick(event) {
 
-        if (event.target === modal) {
+        if (
+            event.target === modal
+        ) {
 
             closeAppInfo();
 
@@ -2286,6 +2863,11 @@
 
     }
 
+
+
+    /* =====================================================
+       ESC
+    ===================================================== */
 
     document.addEventListener(
         "keydown",
@@ -2304,6 +2886,40 @@
 
         }
     );
+
+
+
+    /* =====================================================
+       INITIAL LANGUAGE
+
+       Default: English
+       If user previously selected TR,
+       remember that choice.
+    ===================================================== */
+
+    const savedLanguage =
+        localStorage.getItem(
+            "site-language"
+        );
+
+
+    if (
+        savedLanguage === "tr" ||
+        savedLanguage === "en"
+    ) {
+
+        setLanguage(
+            savedLanguage
+        );
+
+    }
+    else {
+
+        setLanguage(
+            "en"
+        );
+
+    }
 
 </script>
 
