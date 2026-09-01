@@ -6,26 +6,29 @@
 
     <title>Gökmen Keser | Apps & Games</title>
 
-    <meta name="description"
-          content="Official website of Gökmen Keser. Independent apps and games for iOS and Android.">
+    <meta
+        name="description"
+        content="Official website of Gökmen Keser. Independent apps and games for iOS and Android.">
 
-    <meta name="theme-color" content="#0b0d12">
+    <meta name="theme-color" content="#090b10">
 
     <style>
         :root {
-            --bg: #0b0d12;
-            --card: #151922;
-            --card-hover: #181e29;
-            --border: #252b38;
-            --border-hover: #455675;
-            --text: #ffffff;
-            --text-soft: #9ba5b8;
-            --text-muted: #727e93;
-            --blue: #3978f6;
-            --blue-hover: #4c88ff;
-            --cyan: #36c8e8;
-            --chip: #222937;
-            --overlay: rgba(0, 0, 0, 0.72);
+            --bg: #090b10;
+            --card: #131823;
+            --border: #252d3b;
+
+            --text: #f7f9fc;
+            --text-soft: #abb5c7;
+            --text-muted: #748096;
+
+            --blue: #4c82ff;
+            --blue-hover: #6594ff;
+
+            --cyan: #48c8f0;
+            --chip: #1b2230;
+
+            --overlay: rgba(3, 5, 9, 0.82);
         }
 
         * {
@@ -39,6 +42,8 @@
         }
 
         body {
+            min-height: 100vh;
+
             font-family:
                 -apple-system,
                 BlinkMacSystemFont,
@@ -48,20 +53,35 @@
                 Arial,
                 sans-serif;
 
-            background: var(--bg);
+            background:
+                radial-gradient(
+                    circle at 50% -10%,
+                    rgba(60, 100, 180, 0.13),
+                    transparent 38%
+                ),
+                var(--bg);
+
             color: var(--text);
+
             line-height: 1.6;
-            min-height: 100vh;
+
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
         }
 
         body.modal-open {
             overflow: hidden;
         }
 
-        a,
-        button {
+        button,
+        a {
             -webkit-tap-highlight-color: transparent;
         }
+
+        button {
+            font-family: inherit;
+        }
+
 
         /* =====================================================
            HERO
@@ -69,68 +89,103 @@
 
         header {
             position: relative;
-            min-height: 58vh;
+
+            min-height: 48vh;
 
             display: flex;
             align-items: center;
             justify-content: center;
 
+            padding: 70px 20px 58px;
+
             text-align: center;
-            padding: 60px 20px;
 
             overflow: hidden;
+        }
 
-            background:
-                radial-gradient(
-                    circle at 50% 0%,
-                    rgba(52, 91, 157, 0.42) 0%,
-                    rgba(23, 34, 52, 0.42) 34%,
-                    rgba(11, 13, 18, 0) 68%
+        header::before {
+            content: "";
+
+            position: absolute;
+            inset: 0;
+
+            background-image:
+                linear-gradient(
+                    rgba(255,255,255,0.017) 1px,
+                    transparent 1px
                 ),
-                var(--bg);
+                linear-gradient(
+                    90deg,
+                    rgba(255,255,255,0.017) 1px,
+                    transparent 1px
+                );
+
+            background-size: 42px 42px;
+
+            mask-image:
+                linear-gradient(
+                    to bottom,
+                    rgba(0,0,0,0.65),
+                    transparent 85%
+                );
+
+            pointer-events: none;
         }
 
         header::after {
             content: "";
-            position: absolute;
-            left: 50%;
-            bottom: 0;
 
-            width: min(900px, 90%);
+            position: absolute;
+
+            bottom: 0;
+            left: 50%;
+
+            width: min(980px, 88%);
             height: 1px;
 
             transform: translateX(-50%);
 
-            background: linear-gradient(
-                90deg,
-                transparent,
-                rgba(255, 255, 255, 0.12),
-                transparent
-            );
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(255,255,255,0.13),
+                    transparent
+                );
         }
 
         .hero {
             position: relative;
-            z-index: 1;
+            z-index: 2;
+
             max-width: 760px;
         }
 
         .hero-badge {
             display: inline-flex;
+
             align-items: center;
-            gap: 8px;
 
-            margin-bottom: 22px;
-            padding: 7px 13px;
+            gap: 9px;
 
-            border: 1px solid #2c3545;
+            margin-bottom: 23px;
+
+            padding: 7px 14px;
+
+            border:
+                1px solid rgba(150,170,205,0.20);
+
             border-radius: 999px;
 
-            background: rgba(24, 30, 42, 0.72);
-            color: #aeb9cc;
+            background:
+                rgba(24,31,44,0.68);
 
-            font-size: 13px;
-            font-weight: 600;
+            color: #bac5d7;
+
+            font-size: 12px;
+            font-weight: 650;
+
+            letter-spacing: 0.25px;
         }
 
         .hero-badge-dot {
@@ -139,65 +194,80 @@
 
             border-radius: 50%;
 
-            background: var(--cyan);
+            background: #4bd8f2;
 
-            box-shadow: 0 0 14px rgba(54, 200, 232, 0.7);
+            box-shadow:
+                0 0 14px rgba(75,216,242,0.8);
         }
 
         .hero h1 {
-            font-size: clamp(42px, 6vw, 62px);
-            line-height: 1.08;
-
-            letter-spacing: -1.7px;
-
             margin-bottom: 11px;
+
+            font-size:
+                clamp(43px, 6vw, 64px);
+
+            line-height: 1.04;
+
+            letter-spacing: -2px;
         }
 
         .hero .subtitle {
-            font-size: clamp(19px, 3vw, 24px);
-            color: #b4bed1;
+            margin-bottom: 20px;
 
-            margin-bottom: 24px;
+            font-size:
+                clamp(20px, 3vw, 24px);
+
+            color: #bec8d8;
+
+            letter-spacing: -0.3px;
         }
 
         .hero p {
-            max-width: 600px;
+            max-width: 610px;
+
             margin: auto;
 
-            color: #828da2;
-            font-size: 16px;
+            color: #818da2;
+
+            font-size: 15.5px;
         }
 
+
         /* =====================================================
-           SECTIONS
+           SECTION
         ===================================================== */
 
         section {
-            max-width: 1120px;
+            max-width: 1160px;
+
             margin: auto;
 
-            padding: 78px 24px;
+            padding: 72px 24px;
         }
 
         section h2 {
+            margin-bottom: 10px;
+
             text-align: center;
 
-            font-size: 32px;
-            letter-spacing: -0.5px;
+            font-size: 33px;
 
-            margin-bottom: 12px;
+            letter-spacing: -0.8px;
         }
 
         .section-intro {
-            max-width: 600px;
+            max-width: 610px;
 
-            margin: 0 auto 42px;
+            margin:
+                0 auto 44px;
 
             text-align: center;
 
             color: var(--text-muted);
-            font-size: 15px;
+
+            font-size: 14.5px;
         }
+
 
         /* =====================================================
            APP GRID
@@ -214,138 +284,294 @@
             align-items: stretch;
         }
 
+
+        /* =====================================================
+           APP CARD
+
+           Bütün kartlar birebir aynı yapıya sahip.
+        ===================================================== */
+
         .app-card {
+            --accent: 72, 200, 240;
+
             position: relative;
 
-            min-height: 100%;
+            width: 100%;
+            min-width: 0;
+            height: 540px;
+
+            display: grid;
+
+            grid-template-rows:
+                84px
+                24px
+                42px
+                112px
+                42px
+                68px
+                52px;
+
+            padding: 30px;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 24px;
+
+            overflow: hidden;
 
             background:
                 linear-gradient(
                     180deg,
-                    rgba(255, 255, 255, 0.018),
-                    rgba(255, 255, 255, 0)
+                    rgba(var(--accent), 0.055),
+                    transparent 32%
                 ),
                 var(--card);
 
-            border: 1px solid var(--border);
-            border-radius: 22px;
-
-            padding: 30px;
-
-            display: flex;
-            flex-direction: column;
-
-            overflow: hidden;
+            box-shadow:
+                0 20px 55px rgba(0,0,0,0.15);
 
             transition:
-                transform 0.22s ease,
                 border-color 0.22s ease,
-                background 0.22s ease,
-                box-shadow 0.22s ease;
+                box-shadow 0.22s ease,
+                background 0.22s ease;
         }
+
+        .app-card::before {
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            left: 15%;
+            right: 15%;
+
+            height: 1px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(var(--accent),0.72),
+                    transparent
+                );
+        }
+
+        .app-card::after {
+            content: "";
+
+            position: absolute;
+
+            width: 180px;
+            height: 180px;
+
+            top: -110px;
+            left: -80px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(var(--accent),0.12),
+                    transparent 68%
+                );
+
+            pointer-events: none;
+        }
+
+        /*
+           Kart artık hover sırasında hareket ETMİYOR.
+           Böylece üç kartın üst ve alt çizgisi sürekli eşit.
+        */
 
         .app-card:hover {
-            transform: translateY(-5px);
+            border-color:
+                rgba(var(--accent),0.48);
 
-            border-color: var(--border-hover);
-
-            background-color: var(--card-hover);
+            background:
+                linear-gradient(
+                    180deg,
+                    rgba(var(--accent), 0.075),
+                    transparent 32%
+                ),
+                #161b27;
 
             box-shadow:
-                0 22px 60px rgba(0, 0, 0, 0.20);
+                0 26px 70px rgba(0,0,0,0.25),
+                0 0 0 1px rgba(var(--accent),0.025);
         }
+
+        .app-card.drone {
+            --accent: 72, 200, 240;
+        }
+
+        .app-card.drive {
+            --accent: 255, 155, 85;
+        }
+
+        .app-card.equal {
+            --accent: 169, 118, 255;
+        }
+
+
+        /* =====================================================
+           CARD TOP
+        ===================================================== */
 
         .card-top {
             display: flex;
 
             align-items: flex-start;
             justify-content: space-between;
-
-            gap: 15px;
-
-            margin-bottom: 20px;
         }
 
-        /* =====================================================
-           REAL APP ICONS
-        ===================================================== */
+        .app-icon-wrap {
+            position: relative;
+
+            width: 78px;
+            height: 78px;
+
+            flex: 0 0 78px;
+        }
+
+        .app-icon-wrap::before {
+            content: "";
+
+            position: absolute;
+
+            inset: -9px;
+
+            border-radius: 25px;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(var(--accent),0.16),
+                    transparent 70%
+                );
+
+            filter: blur(4px);
+        }
 
         .app-icon-image {
-            width: 68px;
-            height: 68px;
+            position: relative;
 
-            flex: 0 0 68px;
+            z-index: 1;
+
+            width: 78px;
+            height: 78px;
+
+            display: block;
 
             object-fit: cover;
 
-            border-radius: 16px;
+            border-radius: 19px;
 
-            border: 1px solid rgba(255, 255, 255, 0.12);
+            border:
+                1px solid rgba(255,255,255,0.13);
 
             box-shadow:
-                0 12px 28px rgba(0, 0, 0, 0.30),
-                inset 0 1px 0 rgba(255, 255, 255, 0.08);
-
-            display: block;
+                0 13px 28px rgba(0,0,0,0.32);
         }
 
-        .info-button {
-            width: 36px;
-            height: 36px;
 
-            display: inline-flex;
+        /* =====================================================
+           INFO BUTTON
+        ===================================================== */
+
+        .info-button {
+            width: 37px;
+            height: 37px;
+
+            flex: 0 0 37px;
+
+            display: flex;
 
             align-items: center;
             justify-content: center;
 
+            border:
+                1px solid #313a4b;
+
             border-radius: 50%;
 
-            border: 1px solid #31394a;
+            background:
+                rgba(27,33,45,0.85);
 
-            background: #1c222e;
-            color: #afbad0;
+            color: #b0bbcd;
 
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 700;
-
-            font-family: inherit;
 
             cursor: pointer;
 
             transition:
-                background 0.18s ease,
-                color 0.18s ease,
                 border-color 0.18s ease,
-                transform 0.18s ease;
+                background 0.18s ease,
+                color 0.18s ease;
         }
 
         .info-button:hover {
+            color: white;
+
             background: #273044;
-            color: #ffffff;
 
-            border-color: #4a5872;
-
-            transform: translateY(-1px);
+            border-color:
+                rgba(var(--accent),0.60);
         }
+
+
+        /* =====================================================
+           CATEGORY
+        ===================================================== */
+
+        .app-category {
+            align-self: end;
+
+            color:
+                rgb(var(--accent));
+
+            font-size: 11px;
+            font-weight: 750;
+
+            letter-spacing: 1.15px;
+
+            text-transform: uppercase;
+        }
+
+
+        /* =====================================================
+           TITLE
+        ===================================================== */
 
         .app-card h3 {
-            font-size: 25px;
-            line-height: 1.25;
+            align-self: center;
 
-            letter-spacing: -0.4px;
+            font-size: 26px;
 
-            margin-bottom: 10px;
+            line-height: 1.2;
+
+            letter-spacing: -0.55px;
         }
 
-        .app-card .description {
+
+        /* =====================================================
+           DESCRIPTION
+        ===================================================== */
+
+        .description {
+            padding-top: 3px;
+
             color: var(--text-soft);
 
-            font-size: 15px;
+            font-size: 14.5px;
 
-            margin-bottom: 20px;
+            line-height: 1.65;
 
-            min-height: 96px;
+            overflow: hidden;
         }
+
 
         /* =====================================================
            PLATFORMS
@@ -353,184 +579,342 @@
 
         .platforms {
             display: flex;
-            flex-wrap: wrap;
+
+            align-items: center;
 
             gap: 7px;
-
-            margin-bottom: 24px;
         }
 
         .platform {
-            display: inline-flex;
-            align-items: center;
-
-            background: var(--chip);
-            color: #c4cde0;
-
-            padding: 5px 11px;
-
-            border: 1px solid #293143;
-            border-radius: 8px;
-
-            font-size: 12px;
-            font-weight: 600;
-        }
-
-        /* =====================================================
-           STORE BUTTONS
-        ===================================================== */
-
-        .store-buttons {
-            display: flex;
-            flex-wrap: wrap;
-
-            gap: 10px;
-
-            margin-top: auto;
-        }
-
-        .store-button {
-            min-height: 45px;
-            min-width: 125px;
+            min-height: 31px;
 
             display: inline-flex;
 
             align-items: center;
             justify-content: center;
 
-            padding: 11px 17px;
+            padding: 4px 10px;
 
-            border-radius: 11px;
+            border:
+                1px solid #2b3445;
 
-            background: #ffffff;
-            color: #101218;
+            border-radius: 8px;
 
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: var(--chip);
 
-            font-size: 13px;
-            font-weight: 700;
+            color: #c8d0df;
 
-            letter-spacing: 0.05px;
+            font-size: 11.5px;
+            font-weight: 650;
+        }
+
+
+        /* =====================================================
+           STORE BUTTONS
+
+           Üç kartta da her zaman iki sütun.
+        ===================================================== */
+
+        .store-buttons {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, minmax(0, 1fr));
+
+            gap: 10px;
+
+            align-items: center;
+        }
+
+        .store-button {
+            width: 100%;
+            height: 48px;
+
+            min-width: 0;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            gap: 8px;
+
+            padding: 7px 10px;
+
+            overflow: hidden;
+
+            border:
+                1px solid rgba(255,255,255,0.10);
+
+            border-radius: 12px;
+
+            background: #f5f7fb;
+
+            color: #11141b;
 
             text-decoration: none;
 
             transition:
-                transform 0.16s ease,
-                opacity 0.16s ease,
-                box-shadow 0.16s ease;
+                background 0.17s ease,
+                box-shadow 0.17s ease;
         }
 
         .store-button:hover {
-            transform: translateY(-2px);
-
-            opacity: 0.94;
+            background: #ffffff;
 
             box-shadow:
-                0 9px 22px rgba(0, 0, 0, 0.18);
+                0 9px 23px rgba(0,0,0,0.24);
         }
 
-        .store-button.google {
-            background: #f8f9fb;
+
+        /* =====================================================
+           APPLE LOGO
+        ===================================================== */
+
+        .apple-logo {
+            width: 21px;
+            height: 25px;
+
+            flex: 0 0 21px;
+
+            display: block;
+
+            fill: #11141b;
         }
 
-        .coming-soon {
-            background: #222937;
-            color: #aeb8ca;
 
-            border-color: #293143;
+        /* =====================================================
+           GOOGLE PLAY LOGO
+        ===================================================== */
 
+        .play-logo {
+            width: 22px;
+            height: 22px;
+
+            flex: 0 0 22px;
+
+            display: block;
+        }
+
+
+        /* =====================================================
+           STORE TEXT
+        ===================================================== */
+
+        .store-text {
+            min-width: 0;
+
+            display: flex;
+
+            flex-direction: column;
+
+            line-height: 1.05;
+        }
+
+        .store-small {
+            margin-bottom: 3px;
+
+            color: #667082;
+
+            font-size: 8.5px;
+            font-weight: 600;
+
+            white-space: nowrap;
+        }
+
+        .store-main {
+            color: #10131a;
+
+            font-size: 12.5px;
+            font-weight: 760;
+
+            white-space: nowrap;
+        }
+
+
+        /* =====================================================
+           COMING SOON
+        ===================================================== */
+
+        .store-button.coming-soon {
             cursor: default;
+
+            background:
+                rgba(29,36,51,0.80);
+
+            color: #8390a7;
+
+            border-color: #2c3548;
         }
 
-        .coming-soon:hover {
-            transform: none;
-            opacity: 1;
+        .store-button.coming-soon:hover {
+            background:
+                rgba(29,36,51,0.80);
+
             box-shadow: none;
         }
 
+        .coming-soon-content {
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            line-height: 1.2;
+        }
+
+        .coming-store {
+            color: #9ba8bd;
+
+            font-size: 11.5px;
+            font-weight: 650;
+        }
+
+        .coming-label {
+            margin-top: 2px;
+
+            color: #647188;
+
+            font-size: 9.5px;
+            font-weight: 600;
+        }
+
+
         /* =====================================================
            SUPPORT / PRIVACY
+
+           Her kartın alt çizgisi ve linkleri birebir aynı yerde.
         ===================================================== */
 
         .app-links {
             display: flex;
-            flex-wrap: wrap;
 
-            gap: 16px;
+            align-items: flex-end;
 
-            margin-top: 20px;
-            padding-top: 18px;
+            gap: 17px;
 
-            border-top: 1px solid var(--border);
+            padding-top: 17px;
+
+            border-top:
+                1px solid var(--border);
         }
 
         .app-links a {
-            color: #8fa2c4;
+            color: #8e9db7;
 
             font-size: 12px;
-            font-weight: 500;
+            font-weight: 550;
 
             text-decoration: none;
 
-            transition: color 0.18s ease;
+            transition:
+                color 0.18s ease;
         }
 
         .app-links a:hover {
             color: #ffffff;
         }
 
+
         /* =====================================================
            ABOUT
         ===================================================== */
 
         .about {
-            max-width: 720px;
+            max-width: 760px;
+
+            padding-top: 58px;
+            padding-bottom: 78px;
 
             text-align: center;
         }
 
+        .about-label {
+            display: inline-block;
+
+            margin-bottom: 13px;
+
+            color: var(--cyan);
+
+            font-size: 11px;
+            font-weight: 750;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1.2px;
+        }
+
         .about p {
             color: var(--text-soft);
+
+            font-size: 15px;
         }
+
 
         /* =====================================================
            FOOTER
         ===================================================== */
 
         footer {
-            border-top: 1px solid #202530;
+            padding: 34px 20px 38px;
+
+            border-top:
+                1px solid #1e2430;
+
+            color: #667184;
 
             text-align: center;
 
-            padding: 38px 20px;
-
-            color: #687184;
-
-            font-size: 13px;
+            font-size: 12.5px;
         }
 
-        footer a {
-            color: #8e9aaf;
+        .footer-inner {
+            max-width: 900px;
+
+            margin: auto;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            gap: 12px;
+        }
+
+        .footer-links {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            justify-content: center;
+
+            gap: 18px;
+        }
+
+        .footer-links a {
+            color: #8794aa;
 
             text-decoration: none;
-
-            transition: color 0.18s ease;
         }
 
-        footer a:hover {
-            color: white;
+        .footer-links a:hover {
+            color: #ffffff;
         }
 
-        .copyright {
-            margin-top: 12px;
-        }
 
         /* =====================================================
-           INFO MODAL
+           MODAL
         ===================================================== */
 
         .modal-overlay {
             position: fixed;
+
             inset: 0;
 
             z-index: 9999;
@@ -544,12 +928,13 @@
 
             background: var(--overlay);
 
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
 
             opacity: 0;
 
-            transition: opacity 0.18s ease;
+            transition:
+                opacity 0.18s ease;
         }
 
         .modal-overlay.active {
@@ -561,26 +946,28 @@
         }
 
         .modal {
-            width: min(650px, 100%);
+            width: min(660px, 100%);
 
             max-height:
-                min(760px, calc(100vh - 48px));
+                min(780px, calc(100vh - 48px));
 
             overflow-y: auto;
+
+            border:
+                1px solid #30394b;
+
+            border-radius: 24px;
 
             background:
                 linear-gradient(
                     180deg,
-                    rgba(255, 255, 255, 0.025),
-                    rgba(255, 255, 255, 0)
+                    rgba(255,255,255,0.022),
+                    transparent 28%
                 ),
-                #141923;
-
-            border: 1px solid #30394b;
-            border-radius: 22px;
+                #111722;
 
             box-shadow:
-                0 35px 100px rgba(0, 0, 0, 0.55);
+                0 35px 110px rgba(0,0,0,0.62);
 
             transform:
                 translateY(12px) scale(0.985);
@@ -588,17 +975,20 @@
             opacity: 0;
 
             transition:
-                transform 0.2s ease,
-                opacity 0.2s ease;
+                transform 0.20s ease,
+                opacity 0.20s ease;
         }
 
         .modal-overlay.visible .modal {
-            transform: translateY(0) scale(1);
+            transform:
+                translateY(0) scale(1);
+
             opacity: 1;
         }
 
         .modal-header {
             position: sticky;
+
             top: 0;
 
             z-index: 2;
@@ -612,9 +1002,11 @@
 
             padding: 22px 26px;
 
-            background: rgba(20, 25, 35, 0.96);
+            background:
+                rgba(17,23,34,0.96);
 
-            border-bottom: 1px solid #293142;
+            border-bottom:
+                1px solid #293142;
 
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
@@ -622,52 +1014,48 @@
 
         .modal-app-heading {
             display: flex;
+
             align-items: center;
 
             gap: 15px;
-
-            min-width: 0;
         }
 
         .modal-icon {
-            width: 54px;
-            height: 54px;
+            width: 58px;
+            height: 58px;
 
-            flex: 0 0 54px;
+            flex: 0 0 58px;
 
             object-fit: cover;
 
-            border-radius: 13px;
+            border-radius: 14px;
 
             border:
-                1px solid rgba(255, 255, 255, 0.12);
+                1px solid rgba(255,255,255,0.12);
 
             box-shadow:
-                0 8px 20px rgba(0, 0, 0, 0.25);
-        }
-
-        .modal-title-wrap {
-            min-width: 0;
+                0 9px 22px rgba(0,0,0,0.30);
         }
 
         .modal-label {
-            color: #74839d;
+            margin-bottom: 3px;
 
-            font-size: 11px;
-            font-weight: 700;
+            color: #71819c;
+
+            font-size: 10.5px;
+            font-weight: 750;
 
             text-transform: uppercase;
 
             letter-spacing: 1.15px;
-
-            margin-bottom: 3px;
         }
 
         .modal-title {
             font-size: 24px;
+
             line-height: 1.2;
 
-            letter-spacing: -0.4px;
+            letter-spacing: -0.45px;
         }
 
         .modal-close {
@@ -676,7 +1064,7 @@
 
             flex: 0 0 38px;
 
-            display: inline-flex;
+            display: flex;
 
             align-items: center;
             justify-content: center;
@@ -687,44 +1075,44 @@
             border-radius: 50%;
 
             background: #202633;
+
             color: #b8c2d4;
 
-            font-family: inherit;
-
             font-size: 22px;
-            line-height: 1;
 
             cursor: pointer;
-
-            transition:
-                background 0.18s ease,
-                color 0.18s ease;
         }
 
         .modal-close:hover {
+            color: white;
+
             background: #2d3545;
-            color: #ffffff;
         }
 
         .modal-body {
-            padding: 26px;
+            padding: 27px;
         }
 
         .modal-description {
-            color: #aeb8ca;
+            margin-bottom: 24px;
+
+            color: #aab5c7;
 
             font-size: 15px;
-
-            margin-bottom: 24px;
         }
 
         .modal-subtitle {
-            font-size: 13px;
-            font-weight: 700;
+            margin:
+                24px 0 12px;
 
-            letter-spacing: 0.4px;
+            color: #d6deeb;
 
-            margin: 24px 0 12px;
+            font-size: 12px;
+            font-weight: 750;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.65px;
         }
 
         .modal-features {
@@ -734,11 +1122,11 @@
         .modal-features li {
             position: relative;
 
-            padding-left: 19px;
-
             margin-bottom: 9px;
 
-            color: #9eabc0;
+            padding-left: 20px;
+
+            color: #98a6bb;
 
             font-size: 14px;
         }
@@ -761,52 +1149,20 @@
 
         .modal-actions {
             display: flex;
+
             flex-wrap: wrap;
 
             gap: 10px;
 
-            margin-top: 27px;
+            margin-top: 28px;
+
             padding-top: 22px;
 
-            border-top: 1px solid #293142;
+            border-top:
+                1px solid #293142;
         }
 
-        .modal-action {
-            min-height: 43px;
-
-            display: inline-flex;
-
-            align-items: center;
-            justify-content: center;
-
-            padding: 10px 17px;
-
-            border-radius: 10px;
-
-            background: var(--blue);
-            color: #ffffff;
-
-            font-size: 13px;
-            font-weight: 700;
-
-            text-decoration: none;
-
-            transition:
-                background 0.18s ease,
-                transform 0.18s ease;
-        }
-
-        .modal-action:hover {
-            background: var(--blue-hover);
-
-            transform: translateY(-1px);
-        }
-
-        .modal-action.secondary {
-            background: #222937;
-            color: #c5cede;
-        }
-
+        .modal-action,
         .modal-coming-soon {
             min-height: 43px;
 
@@ -819,14 +1175,37 @@
 
             border-radius: 10px;
 
-            background: #222937;
-            color: #9da9bd;
-
             font-size: 13px;
             font-weight: 700;
-
-            border: 1px solid #293143;
         }
+
+        .modal-action {
+            background: var(--blue);
+
+            color: white;
+
+            text-decoration: none;
+        }
+
+        .modal-action:hover {
+            background: var(--blue-hover);
+        }
+
+        .modal-action.secondary {
+            background: #222937;
+
+            color: #c5cede;
+        }
+
+        .modal-coming-soon {
+            border:
+                1px solid #293143;
+
+            background: #222937;
+
+            color: #9da9bd;
+        }
+
 
         /* =====================================================
            RESPONSIVE
@@ -841,19 +1220,23 @@
 
         }
 
+
         @media (max-width: 680px) {
 
             header {
-                min-height: 48vh;
-                padding: 50px 20px;
+                min-height: auto;
+
+                padding:
+                    62px 20px 52px;
             }
 
             .hero h1 {
-                letter-spacing: -1px;
+                letter-spacing: -1.4px;
             }
 
             section {
-                padding: 58px 18px;
+                padding:
+                    56px 18px;
             }
 
             section h2 {
@@ -864,17 +1247,39 @@
                 grid-template-columns: 1fr;
             }
 
+            /*
+               Mobilde sabit yükseklik gereksiz.
+               Tek sütunda içerik doğal uzayabilir.
+            */
+
             .app-card {
+                height: auto;
+
+                min-height: 535px;
+
+                grid-template-rows:
+                    84px
+                    24px
+                    42px
+                    minmax(100px, auto)
+                    42px
+                    68px
+                    52px;
+
                 padding: 26px;
             }
 
-            .app-card .description {
-                min-height: unset;
+            .store-buttons {
+                grid-template-columns:
+                    repeat(2, minmax(0,1fr));
             }
 
-            .store-button {
-                flex: 1;
-                min-width: 0;
+            .store-small {
+                font-size: 8px;
+            }
+
+            .store-main {
+                font-size: 12px;
             }
 
             .modal-overlay {
@@ -885,9 +1290,10 @@
 
             .modal {
                 width: 100%;
+
                 max-height: 90vh;
 
-                border-radius: 20px;
+                border-radius: 21px;
             }
 
             .modal-header {
@@ -898,17 +1304,30 @@
                 padding: 20px;
             }
 
-            .modal-icon {
-                width: 48px;
-                height: 48px;
-
-                flex-basis: 48px;
-            }
-
-            .modal-title {
-                font-size: 21px;
-            }
         }
+
+
+        @media (max-width: 400px) {
+
+            .store-buttons {
+                grid-template-columns: 1fr;
+            }
+
+            .app-card {
+                min-height: unset;
+
+                grid-template-rows:
+                    84px
+                    24px
+                    42px
+                    auto
+                    48px
+                    auto
+                    52px;
+            }
+
+        }
+
 
         @media (prefers-reduced-motion: reduce) {
 
@@ -920,10 +1339,13 @@
             }
 
         }
+
     </style>
 </head>
 
+
 <body>
+
 
 <!-- =========================================================
      HERO
@@ -948,9 +1370,9 @@
         </div>
 
         <p>
-            Independent mobile apps and games developed for
-            iOS and Android, focused on simple experiences,
-            useful tools and engaging gameplay.
+            Independent mobile apps and games for iOS and Android,
+            built around useful ideas, focused experiences
+            and simple, enjoyable gameplay.
         </p>
 
     </div>
@@ -958,18 +1380,21 @@
 </header>
 
 
+
 <!-- =========================================================
      APPS
 ========================================================= -->
 
-<section>
+<section id="apps">
 
     <h2>Apps & Games</h2>
 
     <p class="section-intro">
         Explore my published mobile apps and games.
-        Select a store to download, or use Info to learn more.
+        Download from the official stores or view more details
+        about each project.
     </p>
+
 
     <div class="apps">
 
@@ -978,14 +1403,19 @@
              DRONE RUSH
         ================================================== -->
 
-        <article class="app-card">
+        <article class="app-card drone">
 
             <div class="card-top">
 
-                <img
-                    class="app-icon-image"
-                    src="images/drone-rush-icon.png"
-                    alt="Drone Rush app icon">
+                <div class="app-icon-wrap">
+
+                    <img
+                        class="app-icon-image"
+                        src="images/drone-rush-icon.png"
+                        alt="Drone Rush app icon">
+
+                </div>
+
 
                 <button
                     class="info-button"
@@ -997,13 +1427,23 @@
 
             </div>
 
-            <h3>Drone Rush</h3>
+
+            <div class="app-category">
+                Arcade Action
+            </div>
+
+
+            <h3>
+                Drone Rush
+            </h3>
+
 
             <p class="description">
-                A fast-paced arcade combat game.
-                Survive enemy waves, defeat powerful bosses
-                and upgrade your drone to push your score higher.
+                Fast-paced drone combat with enemy waves,
+                powerful bosses, upgrades and score-driven
+                arcade gameplay.
             </p>
+
 
             <div class="platforms">
 
@@ -1017,6 +1457,7 @@
 
             </div>
 
+
             <div class="store-buttons">
 
                 <a
@@ -1024,18 +1465,52 @@
                     href="https://apps.apple.com/us/app/drone-rush/id6763133589"
                     target="_blank"
                     rel="noopener noreferrer">
-                    App Store
+
+                    <svg
+                        class="apple-logo"
+                        viewBox="0 0 24 30"
+                        aria-hidden="true">
+
+                        <path
+                            d="M19.1 15.9c0-3.6 3-5.3 3.1-5.4-1.7-2.5-4.4-2.8-5.3-2.8-2.2-.2-4.4 1.3-5.5 1.3-1.2 0-2.9-1.3-4.8-1.2-2.4 0-4.7 1.4-5.9 3.6-2.6 4.4-.7 10.9 1.8 14.5 1.2 1.8 2.7 3.7 4.6 3.6 1.8-.1 2.5-1.2 4.8-1.2 2.2 0 2.9 1.2 4.8 1.2 2 0 3.3-1.8 4.5-3.6 1.4-2 2-4 2-4.1-.1 0-4.1-1.6-4.1-5.9ZM15.4 5.4c1-1.3 1.7-3 1.5-4.7-1.5.1-3.3 1-4.4 2.3-1 1.1-1.8 2.9-1.6 4.5 1.7.1 3.4-.8 4.5-2.1Z">
+                        </path>
+
+                    </svg>
+
+
+                    <span class="store-text">
+
+                        <span class="store-small">
+                            Download on the
+                        </span>
+
+                        <span class="store-main">
+                            App Store
+                        </span>
+
+                    </span>
+
                 </a>
 
-                <a
-                    class="store-button google"
-                    href="https://play.google.com/store/apps/details?id=com.gokmen.dronerush"
-                    target="_blank"
-                    rel="noopener noreferrer">
-                    Google Play
-                </a>
+
+                <span class="store-button coming-soon">
+
+                    <span class="coming-soon-content">
+
+                        <span class="coming-store">
+                            Google Play
+                        </span>
+
+                        <span class="coming-label">
+                            Coming Soon
+                        </span>
+
+                    </span>
+
+                </span>
 
             </div>
+
 
             <div class="app-links">
 
@@ -1058,18 +1533,24 @@
         </article>
 
 
+
         <!-- =================================================
              DRIVE RIDE
         ================================================== -->
 
-        <article class="app-card">
+        <article class="app-card drive">
 
             <div class="card-top">
 
-                <img
-                    class="app-icon-image"
-                    src="images/drive-ride-icon.jpeg"
-                    alt="Drive Ride app icon">
+                <div class="app-icon-wrap">
+
+                    <img
+                        class="app-icon-image"
+                        src="images/drive-ride-icon.jpeg"
+                        alt="Drive Ride app icon">
+
+                </div>
+
 
                 <button
                     class="info-button"
@@ -1081,13 +1562,23 @@
 
             </div>
 
-            <h3>Drive Ride</h3>
+
+            <div class="app-category">
+                GPS & Travel
+            </div>
+
+
+            <h3>
+                Drive Ride
+            </h3>
+
 
             <p class="description">
-                Track your rides, save routes, attach photos
-                and turn your favorite journeys into memories
-                you can revisit and share.
+                Record your rides, save routes and photos,
+                review trip statistics and turn memorable
+                journeys into shareable route stories.
             </p>
+
 
             <div class="platforms">
 
@@ -1095,7 +1586,12 @@
                     iOS
                 </span>
 
+                <span class="platform">
+                    Android
+                </span>
+
             </div>
+
 
             <div class="store-buttons">
 
@@ -1104,10 +1600,52 @@
                     href="https://apps.apple.com/us/app/drive-ride-gps-routes/id6799442279"
                     target="_blank"
                     rel="noopener noreferrer">
-                    App Store
+
+                    <svg
+                        class="apple-logo"
+                        viewBox="0 0 24 30"
+                        aria-hidden="true">
+
+                        <path
+                            d="M19.1 15.9c0-3.6 3-5.3 3.1-5.4-1.7-2.5-4.4-2.8-5.3-2.8-2.2-.2-4.4 1.3-5.5 1.3-1.2 0-2.9-1.3-4.8-1.2-2.4 0-4.7 1.4-5.9 3.6-2.6 4.4-.7 10.9 1.8 14.5 1.2 1.8 2.7 3.7 4.6 3.6 1.8-.1 2.5-1.2 4.8-1.2 2.2 0 2.9 1.2 4.8 1.2 2 0 3.3-1.8 4.5-3.6 1.4-2 2-4 2-4.1-.1 0-4.1-1.6-4.1-5.9ZM15.4 5.4c1-1.3 1.7-3 1.5-4.7-1.5.1-3.3 1-4.4 2.3-1 1.1-1.8 2.9-1.6 4.5 1.7.1 3.4-.8 4.5-2.1Z">
+                        </path>
+
+                    </svg>
+
+
+                    <span class="store-text">
+
+                        <span class="store-small">
+                            Download on the
+                        </span>
+
+                        <span class="store-main">
+                            App Store
+                        </span>
+
+                    </span>
+
                 </a>
 
+
+                <span class="store-button coming-soon">
+
+                    <span class="coming-soon-content">
+
+                        <span class="coming-store">
+                            Google Play
+                        </span>
+
+                        <span class="coming-label">
+                            Coming Soon
+                        </span>
+
+                    </span>
+
+                </span>
+
             </div>
+
 
             <div class="app-links">
 
@@ -1130,18 +1668,24 @@
         </article>
 
 
+
         <!-- =================================================
              EQUAL CUT
         ================================================== -->
 
-        <article class="app-card">
+        <article class="app-card equal">
 
             <div class="card-top">
 
-                <img
-                    class="app-icon-image"
-                    src="images/equal-cut-icon.png"
-                    alt="Equal Cut app icon">
+                <div class="app-icon-wrap">
+
+                    <img
+                        class="app-icon-image"
+                        src="images/equal-cut-icon.png"
+                        alt="Equal Cut app icon">
+
+                </div>
+
 
                 <button
                     class="info-button"
@@ -1153,13 +1697,23 @@
 
             </div>
 
-            <h3>Equal Cut</h3>
+
+            <div class="app-category">
+                Precision Puzzle
+            </div>
+
+
+            <h3>
+                Equal Cut
+            </h3>
+
 
             <p class="description">
-                A precision puzzle where every cut counts.
-                Slice shapes as close to the target split
-                as possible and master increasingly difficult levels.
+                Test your precision by slicing shapes as close
+                as possible to the target ratio across increasingly
+                challenging puzzle levels.
             </p>
+
 
             <div class="platforms">
 
@@ -1173,6 +1727,7 @@
 
             </div>
 
+
             <div class="store-buttons">
 
                 <a
@@ -1180,16 +1735,56 @@
                     href="https://apps.apple.com/tr/app/equal-cut-slice-puzzle/id6804606321?l=tr"
                     target="_blank"
                     rel="noopener noreferrer">
-                    App Store
+
+                    <svg
+                        class="apple-logo"
+                        viewBox="0 0 24 30"
+                        aria-hidden="true">
+
+                        <path
+                            d="M19.1 15.9c0-3.6 3-5.3 3.1-5.4-1.7-2.5-4.4-2.8-5.3-2.8-2.2-.2-4.4 1.3-5.5 1.3-1.2 0-2.9-1.3-4.8-1.2-2.4 0-4.7 1.4-5.9 3.6-2.6 4.4-.7 10.9 1.8 14.5 1.2 1.8 2.7 3.7 4.6 3.6 1.8-.1 2.5-1.2 4.8-1.2 2.2 0 2.9 1.2 4.8 1.2 2 0 3.3-1.8 4.5-3.6 1.4-2 2-4 2-4.1-.1 0-4.1-1.6-4.1-5.9ZM15.4 5.4c1-1.3 1.7-3 1.5-4.7-1.5.1-3.3 1-4.4 2.3-1 1.1-1.8 2.9-1.6 4.5 1.7.1 3.4-.8 4.5-2.1Z">
+                        </path>
+
+                    </svg>
+
+
+                    <span class="store-text">
+
+                        <span class="store-small">
+                            Download on the
+                        </span>
+
+                        <span class="store-main">
+                            App Store
+                        </span>
+
+                    </span>
+
                 </a>
 
+
                 <span class="store-button coming-soon">
-                    Google Play · Coming Soon
+
+                    <span class="coming-soon-content">
+
+                        <span class="coming-store">
+                            Google Play
+                        </span>
+
+                        <span class="coming-label">
+                            Coming Soon
+                        </span>
+
+                    </span>
+
                 </span>
 
             </div>
 
+
             <div class="app-links">
+
+                <span></span>
 
                 <a
                     href="https://gokmenkeser.github.io/equalcut/"
@@ -1207,22 +1802,28 @@
 </section>
 
 
+
 <!-- =========================================================
      ABOUT
 ========================================================= -->
 
 <section class="about">
 
+    <div class="about-label">
+        Independent Development
+    </div>
+
     <h2>About</h2>
 
     <p>
         I'm an independent developer creating mobile applications
-        and games for iOS and Android.
-        This website provides official information, download links,
-        support resources and privacy information for my applications.
+        and games for iOS and Android. This website is the official
+        home for my published projects, including download links,
+        support resources and privacy information.
     </p>
 
 </section>
+
 
 
 <!-- =========================================================
@@ -1231,15 +1832,35 @@
 
 <footer>
 
-    <div class="copyright">
-        © 2026 Gökmen Keser
+    <div class="footer-inner">
+
+        <div class="footer-links">
+
+            <a href="#apps">
+                Apps & Games
+            </a>
+
+            <a
+                href="https://gokmenkeser.github.io/"
+                target="_blank"
+                rel="noopener noreferrer">
+                Website
+            </a>
+
+        </div>
+
+        <div>
+            © 2026 Gökmen Keser · Independent Developer
+        </div>
+
     </div>
 
 </footer>
 
 
+
 <!-- =========================================================
-     INFO MODAL
+     MODAL
 ========================================================= -->
 
 <div
@@ -1262,7 +1883,8 @@
                     src=""
                     alt="">
 
-                <div class="modal-title-wrap">
+
+                <div>
 
                     <div class="modal-label">
                         App Information
@@ -1277,6 +1899,7 @@
 
             </div>
 
+
             <button
                 class="modal-close"
                 type="button"
@@ -1287,6 +1910,7 @@
 
         </div>
 
+
         <div class="modal-body">
 
             <p
@@ -1294,14 +1918,17 @@
                 class="modal-description">
             </p>
 
+
             <div class="modal-subtitle">
                 Highlights
             </div>
+
 
             <ul
                 id="modalFeatures"
                 class="modal-features">
             </ul>
+
 
             <div
                 id="modalActions"
@@ -1315,9 +1942,6 @@
 </div>
 
 
-<!-- =========================================================
-     JAVASCRIPT
-========================================================= -->
 
 <script>
 
@@ -1325,12 +1949,14 @@
 
         drone: {
 
-            title: "Drone Rush",
+            title:
+                "Drone Rush",
 
-            icon: "images/drone-rush-icon.png",
+            icon:
+                "images/drone-rush-icon.png",
 
             description:
-                "Drone Rush is a fast-paced arcade combat game where reflexes, movement and smart upgrades determine how long you survive. Take control of a high-tech combat drone, fight through increasingly intense enemy waves and face powerful bosses while trying to push your score higher with every run.",
+                "Drone Rush is a fast-paced arcade combat game where reflexes, movement and smart upgrades determine how long you survive. Fight through increasingly intense enemy waves, face powerful bosses and push your score higher with every run.",
 
             features: [
                 "Fast and responsive arcade gameplay",
@@ -1338,91 +1964,6 @@
                 "Permanent weapon and ability upgrades",
                 "Energy-based combat mechanics",
                 "Touch and tilt control support",
-                "Score-driven replayable gameplay"
-            ],
-
-            actions: [
-
-                {
-                    label: "App Store",
-                    url: "https://apps.apple.com/us/app/drone-rush/id6763133589"
-                },
-
-                {
-                    label: "Google Play",
-                    url: "https://play.google.com/store/apps/details?id=com.gokmen.dronerush"
-                },
-
-                {
-                    label: "Support",
-                    url: "https://gokmenkeser.github.io/drone-rush-support/",
-                    secondary: true
-                }
-
-            ]
-        },
-
-
-        drive: {
-
-            title: "Drive Ride",
-
-            icon: "images/drive-ride-icon.jpeg",
-
-            description:
-                "Drive Ride is a route-tracking app designed for motorcycle rides, road trips and everyday journeys. Start a ride with one tap, record your route in real time and keep important moments connected to the places where they happened. Review completed trips on a map and turn your journeys into route images or videos that are easy to share.",
-
-            features: [
-                "Real-time GPS route tracking",
-                "Background tracking during an active ride",
-                "Stops and location pins",
-                "Photos attached to locations",
-                "Distance, duration and speed statistics",
-                "Standard and satellite map views",
-                "Route image and video creation",
-                "Ride history stored on your device",
-                "No account required"
-            ],
-
-            actions: [
-
-                {
-                    label: "App Store",
-                    url: "https://apps.apple.com/us/app/drive-ride-gps-routes/id6799442279"
-                },
-
-                {
-                    label: "Support",
-                    url: "https://gokmenkeser.github.io/driveride/support/",
-                    secondary: true
-                },
-
-                {
-                    label: "Privacy Policy",
-                    url: "https://gokmenkeser.github.io/driveride/privacy/",
-                    secondary: true
-                }
-
-            ]
-        },
-
-
-        equal: {
-
-            title: "Equal Cut",
-
-            icon: "images/equal-cut-icon.png",
-
-            description:
-                "Equal Cut is a precision-based puzzle game where every line matters. Your goal is to slice each shape as accurately as possible according to the target ratio. Simple controls make it easy to start, while increasingly difficult shapes challenge your precision and spatial thinking.",
-
-            features: [
-                "Simple and intuitive slicing controls",
-                "Precision-based target challenges",
-                "Instant cut accuracy results",
-                "Multiple shapes and levels",
-                "Increasing difficulty",
-                "Quick and replayable puzzle gameplay",
                 "Available for iOS and Android"
             ],
 
@@ -1430,21 +1971,140 @@
 
                 {
                     label: "App Store",
-                    url: "https://apps.apple.com/tr/app/equal-cut-slice-puzzle/id6804606321?l=tr"
+                    url:
+                        "https://apps.apple.com/us/app/drone-rush/id6763133589"
                 },
 
                 {
-                    label: "Google Play · Coming Soon",
-                    comingSoon: true
+                    label:
+                        "Google Play · Coming Soon",
+                    comingSoon:
+                        true
                 },
 
                 {
-                    label: "Privacy Policy",
-                    url: "https://gokmenkeser.github.io/equalcut/",
-                    secondary: true
+                    label:
+                        "Support",
+                    url:
+                        "https://gokmenkeser.github.io/drone-rush-support/",
+                    secondary:
+                        true
                 }
 
             ]
+
+        },
+
+
+        drive: {
+
+            title:
+                "Drive Ride",
+
+            icon:
+                "images/drive-ride-icon.jpeg",
+
+            description:
+                "Drive Ride is a route-tracking app designed for motorcycle rides, road trips and everyday journeys. Record your route, save important moments and review completed trips with useful ride statistics.",
+
+            features: [
+                "Real-time GPS route tracking",
+                "Background tracking",
+                "Stops and location pins",
+                "Photos attached to locations",
+                "Distance, duration and speed statistics",
+                "Route image and video creation",
+                "Available for iOS and Android",
+                "No account required"
+            ],
+
+            actions: [
+
+                {
+                    label:
+                        "App Store",
+                    url:
+                        "https://apps.apple.com/us/app/drive-ride-gps-routes/id6799442279"
+                },
+
+                {
+                    label:
+                        "Google Play · Coming Soon",
+                    comingSoon:
+                        true
+                },
+
+                {
+                    label:
+                        "Support",
+                    url:
+                        "https://gokmenkeser.github.io/driveride/support/",
+                    secondary:
+                        true
+                },
+
+                {
+                    label:
+                        "Privacy Policy",
+                    url:
+                        "https://gokmenkeser.github.io/driveride/privacy/",
+                    secondary:
+                        true
+                }
+
+            ]
+
+        },
+
+
+        equal: {
+
+            title:
+                "Equal Cut",
+
+            icon:
+                "images/equal-cut-icon.png",
+
+            description:
+                "Equal Cut is a precision-based puzzle game where every line matters. Slice each shape as accurately as possible according to the target ratio and master increasingly difficult levels.",
+
+            features: [
+                "Simple and intuitive slicing controls",
+                "Precision-based challenges",
+                "Instant cut accuracy results",
+                "Multiple shapes and levels",
+                "Increasing difficulty",
+                "Quick replayable puzzle gameplay",
+                "Available for iOS and Android"
+            ],
+
+            actions: [
+
+                {
+                    label:
+                        "App Store",
+                    url:
+                        "https://apps.apple.com/tr/app/equal-cut-slice-puzzle/id6804606321?l=tr"
+                },
+
+                {
+                    label:
+                        "Google Play · Coming Soon",
+                    comingSoon:
+                        true
+                },
+
+                {
+                    label:
+                        "Privacy Policy",
+                    url:
+                        "https://gokmenkeser.github.io/equalcut/",
+                    secondary:
+                        true
+                }
+
+            ]
+
         }
 
     };
@@ -1471,15 +2131,19 @@
 
     function openAppInfo(appKey) {
 
-        const app = appData[appKey];
+        const app =
+            appData[appKey];
 
         if (!app) {
             return;
         }
 
 
-        modalIcon.src = app.icon;
-        modalIcon.alt = app.title + " app icon";
+        modalIcon.src =
+            app.icon;
+
+        modalIcon.alt =
+            app.title + " app icon";
 
         modalTitle.textContent =
             app.title;
@@ -1488,102 +2152,126 @@
             app.description;
 
 
-        modalFeatures.innerHTML = "";
+        modalFeatures.innerHTML =
+            "";
 
 
-        app.features.forEach(feature => {
-
-            const item =
-                document.createElement("li");
-
-            item.textContent =
-                feature;
-
-            modalFeatures.appendChild(item);
-
-        });
-
-
-        modalActions.innerHTML = "";
-
-
-        app.actions.forEach(action => {
-
-            if (action.comingSoon) {
+        app.features.forEach(
+            feature => {
 
                 const item =
-                    document.createElement("span");
-
-                item.className =
-                    "modal-coming-soon";
+                    document.createElement("li");
 
                 item.textContent =
+                    feature;
+
+                modalFeatures.appendChild(
+                    item
+                );
+
+            }
+        );
+
+
+        modalActions.innerHTML =
+            "";
+
+
+        app.actions.forEach(
+            action => {
+
+                if (action.comingSoon) {
+
+                    const item =
+                        document.createElement("span");
+
+                    item.className =
+                        "modal-coming-soon";
+
+                    item.textContent =
+                        action.label;
+
+                    modalActions.appendChild(
+                        item
+                    );
+
+                    return;
+
+                }
+
+
+                const link =
+                    document.createElement("a");
+
+                link.href =
+                    action.url;
+
+                link.target =
+                    "_blank";
+
+                link.rel =
+                    "noopener noreferrer";
+
+                link.className =
+                    action.secondary
+                        ? "modal-action secondary"
+                        : "modal-action";
+
+                link.textContent =
                     action.label;
 
-                modalActions.appendChild(item);
 
-                return;
+                modalActions.appendChild(
+                    link
+                );
+
             }
+        );
 
 
-            const link =
-                document.createElement("a");
-
-            link.href =
-                action.url;
-
-            link.target =
-                "_blank";
-
-            link.rel =
-                "noopener noreferrer";
-
-
-            link.className =
-                action.secondary
-                    ? "modal-action secondary"
-                    : "modal-action";
-
-
-            link.textContent =
-                action.label;
-
-
-            modalActions.appendChild(link);
-
-        });
-
-
-        modal.classList.add("active");
+        modal.classList.add(
+            "active"
+        );
 
         document.body.classList.add(
             "modal-open"
         );
 
 
-        requestAnimationFrame(() => {
+        requestAnimationFrame(
+            () => {
 
-            modal.classList.add("visible");
+                modal.classList.add(
+                    "visible"
+                );
 
-        });
+            }
+        );
 
     }
 
 
     function closeAppInfo() {
 
-        modal.classList.remove("visible");
+        modal.classList.remove(
+            "visible"
+        );
 
         document.body.classList.remove(
             "modal-open"
         );
 
 
-        setTimeout(() => {
+        setTimeout(
+            () => {
 
-            modal.classList.remove("active");
+                modal.classList.remove(
+                    "active"
+                );
 
-        }, 180);
+            },
+            180
+        );
 
     }
 
@@ -1605,7 +2293,9 @@
 
             if (
                 event.key === "Escape" &&
-                modal.classList.contains("active")
+                modal.classList.contains(
+                    "active"
+                )
             ) {
 
                 closeAppInfo();
@@ -1616,6 +2306,7 @@
     );
 
 </script>
+
 
 </body>
 </html>
