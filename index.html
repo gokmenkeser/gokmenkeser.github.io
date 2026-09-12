@@ -478,6 +478,10 @@
             --accent: 169, 118, 255;
         }
 
+        .app-card.wardrobe {
+            --accent: 255, 133, 173;
+        }
+
         /* =====================================================
            CARD TOP
         ===================================================== */
@@ -1766,6 +1770,34 @@
              EQUAL CUT
         ================================================== -->
 
+        <!-- MY LITTLE WARDROBE: store links will be added after publication. -->
+        <article class="app-card wardrobe">
+            <div class="card-top">
+                <div class="app-icon-wrap">
+                    <img class="app-icon-image" src="images/my-little-wardrobe-icon.png"
+                         alt="My Little Wardrobe app icon" loading="lazy">
+                </div>
+                <button class="info-button" type="button"
+                        aria-label="More information about My Little Wardrobe"
+                        onclick="openAppInfo('wardrobe')">i</button>
+            </div>
+            <div class="app-category" data-i18n="wardrobeCategory">Creative Dress-Up</div>
+            <h3>My Little Wardrobe</h3>
+            <p class="description" data-i18n="wardrobeDescription">Choose your character, mix clothes and accessories, and save your favorite outfits in your album.</p>
+            <div class="platforms"><span class="platform">iOS</span><span class="platform">Android</span></div>
+            <div class="store-buttons">
+                <span class="store-button coming-soon"><span class="coming-soon-content">
+                    <span class="coming-store">App Store</span>
+                    <span class="coming-label" data-i18n="comingSoon">Coming Soon</span>
+                </span></span>
+                <span class="store-button coming-soon"><span class="coming-soon-content">
+                    <span class="coming-store">Google Play</span>
+                    <span class="coming-label" data-i18n="comingSoon">Coming Soon</span>
+                </span></span>
+            </div>
+            <!-- Add support and privacy links when those pages are ready. -->
+        </article>
+
         <article class="app-card equal">
 
             <div class="card-top">
@@ -2044,6 +2076,9 @@
 
         en: {
 
+            wardrobeCategory: "Creative Dress-Up",
+            wardrobeDescription: "Choose your character, mix clothes and accessories, and save your favorite outfits in your album.",
+
             developerBadge:
                 "Independent Developer",
 
@@ -2116,6 +2151,9 @@
         },
 
         tr: {
+
+            wardrobeCategory: "Yaratıcı Giydirme Oyunu",
+            wardrobeDescription: "Karakterini seç, kıyafet ve aksesuarları bir araya getir, favori kombinlerini albümüne kaydet.",
 
             developerBadge:
                 "Bağımsız Geliştirici",
@@ -2192,6 +2230,23 @@
 
 
     const appData = {
+
+        wardrobe: {
+            title: "My Little Wardrobe",
+            icon: "images/my-little-wardrobe-icon.png",
+            description: {
+                en: "Explore a colorful wardrobe and create outfits for different adventures. Choose a character, try clothes, hairstyles and accessories, then save your creations in the in-game album.",
+                tr: "Renkli bir gardırobu keşfet ve farklı maceralar için kombinler oluştur. Karakterini seç, kıyafetleri, saçları ve aksesuarları dene; tasarımlarını oyun içindeki albümüne kaydet."
+            },
+            features: {
+                en: ["Different characters to dress up", "Clothes, hairstyles, shoes, crowns and accessories", "An outfit album with enlarged photo viewing", "Turkish and English language options", "Separate music and sound effect controls", "The first five items in each category are free", "Optional one-time Premium unlock; no subscription", "Parental gate before accessing purchases"],
+                tr: ["Giydirebileceğin farklı karakterler", "Kıyafetler, saçlar, ayakkabılar, taçlar ve aksesuarlar", "Fotoğrafları büyüterek inceleyebileceğin kombin albümü", "Türkçe ve İngilizce dil seçenekleri", "Müzik ve ses efektleri için ayrı kontroller", "Her kategoride ilk beş öğe ücretsiz", "İsteğe bağlı tek seferlik Premium; abonelik yok", "Satın alma bölümüne geçişte ebeveyn kontrolü"]
+            },
+            actions: [
+                { label: { en: "App Store · Coming Soon", tr: "App Store · Çok Yakında" }, comingSoon: true },
+                { label: { en: "Google Play · Coming Soon", tr: "Google Play · Çok Yakında" }, comingSoon: true }
+            ]
+        },
 
         drone: {
 
