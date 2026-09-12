@@ -1774,7 +1774,7 @@
         <article class="app-card wardrobe">
             <div class="card-top">
                 <div class="app-icon-wrap">
-                    <img class="app-icon-image" src="images/my-little-wardrobe-icon.png"
+                    <img class="app-icon-image" src="images/app-icon.png"
                          alt="My Little Wardrobe app icon" loading="lazy">
                 </div>
                 <button class="info-button" type="button"
@@ -1795,7 +1795,23 @@
                     <span class="coming-label" data-i18n="comingSoon">Coming Soon</span>
                 </span></span>
             </div>
-            <!-- Add support and privacy links when those pages are ready. -->
+            <div class="app-links">
+                <a
+                    href="https://gokmenkeser.github.io/MylittleWardrobe/support/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-i18n="support">
+                    Support
+                </a>
+
+                <a
+                    href="https://gokmenkeser.github.io/MylittleWardrobe/privacy/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-i18n="privacy">
+                    Privacy Policy
+                </a>
+            </div>
         </article>
 
         <article class="app-card equal">
@@ -2233,7 +2249,7 @@
 
         wardrobe: {
             title: "My Little Wardrobe",
-            icon: "images/my-little-wardrobe-icon.png",
+            icon: "images/app-icon.png",
             description: {
                 en: "Explore a colorful wardrobe and create outfits for different adventures. Choose a character, try clothes, hairstyles and accessories, then save your creations in the in-game album.",
                 tr: "Renkli bir gardırobu keşfet ve farklı maceralar için kombinler oluştur. Karakterini seç, kıyafetleri, saçları ve aksesuarları dene; tasarımlarını oyun içindeki albümüne kaydet."
@@ -2244,7 +2260,17 @@
             },
             actions: [
                 { label: { en: "App Store · Coming Soon", tr: "App Store · Çok Yakında" }, comingSoon: true },
-                { label: { en: "Google Play · Coming Soon", tr: "Google Play · Çok Yakında" }, comingSoon: true }
+                { label: { en: "Google Play · Coming Soon", tr: "Google Play · Çok Yakında" }, comingSoon: true },
+                {
+                    label: { en: "Support", tr: "Destek" },
+                    url: "https://gokmenkeser.github.io/MylittleWardrobe/support/",
+                    secondary: true
+                },
+                {
+                    label: { en: "Privacy Policy", tr: "Gizlilik Politikası" },
+                    url: "https://gokmenkeser.github.io/MylittleWardrobe/privacy/",
+                    secondary: true
+                }
             ]
         },
 
