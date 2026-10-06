@@ -12,6 +12,32 @@
 
     <meta name="theme-color" content="#090b10">
 
+    <!-- Google Analytics 4 + Consent Mode -->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+
+        let savedAnalyticsConsent = null;
+
+        try {
+            savedAnalyticsConsent = localStorage.getItem("analytics-consent");
+        }
+        catch (error) {
+            savedAnalyticsConsent = null;
+        }
+
+        gtag("consent", "default", {
+            analytics_storage: savedAnalyticsConsent === "granted" ? "granted" : "denied",
+            wait_for_update: 500
+        });
+
+        gtag("js", new Date());
+        gtag("config", "G-536YWXEMQ3", {
+            send_page_view: savedAnalyticsConsent === "granted"
+        });
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-536YWXEMQ3"></script>
+
     <style>
         :root {
             --bg: #090b10;
@@ -1372,6 +1398,82 @@
 
         }
 
+        /* =====================================================
+           ANALYTICS CONSENT
+        ===================================================== */
+
+        .consent-banner {
+            position: fixed;
+            left: 50%;
+            bottom: 20px;
+            z-index: 6000;
+            width: min(720px, calc(100% - 32px));
+            display: none;
+            align-items: center;
+            justify-content: space-between;
+            gap: 22px;
+            padding: 18px 20px;
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 16px;
+            background: rgba(18, 23, 34, 0.96);
+            box-shadow: 0 18px 55px rgba(0,0,0,0.42);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            transform: translateX(-50%);
+        }
+
+        .consent-banner.visible {
+            display: flex;
+        }
+
+        .consent-copy {
+            color: var(--text-soft);
+            font-size: 13.5px;
+            line-height: 1.55;
+        }
+
+        .consent-actions {
+            flex: 0 0 auto;
+            display: flex;
+            gap: 9px;
+        }
+
+        .consent-button {
+            min-height: 40px;
+            padding: 8px 15px;
+            border: 1px solid #354057;
+            border-radius: 10px;
+            background: transparent;
+            color: #d3d9e4;
+            font-size: 12.5px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .consent-button.accept {
+            border-color: var(--blue);
+            background: var(--blue);
+            color: #ffffff;
+        }
+
+        .consent-button:hover {
+            border-color: var(--blue-hover);
+        }
+
+        @media (max-width: 600px) {
+            .consent-banner {
+                bottom: 12px;
+                align-items: stretch;
+                flex-direction: column;
+                gap: 14px;
+            }
+
+            .consent-actions {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
     </style>
 </head>
 
@@ -2124,6 +2226,38 @@
 </div>
 
 
+<!-- =========================================================
+     ANALYTICS CONSENT
+========================================================= -->
+
+<aside
+    id="consentBanner"
+    class="consent-banner"
+    role="dialog"
+    aria-live="polite"
+    aria-label="Analytics preference">
+
+    <p id="consentText" class="consent-copy"></p>
+
+    <div class="consent-actions">
+        <button
+            id="consentReject"
+            class="consent-button"
+            type="button"
+            onclick="setAnalyticsConsent('denied')">
+        </button>
+
+        <button
+            id="consentAccept"
+            class="consent-button accept"
+            type="button"
+            onclick="setAnalyticsConsent('granted')">
+        </button>
+    </div>
+
+</aside>
+
+
 <script>
 
     let currentLanguage = "en";
@@ -2203,7 +2337,16 @@
                 "App Information",
 
             modalSubtitle:
-                "Highlights"
+                "Highlights",
+
+            consentText:
+                "We use analytics to understand visits and store link clicks. You can accept or reject analytics measurement.",
+
+            consentAccept:
+                "Accept",
+
+            consentReject:
+                "Reject"
 
         },
 
@@ -2279,7 +2422,16 @@
                 "Uygulama Bilgileri",
 
             modalSubtitle:
-                "Öne Çıkanlar"
+                "Öne Çıkanlar",
+
+            consentText:
+                "Ziyaretleri ve mağaza bağlantısı tıklamalarını anlamak için analiz kullanıyoruz. Analiz ölçümünü kabul edebilir veya reddedebilirsiniz.",
+
+            consentAccept:
+                "Kabul Et",
+
+            consentReject:
+                "Reddet"
 
         }
 
@@ -2600,6 +2752,117 @@
     const modalSubtitle =
         document.getElementById("modalSubtitle");
 
+    const consentBanner =
+        document.getElementById("consentBanner");
+
+    const consentText =
+        document.getElementById("consentText");
+
+    const consentAccept =
+        document.getElementById("consentAccept");
+
+    const consentReject =
+        document.getElementById("consentReject");
+
+
+    function updateConsentLanguage() {
+
+        consentText.textContent =
+            translations[currentLanguage].consentText;
+
+        consentAccept.textContent =
+            translations[currentLanguage].consentAccept;
+
+        consentReject.textContent =
+            translations[currentLanguage].consentReject;
+
+    }
+
+
+    function setAnalyticsConsent(value) {
+
+        const granted =
+            value === "granted";
+
+        try {
+            localStorage.setItem(
+                "analytics-consent",
+                granted ? "granted" : "denied"
+            );
+        }
+        catch (error) {
+            // Consent still applies for this page if storage is unavailable.
+        }
+
+        savedAnalyticsConsent =
+            granted ? "granted" : "denied";
+
+        gtag("consent", "update", {
+            analytics_storage: savedAnalyticsConsent
+        });
+
+        if (granted) {
+            gtag("event", "page_view", {
+                page_title: document.title,
+                page_location: window.location.href,
+                page_path: window.location.pathname + window.location.search
+            });
+        }
+
+        consentBanner.classList.remove("visible");
+
+    }
+
+
+    function getStoreDetails(url) {
+
+        if (url.includes("apps.apple.com")) {
+            return { platform: "ios", store: "app_store" };
+        }
+
+        if (url.includes("play.google.com")) {
+            return { platform: "android", store: "google_play" };
+        }
+
+        return null;
+
+    }
+
+
+    function trackStoreClick(link) {
+
+        if (savedAnalyticsConsent !== "granted") {
+            return;
+        }
+
+        const linkUrl = link.href;
+        const storeDetails = getStoreDetails(linkUrl);
+
+        if (!storeDetails) {
+            return;
+        }
+
+        const card = link.closest(".app-card");
+        const appKey = link.dataset.appKey ||
+            (card && ["wardrobe", "drone", "drive", "equal"]
+                .find(key => card.classList.contains(key)));
+        const app = appData[appKey];
+
+        if (!app) {
+            return;
+        }
+
+        gtag("event", "store_click", {
+            app_name: app.title,
+            app_key: appKey,
+            platform: storeDetails.platform,
+            store: storeDetails.store,
+            link_url: linkUrl,
+            placement: link.dataset.placement || (card ? "card" : "modal")
+        });
+
+    }
+
 
     function setLanguage(language) {
 
@@ -2661,6 +2924,8 @@
 
         modalSubtitle.textContent =
             translations[language].modalSubtitle;
+
+        updateConsentLanguage();
 
         if (currentOpenApp) {
 
@@ -2757,6 +3022,11 @@
                     action.secondary
                         ? "modal-action secondary"
                         : "modal-action";
+
+                if (!action.secondary && getStoreDetails(action.url)) {
+                    link.dataset.appKey = appKey;
+                    link.dataset.placement = "modal";
+                }
 
                 link.textContent =
                     action.label[currentLanguage];
@@ -2870,6 +3140,22 @@
     );
 
 
+    document.addEventListener(
+        "click",
+        event => {
+
+            const storeLink = event.target.closest(
+                "a.store-button, a.modal-action:not(.secondary)"
+            );
+
+            if (storeLink) {
+                trackStoreClick(storeLink);
+            }
+
+        }
+    );
+
+
     const savedLanguage =
         localStorage.getItem(
             "site-language"
@@ -2891,6 +3177,13 @@
             "en"
         );
 
+    }
+
+    if (
+        savedAnalyticsConsent !== "granted" &&
+        savedAnalyticsConsent !== "denied"
+    ) {
+        consentBanner.classList.add("visible");
     }
 
 </script>
