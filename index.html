@@ -11,6 +11,11 @@
         content="Official website of Gökmen Keser. Independent apps and games for iOS and Android.">
 
     <meta name="theme-color" content="#090b10">
+    <link rel="canonical" href="https://gokmenkeser.github.io/">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://gokmenkeser.github.io/">
+    <meta property="og:title" content="Gökmen Keser | Apps & Games">
+    <meta property="og:description" content="Independent apps and games for iOS and Android.">
 
     <!-- Google Analytics 4 + Consent Mode -->
     <script>
@@ -1474,10 +1479,392 @@
             }
         }
 
+        /* =====================================================
+           2026 VISUAL REFINEMENT
+        ===================================================== */
+
+        body {
+            background:
+                radial-gradient(circle at 12% 8%, rgba(76,130,255,0.14), transparent 28%),
+                radial-gradient(circle at 88% 18%, rgba(72,200,240,0.09), transparent 26%),
+                linear-gradient(180deg, #080a0f 0%, #0b0e15 54%, #080a0f 100%);
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            opacity: 0.32;
+            background-image: radial-gradient(rgba(255,255,255,0.12) 0.7px, transparent 0.7px);
+            background-size: 22px 22px;
+            mask-image: linear-gradient(to bottom, #000, transparent 74%);
+            pointer-events: none;
+        }
+
+        .site-nav {
+            position: absolute;
+            top: 22px;
+            left: 24px;
+            z-index: 5000;
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            min-height: 42px;
+            padding: 0 14px;
+            border: 1px solid rgba(255,255,255,0.09);
+            border-radius: 12px;
+            background: rgba(13,17,25,0.72);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+
+        .site-brand {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            color: #f8faff;
+            font-size: 12px;
+            font-weight: 780;
+            letter-spacing: 0.15px;
+            text-decoration: none;
+        }
+
+        .site-brand-mark {
+            width: 9px;
+            height: 9px;
+            border-radius: 3px;
+            background: linear-gradient(135deg, var(--blue), var(--cyan));
+            box-shadow: 0 0 18px rgba(72,200,240,0.55);
+            transform: rotate(12deg);
+        }
+
+        .site-nav-links {
+            display: flex;
+            gap: 18px;
+        }
+
+        .site-nav-links a {
+            color: #8995aa;
+            font-size: 11.5px;
+            font-weight: 650;
+            text-decoration: none;
+            transition: color 0.18s ease;
+        }
+
+        .site-nav-links a:hover {
+            color: #ffffff;
+        }
+
+        header {
+            min-height: 680px;
+            padding: 130px 24px 88px;
+        }
+
+        header::before {
+            background-image:
+                linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
+            background-size: 54px 54px;
+        }
+
+        .hero {
+            width: min(1120px, 100%);
+            max-width: none;
+            display: grid;
+            grid-template-columns: minmax(0, 1.1fr) minmax(360px, 0.9fr);
+            align-items: center;
+            gap: 76px;
+            text-align: left;
+        }
+
+        .hero h1 {
+            max-width: 680px;
+            margin-bottom: 14px;
+            font-size: clamp(54px, 7vw, 84px);
+            letter-spacing: -4px;
+            background: linear-gradient(105deg, #ffffff 18%, #bfcdf0 66%, #7da9ff 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero .subtitle {
+            margin-bottom: 24px;
+            font-size: clamp(23px, 3vw, 31px);
+            color: #d5dceb;
+        }
+
+        .hero p {
+            max-width: 600px;
+            margin: 0;
+            font-size: 16px;
+            line-height: 1.75;
+        }
+
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 32px;
+        }
+
+        .hero-action {
+            min-height: 48px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            padding: 0 18px;
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 12px;
+            background: rgba(255,255,255,0.045);
+            color: #dfe5f0;
+            font-size: 13px;
+            font-weight: 720;
+            text-decoration: none;
+            transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+        }
+
+        .hero-action.primary {
+            border-color: #5b8cff;
+            background: linear-gradient(135deg, #4c82ff, #6c76ff);
+            color: #ffffff;
+            box-shadow: 0 14px 34px rgba(76,130,255,0.25);
+        }
+
+        .hero-action:hover {
+            transform: translateY(-2px);
+            border-color: rgba(101,148,255,0.75);
+        }
+
+        .hero-showcase {
+            position: relative;
+            min-height: 390px;
+            isolation: isolate;
+        }
+
+        .hero-showcase::before {
+            content: "";
+            position: absolute;
+            inset: 10% 5%;
+            z-index: -2;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(76,130,255,0.24), transparent 68%);
+            filter: blur(16px);
+        }
+
+        .hero-showcase::after {
+            content: "";
+            position: absolute;
+            inset: 44px;
+            z-index: -1;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 50%;
+            box-shadow: inset 0 0 80px rgba(76,130,255,0.05);
+        }
+
+        .showcase-icon {
+            position: absolute;
+            width: 112px;
+            height: 112px;
+            padding: 8px;
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 29px;
+            background: rgba(19,24,35,0.78);
+            box-shadow: 0 25px 70px rgba(0,0,0,0.38);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+        }
+
+        .showcase-icon img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            border-radius: 22px;
+        }
+
+        .showcase-icon:nth-child(1) { top: 16px; left: 48%; transform: translateX(-50%) rotate(3deg); }
+        .showcase-icon:nth-child(2) { top: 150px; left: 13px; transform: rotate(-7deg); }
+        .showcase-icon:nth-child(3) { top: 144px; right: 3px; transform: rotate(8deg); }
+        .showcase-icon:nth-child(4) { bottom: 0; left: 48%; transform: translateX(-50%) rotate(-3deg); }
+
+        section {
+            max-width: 1180px;
+            padding-top: 96px;
+            padding-bottom: 96px;
+        }
+
+        section h2 {
+            font-size: clamp(34px, 5vw, 48px);
+            letter-spacing: -1.7px;
+        }
+
+        .section-intro {
+            margin-bottom: 54px;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .apps {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .app-card {
+            height: auto;
+            min-height: 520px;
+            grid-template-rows: 84px 26px 46px minmax(100px, auto) 48px 68px 52px;
+            padding: 32px;
+            border-radius: 26px;
+            background:
+                linear-gradient(145deg, rgba(var(--accent),0.08), transparent 42%),
+                linear-gradient(180deg, rgba(255,255,255,0.022), transparent),
+                rgba(18,23,34,0.91);
+            box-shadow: 0 24px 70px rgba(0,0,0,0.2);
+            transform: translateZ(0);
+        }
+
+        .app-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 32px 85px rgba(0,0,0,0.32), 0 0 0 1px rgba(var(--accent),0.08);
+        }
+
+        .app-card h3 {
+            font-size: 29px;
+        }
+
+        .store-button {
+            border-color: rgba(255,255,255,0.2);
+            box-shadow: 0 9px 20px rgba(0,0,0,0.12);
+        }
+
+        .about {
+            max-width: 960px;
+            margin-bottom: 88px;
+            padding: 64px;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 30px;
+            background:
+                radial-gradient(circle at 0 0, rgba(72,200,240,0.09), transparent 38%),
+                rgba(18,23,34,0.52);
+        }
+
+        .about p {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        .footer-button {
+            padding: 0;
+            border: 0;
+            background: none;
+            color: #8794aa;
+            font: inherit;
+            cursor: pointer;
+        }
+
+        .footer-button:hover {
+            color: #ffffff;
+        }
+
+        @media (max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                text-align: center;
+            }
+
+            .hero p {
+                margin: auto;
+            }
+
+            .hero-actions {
+                justify-content: center;
+            }
+
+            .hero-showcase {
+                width: min(430px, 100%);
+                min-height: 350px;
+                margin: 0 auto;
+            }
+
+            .apps {
+                grid-template-columns: 1fr;
+                max-width: 620px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .site-nav {
+                right: 132px;
+                gap: 10px;
+            }
+
+            .site-nav-links {
+                display: none;
+            }
+
+            header {
+                min-height: auto;
+                padding-top: 112px;
+            }
+
+            .hero h1 {
+                font-size: 49px;
+                letter-spacing: -2.7px;
+            }
+
+            .hero-showcase {
+                min-height: 300px;
+            }
+
+            .showcase-icon {
+                width: 88px;
+                height: 88px;
+                border-radius: 23px;
+            }
+
+            .showcase-icon img {
+                border-radius: 17px;
+            }
+
+            .showcase-icon:nth-child(2) { left: 6%; }
+            .showcase-icon:nth-child(3) { right: 6%; }
+
+            section {
+                padding: 72px 16px;
+            }
+
+            .app-card {
+                padding: 26px;
+            }
+
+            .about {
+                width: calc(100% - 32px);
+                padding: 44px 24px;
+            }
+        }
+
     </style>
 </head>
 
 <body>
+
+<nav class="site-nav" aria-label="Primary navigation">
+    <a class="site-brand" href="#top">
+        <span class="site-brand-mark" aria-hidden="true"></span>
+        <span>GÖKMEN KESER</span>
+    </a>
+    <div class="site-nav-links">
+        <a href="#apps" data-i18n="navWork">Work</a>
+        <a href="#about" data-i18n="aboutTitle">About</a>
+    </div>
+</nav>
 
 
 <!-- =========================================================
@@ -1512,9 +1899,11 @@
      HERO
 ========================================================= -->
 
-<header>
+<header id="top">
 
     <div class="hero">
+
+        <div class="hero-copy">
 
         <div class="hero-badge">
 
@@ -1539,6 +1928,23 @@
             built around useful ideas, focused experiences
             and simple, enjoyable gameplay.
         </p>
+
+        <div class="hero-actions">
+            <a class="hero-action primary" href="#apps">
+                <span data-i18n="exploreApps">Explore apps</span>
+                <span aria-hidden="true">↓</span>
+            </a>
+            <a class="hero-action" href="#about" data-i18n="aboutTitle">About</a>
+        </div>
+
+        </div>
+
+        <div class="hero-showcase" aria-label="Published apps">
+            <div class="showcase-icon"><img src="images/drone-rush-icon.png" alt="Drone Rush"></div>
+            <div class="showcase-icon"><img src="images/drive-ride-icon.jpeg" alt="Drive Ride"></div>
+            <div class="showcase-icon"><img src="images/app-icon.png" alt="My Little Wardrobe"></div>
+            <div class="showcase-icon"><img src="images/equal-cut-icon.png" alt="Equal Cut"></div>
+        </div>
 
     </div>
 
@@ -2088,7 +2494,7 @@
      ABOUT
 ========================================================= -->
 
-<section class="about">
+<section id="about" class="about">
 
     <div
         class="about-label"
@@ -2127,12 +2533,18 @@
             </a>
 
             <a
-                href="https://gokmenkeser.github.io/"
-                target="_blank"
-                rel="noopener noreferrer"
-                data-i18n="website">
-                Website
+                href="privacy.html"
+                data-i18n="websitePrivacy">
+                Website Privacy
             </a>
+
+            <button
+                class="footer-button"
+                type="button"
+                onclick="openConsentPreferences()"
+                data-i18n="analyticsSettings">
+                Analytics Settings
+            </button>
 
         </div>
 
@@ -2273,6 +2685,12 @@
             developerBadge:
                 "Independent Developer",
 
+            navWork:
+                "Work",
+
+            exploreApps:
+                "Explore apps",
+
             heroSubtitle:
                 "Apps & Games",
 
@@ -2330,6 +2748,12 @@
             website:
                 "Website",
 
+            websitePrivacy:
+                "Website Privacy",
+
+            analyticsSettings:
+                "Analytics Settings",
+
             copyright:
                 "© 2026 Gökmen Keser · Independent Developer",
 
@@ -2357,6 +2781,12 @@
 
             developerBadge:
                 "Bağımsız Geliştirici",
+
+            navWork:
+                "Projeler",
+
+            exploreApps:
+                "Uygulamaları keşfet",
 
             heroSubtitle:
                 "Uygulamalar & Oyunlar",
@@ -2414,6 +2844,12 @@
 
             website:
                 "Web Sitesi",
+
+            websitePrivacy:
+                "Web Sitesi Gizliliği",
+
+            analyticsSettings:
+                "Analytics Ayarları",
 
             copyright:
                 "© 2026 Gökmen Keser · Bağımsız Geliştirici",
@@ -2810,6 +3246,15 @@
         }
 
         consentBanner.classList.remove("visible");
+
+    }
+
+
+    function openConsentPreferences() {
+
+        updateConsentLanguage();
+        consentBanner.classList.add("visible");
+        consentBanner.scrollIntoView({ behavior: "smooth", block: "nearest" });
 
     }
 
