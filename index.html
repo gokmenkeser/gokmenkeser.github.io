@@ -1,415 +1,73 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#080b13">
-<meta name="description" content="Discover apps and games by Gökmen Keser. Available for iOS and Android.">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#070c19"><meta name="description" content="Gökmen Keser — independent mobile app and game developer. Explore Drone Rush, Drive Ride, Equal Cut and My Little Wardrobe.">
 <title>Gökmen Keser | Apps & Games</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{
-  --bg:#080b13;--surface:#111725;--surface2:#171f30;
-  --line:#293347;--text:#f5f7ff;--muted:#a1adc3;
-  --blue:#7298ff;--purple:#a58cff;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}
-body:before{content:"";position:absolute;top:0;left:0;right:0;height:720px;background:radial-gradient(ellipse at 50% 0%,#24345a88,transparent 65%);pointer-events:none}
-a{color:inherit;text-decoration:none}
-button{font:inherit;cursor:pointer}
-.container{width:min(1160px,calc(100% - 40px));margin:auto}
-header{position:sticky;top:0;z-index:20;background:#080b13db;backdrop-filter:blur(18px);border-bottom:1px solid #ffffff12}
-.nav{display:flex;align-items:center;justify-content:space-between;min-height:76px;gap:18px}
-.logo{font-weight:850;font-size:20px;letter-spacing:-.7px}
-.logo span{color:var(--blue)}
-.navlinks{display:flex;align-items:center;gap:28px;color:var(--muted);font-size:14px}
-.navlinks a:hover{color:white}
-.languages{display:flex;gap:5px;border:1px solid var(--line);padding:4px;border-radius:12px}
-.languages button{border:0;background:none;color:var(--muted);padding:6px 11px;border-radius:8px}
-.languages button.active{background:#293957;color:white}
-.hero{position:relative;text-align:center;padding:125px 0 105px}
-.eyebrow{display:inline-block;border:1px solid #7399ff55;background:#7298ff12;color:#b3c8ff;padding:8px 17px;border-radius:50px;font-size:12px;font-weight:750;letter-spacing:1.3px}
-.hero h1{font-size:clamp(43px,7vw,82px);line-height:1.09;letter-spacing:-3px;margin:28px auto 23px;max-width:950px}
-.gradient{background:linear-gradient(100deg,#8cb0ff,#bb9cff,#f5b4d2);background-clip:text;-webkit-background-clip:text;color:transparent}
-.hero p{max-width:610px;margin:0 auto 32px;color:var(--muted);font-size:18px}
-.actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 23px;border-radius:13px;font-size:14px;font-weight:750;border:1px solid var(--line);transition:.2s}
-.btn.primary{background:#7397ff;color:#071020;border-color:#7397ff}
-.btn:hover{transform:translateY(-2px);filter:brightness(1.12)}
-.stats{display:flex;justify-content:center;gap:50px;margin-top:70px}
-.stat strong{display:block;font-size:26px}
-.stat span{font-size:12px;color:var(--muted)}
-section{padding:55px 0}
-.sectionhead{display:flex;justify-content:space-between;align-items:end;gap:15px;margin-bottom:28px}
-.kicker{color:var(--blue);font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:800}
-h2{font-size:clamp(28px,4vw,40px);letter-spacing:-1.5px;margin:8px 0}
-.sectionhead p,.intro{color:var(--muted);margin:0}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
-.app{position:relative;overflow:hidden;border:1px solid var(--line);background:linear-gradient(145deg,#192236,#101622);border-radius:25px;transition:.25s}
-.app:hover{transform:translateY(-5px);border-color:#7298ff88;box-shadow:0 20px 60px #0005}
-.visual{height:240px;display:flex;justify-content:center;align-items:center;position:relative;overflow:hidden}
-.visual:before{content:"";position:absolute;width:300px;height:300px;border-radius:50%;filter:blur(45px);opacity:.32}
-.drone .visual{background:linear-gradient(135deg,#172e45,#0a1525)}
-.drone .visual:before{background:#1ca7fa}
-.drive .visual{background:linear-gradient(135deg,#17332f,#0c1a22)}
-.drive .visual:before{background:#38d6a0}
-.equal .visual{background:linear-gradient(135deg,#3a2148,#171426)}
-.equal .visual:before{background:#d36cff}
-.wardrobe .visual{background:linear-gradient(135deg,#442840,#241827)}
-.wardrobe .visual:before{background:#ff8dbb}
-.appicon{position:relative;width:135px;height:135px;border-radius:30px;object-fit:cover;box-shadow:0 22px 50px #0008;transform:rotate(-5deg);border:2px solid #ffffff35}
-.app:hover .appicon{transform:rotate(0) scale(1.05);transition:.3s}
-.appbody{padding:27px}
-.tags{display:flex;gap:7px;flex-wrap:wrap}
-.tag{font-size:11px;color:#b8c8e5;border:1px solid #ffffff22;border-radius:50px;padding:4px 10px}
-.app h3{font-size:24px;letter-spacing:-.6px;margin:14px 0 8px}
-.app p{font-size:14px;color:var(--muted);min-height:68px;margin:0 0 24px}
-.stores{display:flex;gap:9px;flex-wrap:wrap}
-.stores a,.stores button{display:inline-flex;align-items:center;justify-content:center;gap:9px;border:1px solid #36425a;background:#202b3f;color:white;padding:10px 14px;border-radius:11px;font-size:12px;font-weight:700}
-.stores a:hover,.stores button:hover{background:#344564}
-.stores svg{width:19px;height:19px;flex-shrink:0}
-.stores .apple-logo{fill:currentColor}
-.stores .play-logo{fill:#34d399}
-.about{background:linear-gradient(120deg,#151d2d,#101623);border:1px solid var(--line);border-radius:25px;padding:45px;display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:center}
-.about p{color:var(--muted)}
-.aboutmark{display:grid;place-items:center;min-height:230px;border:1px solid #ffffff13;border-radius:22px;background:radial-gradient(circle,#394c82 0%,#151d2d 65%)}
-.aboutmark span{font-size:85px;font-weight:900;letter-spacing:-10px;background:linear-gradient(135deg,#fff,#769aff);background-clip:text;-webkit-background-clip:text;color:transparent}
-.contact{padding:45px;border:1px solid var(--line);border-radius:25px;text-align:center;background:#111827}
-.contact p{color:var(--muted)}
-footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-size:13px}
-.foot{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
-.footlinks{display:flex;gap:18px}
-.modal{position:fixed;inset:0;z-index:50;background:#000b;display:none;align-items:center;justify-content:center;padding:20px}
-.modal.open{display:flex}
-.modalpanel{position:relative;width:min(540px,100%);max-height:85vh;overflow:auto;background:#172031;border:1px solid #40506b;border-radius:23px;padding:30px}
-.close{position:absolute;right:18px;top:14px;border:0;background:#ffffff15;color:white;border-radius:10px;width:36px;height:36px;font-size:22px}
-.modalpanel h2{font-size:28px}
-.modalpanel p{color:var(--muted)}
-.modalpanel ul{padding-left:20px;color:#d4def1}
-.modalpanel li{margin:9px 0}
-.consent{position:fixed;bottom:20px;left:20px;right:20px;z-index:60;max-width:620px;margin:auto;background:#1d293b;border:1px solid #53627b;border-radius:16px;padding:18px;display:none;align-items:center;gap:15px;box-shadow:0 12px 50px #0009}
-.consent p{margin:0;flex:1;font-size:12px;color:#d0d9e8}
-.consent button{padding:9px 12px;border-radius:9px;border:1px solid #64718a;background:#35435b;color:white;font-size:12px}
-@media(max-width:760px){
-.navlinks{display:none}.hero{padding:85px 0 65px}
-.hero h1{letter-spacing:-1.8px}
-.hero p{font-size:16px}
-.stats{gap:25px;margin-top:50px}
-.grid,.about{grid-template-columns:1fr}
-.visual{height:205px}
-.about{padding:26px}
-.aboutmark{min-height:150px}
-.sectionhead{display:block}
-.contact{padding:28px 20px}
-.consent{flex-wrap:wrap}
-}
-</style>
+:root{--bg:#070c19;--panel:#0e172b;--line:#27324c;--text:#f4f6ff;--muted:#a4aec5;--blue:#86a5ff;--pink:#ee83db;--cyan:#70d9ff}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--text);background:var(--bg);font-family:'DM Sans',sans-serif;overflow-x:hidden}a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}button:focus-visible,a:focus-visible{outline:2px solid #a3baff;outline-offset:4px}img{max-width:100%}.wrap{width:min(1260px,calc(100% - 64px));margin:auto}.topbar{height:80px;position:relative;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;gap:12px;font-size:11px;font-weight:800;letter-spacing:3px}.brand b{font-family:'Space Grotesk';font-size:30px;letter-spacing:-3px;color:#92adff}.nav{display:flex;gap:36px;font-size:13px;color:#dce3f6}.nav a:hover,.footnav a:hover{color:#a1b7ff}.lang{display:flex;gap:3px;background:#11172b;border:1px solid #33405d;border-radius:40px;padding:4px}.lang button{border:0;background:transparent;color:#abb4c9;border-radius:30px;padding:7px 12px;font-size:11px;font-weight:800}.lang button.active{background:#6057a9;color:#fff}.hero{position:relative;min-height:690px;overflow:hidden;background:radial-gradient(ellipse at 79% 26%,#4423629c,transparent 37%),radial-gradient(ellipse at 58% 64%,#16376d75,transparent 49%),linear-gradient(125deg,#070b17,#0a1831 67%,#090c1d)}.hero:before{content:'';position:absolute;right:8%;top:30px;width:370px;height:370px;border-radius:50%;border:4px solid #c177ff;box-shadow:0 0 28px #9c55ff,0 0 100px #7d45ec80,inset 0 0 25px #e87dff;filter:drop-shadow(0 0 20px #d278f9);opacity:.8}.hero:after{content:'';position:absolute;left:-5%;right:-5%;bottom:-65px;height:200px;background:radial-gradient(ellipse at center,#172b58,#060a17 70%);border-radius:50%;filter:blur(18px)}.hero-content{position:relative;z-index:2;display:grid;grid-template-columns:41% 59%;align-items:center;min-height:600px}.hero-copy{padding-bottom:50px}.eyebrow,.overline{font-size:11px;letter-spacing:3px;font-weight:800;color:#8eaaff}.hero h1{font-family:'Space Grotesk';font-size:clamp(48px,5.3vw,82px);letter-spacing:-4px;line-height:1.05;margin:22px 0}.gradient{background:linear-gradient(90deg,#83aaff,#bd8dff,#ff89d7);color:transparent;background-clip:text}.hero p{font-size:16px;line-height:1.75;color:#c0c8db;max-width:470px}.actions{display:flex;flex-wrap:wrap;gap:12px;margin:30px 0}.btn{border:1px solid #657395;border-radius:50px;padding:13px 22px;display:inline-flex;align-items:center;justify-content:center;gap:9px;font-size:13px;font-weight:800;transition:transform .2s,filter .2s}.btn:hover,.store:hover{transform:translateY(-3px);filter:brightness(1.12)}.btn.primary{border-color:#a4a3ff;background:linear-gradient(105deg,#648df9,#ef79cf);box-shadow:0 0 24px #9569f966;color:white}.stats{display:flex;gap:12px;margin-top:44px}.stat{min-width:125px;padding:14px 18px;background:#0d1730ac;border:1px solid #34405c;border-radius:14px}.stat strong{font-size:23px;display:block}.stat span{font-size:11px;color:#aab6d1}.phones{height:570px;position:relative;align-self:end;perspective:1100px}.phone{position:absolute;width:26%;max-width:215px;aspect-ratio:942/2048;padding:6px;background:linear-gradient(125deg,#8b97b7,#0c1221 28%,#13192c 70%,#9ba9d5);border:2px solid #7c86ac;border-radius:clamp(16px,2.6vw,33px);box-shadow:0 24px 40px #000c,0 0 28px var(--glow);transform:translateY(var(--y)) rotate(var(--rot));transition:transform .4s;overflow:hidden}.phone:hover{transform:translateY(calc(var(--y) - 18px)) rotate(0deg);z-index:8}.phone:before{content:'';position:absolute;top:9px;left:32%;width:36%;height:13px;background:#070a13;border-radius:0 0 13px 13px;z-index:2}.phone img{width:100%;height:100%;object-fit:cover;border-radius:inherit;display:block}.phone:nth-child(1){--glow:#3263e688;--rot:-10deg;--y:43px;left:1%;top:60px;z-index:2}.phone:nth-child(2){--glow:#2eb59b77;--rot:-3deg;--y:0px;left:24%;top:25px;z-index:4}.phone:nth-child(3){--glow:#b463e777;--rot:5deg;--y:38px;left:47%;top:65px;z-index:3}.phone:nth-child(4){--glow:#f49cc777;--rot:11deg;--y:45px;left:70%;top:60px;z-index:2}.section{padding:72px 0}.section-heading{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:27px}.section h2{font-family:'Space Grotesk';font-size:clamp(29px,3.4vw,44px);letter-spacing:-1.5px;margin:9px 0}.section-heading p{color:var(--muted);margin:0}.app-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}.card{background:linear-gradient(160deg,#121d34,#0a1120);border:1px solid #24304b;border-radius:23px;padding:16px;min-width:0;transition:transform .25s,border-color .25s}.card:hover{transform:translateY(-7px);border-color:#7588cc}.card-head{display:flex;align-items:center;gap:12px;min-height:74px}.icon{width:59px;height:59px;border-radius:15px;display:grid;place-items:center;flex:none;overflow:hidden;border:1px solid #ffffff3a;box-shadow:0 6px 22px #0008}.icon img{width:100%;height:100%;object-fit:cover}.card h3{font-size:15px;margin:0 0 4px}.card p{font-size:11px;line-height:1.6;color:#b6c1d8;margin:0}.pills{display:flex;gap:6px;flex-wrap:wrap;margin:13px 0}.pill{background:#1e2b46;border-radius:50px;padding:6px 10px;font-size:9px;letter-spacing:1px;font-weight:800}.card-shot{height:200px;overflow:hidden;border-radius:13px;position:relative;background:#182443}.card-shot:after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,#060c18a0,transparent 45%)}.card-shot img{width:100%;height:100%;object-fit:cover;object-position:top center}.stores{display:flex;gap:7px;flex-wrap:wrap;margin-top:15px}.store{border:1px solid #4b5a7b;background:#17223a;border-radius:12px;padding:9px 10px;font-size:10px;display:inline-flex;align-items:center;gap:6px;white-space:nowrap;transition:.2s}.store svg{width:16px;height:16px}.detail{display:block;text-align:center;width:100%;margin-top:15px;color:#9cb5ff;border:0;background:none;font-size:12px;font-weight:800}.about{display:grid;grid-template-columns:1fr 1fr;min-height:355px;overflow:hidden;border-radius:25px;border:1px solid #25314b;background:linear-gradient(115deg,#111a2d,#0a1020)}.desk{position:relative;min-height:340px;background:radial-gradient(ellipse at 58% 72%,#b5674a8c,transparent 40%),radial-gradient(ellipse at 40% 40%,#293b6b,transparent 55%),#101727;overflow:hidden}.desk:before{content:'';position:absolute;width:64%;height:45%;left:13%;bottom:15%;background:linear-gradient(130deg,#1d2b43,#080e1b);border:2px solid #59617a;border-radius:14px;transform:skewY(-4deg);box-shadow:10px 15px 0 #080b14,0 20px 70px #000}.desk:after{content:'';position:absolute;bottom:0;left:0;right:0;height:20%;background:linear-gradient(0deg,#482e31,#241c28);box-shadow:0 -12px 60px #ec965344}.desk-label{position:absolute;z-index:1;top:43%;left:35%;font-family:'Space Grotesk';font-size:45px;color:#b9c5e9;font-weight:800;letter-spacing:-5px;transform:skewY(-4deg)}.about-copy{padding:44px 46px}.about-copy p{font-size:14px;color:#b7c0d5;line-height:1.8}.values{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:28px}.value span{display:block;font-size:23px;color:#8ca8ff}.value b{font-size:11px}.value small{display:block;color:#9ba8c3;font-size:10px;line-height:1.5;margin-top:6px}.contact{position:relative;overflow:hidden;border:1px solid #3e416d;border-radius:24px;min-height:255px;padding:42px;background:radial-gradient(ellipse at 80% 42%,#fa9a82b8,transparent 34%),linear-gradient(180deg,#362e61 0%,#4e355c 47%,#111c38 65%,#0a1021 100%)}.contact:before{content:'';position:absolute;right:-5%;bottom:-90px;width:95%;height:220px;background:#0a1021;clip-path:polygon(0 100%,28% 40%,44% 69%,66% 21%,85% 48%,100% 0,100% 100%);opacity:.9}.contact-content{position:relative;z-index:1;max-width:520px}.contact h2{margin:9px 0}.contact p{color:#e3ddef;font-size:14px;line-height:1.7}.footer{padding:34px 0 45px;display:flex;justify-content:space-between;align-items:center;gap:20px;font-size:11px;color:#a9b4cd}.footnav{display:flex;gap:23px;flex-wrap:wrap}.modal{position:fixed;inset:0;z-index:30;background:#02050cce;display:none;align-items:center;justify-content:center;padding:20px}.modal.open{display:flex}.modal-inner{background:#121c32;border:1px solid #465679;border-radius:22px;padding:30px;width:min(530px,100%);max-height:85vh;overflow:auto;position:relative}.modal-inner h2{font-family:'Space Grotesk'}.modal-inner p,.modal-inner li{color:#c3cce0;line-height:1.7}.modal-inner ul{padding-left:20px}.x{position:absolute;right:16px;top:13px;background:#263650;color:white;border:0;border-radius:9px;font-size:24px;width:38px;height:38px}.consent{display:none;position:fixed;z-index:40;bottom:18px;left:18px;right:18px;margin:auto;max-width:690px;align-items:center;gap:12px;background:#18243a;border:1px solid #61719a;padding:16px;border-radius:15px;box-shadow:0 12px 50px #000b}.consent p{margin:0;flex:1;font-size:12px;line-height:1.5;color:#e1e8f8}.consent button{background:#293b5d;border:1px solid #5e7095;border-radius:9px;color:white;padding:9px 13px;font-size:12px}.consent button:last-child{background:#617ff0}.skip{position:absolute;left:-9999px}.skip:focus{left:10px;top:10px;z-index:99;background:white;color:black;padding:10px}
+@media(max-width:1100px){.hero-content{grid-template-columns:43% 57%}.hero h1{font-size:58px}.phones{height:500px}.phone{width:28%}.phone:nth-child(1){left:0}.phone:nth-child(2){left:22%}.phone:nth-child(3){left:45%}.phone:nth-child(4){left:68%}.app-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.card-shot{height:230px}}@media(max-width:700px){.wrap{width:min(100% - 32px,520px)}.topbar{height:68px}.brand{font-size:9px;letter-spacing:1px}.brand b{font-size:26px}.nav{display:none}.hero{min-height:auto}.hero:before{width:220px;height:220px;right:-10%;top:310px}.hero-content{display:block;min-height:0}.hero-copy{padding:45px 0 0}.hero h1{font-size:clamp(43px,10vw,60px);letter-spacing:-2.5px}.hero p{font-size:14px}.stats{margin-top:25px;gap:7px}.stat{min-width:0;flex:1;padding:11px}.stat strong{font-size:19px}.stat span{font-size:9px}.phones{height:360px;margin-top:35px}.phone{width:30%;padding:4px;border-radius:16px}.phone:before{height:8px;top:6px}.phone:nth-child(1){left:0;top:50px}.phone:nth-child(2){left:21%;top:15px}.phone:nth-child(3){left:44%;top:45px}.phone:nth-child(4){left:67%;top:48px}.section{padding:48px 0}.app-grid{gap:12px}.card{padding:11px;border-radius:16px}.card-head{gap:8px;min-height:62px}.icon{width:43px;height:43px;border-radius:11px}.card h3{font-size:12px}.card p{font-size:10px}.pill{font-size:8px;padding:5px 7px}.card-shot{height:155px}.stores{gap:5px}.store{font-size:9px;padding:7px 8px}.store svg{width:13px;height:13px}.about{grid-template-columns:1fr}.desk{min-height:210px}.about-copy{padding:28px}.values{grid-template-columns:repeat(2,1fr)}.contact{padding:27px;min-height:240px}.footer{flex-direction:column;align-items:flex-start}.consent{flex-wrap:wrap}.consent p{flex-basis:100%}}@media(max-width:390px){.app-grid{grid-template-columns:1fr}.card-shot{height:220px}.phone{width:31%}.phones{height:330px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}
+/* Phone screens: match screenshot aspect ratio and avoid inherited padding clipping */
+.phone{padding:4px;display:flex;align-items:stretch;justify-content:stretch;isolation:isolate}
+.phone img{display:block;width:100%;height:100%;min-width:0;min-height:0;object-fit:fill;border-radius:clamp(11px,2vw,26px);background:#060b18}
+.phone:nth-child(3) img{object-fit:cover;object-position:center top}
+/* App icons use the original icon assets, not screenshots */
+.icon img{width:100%;height:100%;object-fit:cover;display:block}
+@media(max-width:700px){.phone{padding:3px}.phone img{border-radius:12px}}
 
-<script>
-window.dataLayer=window.dataLayer||[];
-function gtag(){dataLayer.push(arguments)}
-gtag('consent','default',{
- analytics_storage:'denied',
- ad_storage:'denied',
- ad_user_data:'denied',
- ad_personalization:'denied'
-});
-gtag('js',new Date());
-gtag('config','G-536YWXEMQ3');
-</script>
+/* Full portrait screenshots inside the app cards (no cropping) */
+.card-shot{height:330px;display:flex;align-items:center;justify-content:center;isolation:isolate;overflow:hidden;background:radial-gradient(ellipse at 50% 55%,#3c518f66,transparent 67%),linear-gradient(145deg,#131d36,#080e1e);border:1px solid #33405e;padding:14px}
+.card:nth-child(1) .card-shot{background:radial-gradient(ellipse at 50% 60%,#1768ba55,transparent 72%),#091322}
+.card:nth-child(2) .card-shot{background:radial-gradient(ellipse at 50% 60%,#138c8066,transparent 72%),#091322}
+.card:nth-child(3) .card-shot{background:radial-gradient(ellipse at 50% 60%,#8653cf66,transparent 72%),#091322}
+.card:nth-child(4) .card-shot{background:radial-gradient(ellipse at 50% 60%,#d16baf55,transparent 72%),#141022}
+.card-shot:after{display:none}
+.card-shot .mini-phone{position:relative;display:block;height:100%;aspect-ratio:942/2048;max-width:100%;padding:5px;background:linear-gradient(125deg,#9da9cc,#11192d 22%,#11192d 80%,#8896bd);border:2px solid #8793b6;border-radius:22px;box-shadow:0 16px 34px #000a,0 0 30px #7186e12e;overflow:hidden}
+.card-shot .mini-phone:before{content:'';position:absolute;top:5px;left:32%;width:36%;height:10px;background:#080b13;border-radius:0 0 10px 10px;z-index:1}
+.card-shot .mini-phone img{display:block;width:100%;height:100%;object-fit:fill;object-position:center;border-radius:15px}
+@media(max-width:700px){.card-shot{height:275px;padding:10px}.card-shot .mini-phone{border-radius:17px;padding:4px}.card-shot .mini-phone img{border-radius:11px}}
+@media(max-width:390px){.card-shot{height:340px}}
+</style>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'});gtag('js',new Date());gtag('config','G-536YWXEMQ3');</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-536YWXEMQ3"></script>
 </head>
 <body>
-
-<header>
- <div class="container nav">
-  <a href="#" class="logo">GÖKMEN<span>.</span>KESER</a>
-  <nav class="navlinks">
-   <a href="#apps" data-en="Apps & Games" data-tr="Uygulamalar ve Oyunlar">Apps & Games</a>
-   <a href="#about" data-en="About" data-tr="Hakkımda">About</a>
-   <a href="#contact" data-en="Contact" data-tr="İletişim">Contact</a>
-  </nav>
-  <div class="languages">
-   <button id="enBtn" class="active" onclick="setLanguage('en')">EN</button>
-   <button id="trBtn" onclick="setLanguage('tr')">TR</button>
-  </div>
- </div>
-</header>
-
-<main>
-<section class="hero container">
- <span class="eyebrow">INDEPENDENT APP & GAME DEVELOPER</span>
- <h1 data-en="Small ideas.<br><span class='gradient'>Big experiences.</span>" data-tr="Küçük fikirler.<br><span class='gradient'>Büyük deneyimler.</span>">Small ideas.<br><span class="gradient">Big experiences.</span></h1>
- <p data-en="Thoughtfully crafted mobile apps and games. From creative puzzles to immersive arcade adventures and useful everyday tools." data-tr="Özenle geliştirilen mobil uygulamalar ve oyunlar. Yaratıcı bulmacalardan arcade maceralarına ve günlük yaşamı kolaylaştıran araçlara.">Thoughtfully crafted mobile apps and games. From creative puzzles to immersive arcade adventures and useful everyday tools.</p>
- <div class="actions">
-  <a href="#apps" class="btn primary" data-en="Explore My Apps ↓" data-tr="Uygulamalarımı Keşfet ↓">Explore My Apps ↓</a>
-  <a href="#about" class="btn" data-en="About the Developer" data-tr="Geliştirici Hakkında">About the Developer</a>
- </div>
- <div class="stats">
-  <div class="stat"><strong>04</strong><span data-en="Published Apps" data-tr="Uygulama">Published Apps</span></div>
-  <div class="stat"><strong>02</strong><span data-en="Platforms" data-tr="Platform">Platforms</span></div>
-  <div class="stat"><strong>∞</strong><span data-en="Ideas" data-tr="Fikir">Ideas</span></div>
- </div>
-</section>
-
-<section id="apps" class="container">
- <div class="sectionhead">
-  <div>
-   <span class="kicker">PORTFOLIO / 2026</span>
-   <h2 data-en="Featured Apps & Games" data-tr="Uygulamalarım ve Oyunlarım">Featured Apps & Games</h2>
-   <p data-en="Explore the projects I've brought to life." data-tr="Hayata geçirdiğim projeleri keşfedin.">Explore the projects I've brought to life.</p>
-  </div>
- </div>
- <div class="grid">
-
-  <article class="app drone">
-   <div class="visual"><img class="appicon" src="images/drone-rush-icon.png" alt="Drone Rush" loading="lazy"></div>
-   <div class="appbody">
-    <div class="tags"><span class="tag">ARCADE</span><span class="tag">ACTION</span><span class="tag">iOS & ANDROID</span></div>
-    <h3>Drone Rush</h3>
-    <p data-en="Fast-paced drone combat. Battle enemy waves, defeat bosses and upgrade your drone to reach the highest score." data-tr="Hızlı tempolu drone savaşları. Düşman dalgalarını geç, bossları yen ve drone'unu geliştirerek en yüksek skora ulaş.">Fast-paced drone combat. Battle enemy waves, defeat bosses and upgrade your drone to reach the highest score.</p>
-    <div class="stores">
-     <a data-app="Drone Rush" data-platform="ios" href="https://apps.apple.com/us/app/drone-rush/id6763133589" target="_blank" rel="noopener">App Store ↗</a>
-     <a data-app="Drone Rush" data-platform="android" href="https://play.google.com/store/apps/details?id=com.gokmen.dronerush" target="_blank" rel="noopener">Google Play ↗</a>
-     <button onclick="openInfo('drone')" data-en="Details" data-tr="Detaylar">Details</button>
-    </div>
-   </div>
-  </article>
-
-  <article class="app drive">
-   <div class="visual"><img class="appicon" src="images/drive-ride-icon.jpeg" alt="Drive Ride" loading="lazy"></div>
-   <div class="appbody">
-    <div class="tags"><span class="tag">GPS</span><span class="tag">TRAVEL</span><span class="tag">iOS & ANDROID</span></div>
-    <h3>Drive Ride</h3>
-    <p data-en="Track your journeys with GPS, capture memorable stops, review route statistics and share your adventures." data-tr="Yolculuklarını GPS ile kaydet, fotoğraflı duraklar oluştur, rota istatistiklerini incele ve maceralarını paylaş.">Track your journeys with GPS, capture memorable stops, review route statistics and share your adventures.</p>
-    <div class="stores">
-     <a data-app="Drive Ride" data-platform="ios" href="https://apps.apple.com/us/app/drive-ride-gps-routes/id6799442279" target="_blank" rel="noopener">App Store ↗</a>
-     <a data-app="Drive Ride" data-platform="android" href="https://play.google.com/store/apps/details?id=com.gokmenkeser.motorota" target="_blank" rel="noopener">Google Play ↗</a>
-     <button onclick="openInfo('drive')" data-en="Details" data-tr="Detaylar">Details</button>
-    </div>
-   </div>
-  </article>
-
-  <article class="app equal">
-   <div class="visual"><img class="appicon" src="images/equal-cut-icon.png" alt="Equal Cut" loading="lazy"></div>
-   <div class="appbody">
-    <div class="tags"><span class="tag">PUZZLE</span><span class="tag">CASUAL</span><span class="tag">iOS & ANDROID</span></div>
-    <h3>Equal Cut</h3>
-    <p data-en="A satisfying precision puzzle. Slice shapes into the right proportions and master increasingly challenging levels." data-tr="Hassas kesimlere dayalı keyifli bir bulmaca. Şekilleri doğru oranlarda kes ve giderek zorlaşan seviyeleri tamamla.">A satisfying precision puzzle. Slice shapes into the right proportions and master increasingly challenging levels.</p>
-    <div class="stores">
-     <a data-app="Equal Cut" data-platform="ios" href="https://apps.apple.com/tr/app/equal-cut-slice-puzzle/id6804606321?l=en" target="_blank" rel="noopener">App Store ↗</a>
-     <a data-app="Equal Cut" data-platform="android" href="https://play.google.com/store/apps/details?id=com.gokmen.equalcut" target="_blank" rel="noopener">Google Play ↗</a>
-     <button onclick="openInfo('equal')" data-en="Details" data-tr="Detaylar">Details</button>
-    </div>
-   </div>
-  </article>
-
-  <article class="app wardrobe">
-   <div class="visual"><img class="appicon" src="images/app-icon.png" alt="My Little Wardrobe" loading="lazy"></div>
-   <div class="appbody">
-    <div class="tags"><span class="tag">DRESS UP</span><span class="tag">CREATIVE</span><span class="tag">iOS</span></div>
-    <h3>My Little Wardrobe</h3>
-    <p data-en="Create beautiful outfits, mix and match accessories, express your style and save your favorite looks." data-tr="Güzel kombinler oluştur, kıyafet ve aksesuarları eşleştir, tarzını yansıt ve favori görünümlerini kaydet.">Create beautiful outfits, mix and match accessories, express your style and save your favorite looks.</p>
-    <div class="stores">
-     <a data-app="My Little Wardrobe" data-platform="ios" href="https://apps.apple.com/tr/app/minik-gard%C4%B1robum-giydirme/id6810826860?l=en" target="_blank" rel="noopener">App Store ↗</a>
-     <button onclick="openInfo('wardrobe')" data-en="Details" data-tr="Detaylar">Details</button>
-    </div>
-   </div>
-  </article>
-
- </div>
-</section>
-
-<section id="about" class="container">
- <div class="about">
-  <div>
-   <span class="kicker">BEHIND THE APPS</span>
-   <h2 data-en="Independent by design." data-tr="Bağımsız geliştirme.">Independent by design.</h2>
-   <p data-en="Hi, I'm Gökmen Keser. I build mobile apps and games with a focus on approachable experiences, useful features and thoughtful details." data-tr="Merhaba, ben Gökmen Keser. Kullanıcı dostu deneyimlere, işlevsel özelliklere ve özenli detaylara odaklanarak mobil uygulamalar ve oyunlar geliştiriyorum.">Hi, I'm Gökmen Keser. I build mobile apps and games with a focus on approachable experiences, useful features and thoughtful details.</p>
-   <p data-en="Each project starts with a simple idea and grows through design, development and continuous improvement." data-tr="Her proje basit bir fikirle başlıyor; tasarım, geliştirme ve sürekli iyileştirmeyle büyüyor.">Each project starts with a simple idea and grows through design, development and continuous improvement.</p>
-  </div>
-  <div class="aboutmark"><span>GK.</span></div>
- </div>
-</section>
-
-<section id="contact" class="container">
- <div class="contact">
-  <span class="kicker">GET IN TOUCH</span>
-  <h2 data-en="Have something in mind?" data-tr="Bir fikriniz mi var?">Have something in mind?</h2>
-  <p data-en="Questions, feedback or collaboration ideas? Feel free to reach out." data-tr="Sorularınız, geri bildirimleriniz veya iş birliği fikirleriniz için iletişime geçebilirsiniz.">Questions, feedback or collaboration ideas? Feel free to reach out.</p>
-  <a href="mailto:gokmenkeser@gmail.com" class="btn primary" data-en="Contact Me ↗" data-tr="İletişime Geç ↗">Contact Me ↗</a>
- </div>
-</section>
-</main>
-
-<footer>
- <div class="container foot">
-  <span>© <span id="year"></span> Gökmen Keser. All rights reserved.</span>
-  <div class="footlinks">
-   <a href="privacy.html" data-en="Privacy Policy" data-tr="Gizlilik Politikası">Privacy Policy</a>
-   <a href="mailto:gokmenkeser@gmail.com" data-en="Support" data-tr="Destek">Support</a>
-  </div>
- </div>
-</footer>
-
-<div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" onclick="if(event.target===this)closeInfo()">
- <div class="modalpanel">
-  <button class="close" onclick="closeInfo()" aria-label="Close">×</button>
-  <h2 id="modalTitle"></h2>
-  <p id="modalDescription"></p>
-  <ul id="modalFeatures"></ul>
-  <div id="modalLinks" class="stores"></div>
- </div>
-</div>
-
-<div id="consent" class="consent">
- <p id="consentText">We use analytics cookies to understand website usage. You can accept or decline optional analytics.</p>
- <button onclick="saveConsent(false)" id="decline">Decline</button>
- <button onclick="saveConsent(true)" id="accept">Accept</button>
-</div>
-
+<a class="skip" href="#apps">Skip to apps</a>
+<div class="hero" id="home"><div class="wrap"><header class="topbar"><a href="#home" class="brand"><b>GK.</b> GÖKMEN KESER</a><nav class="nav"><a href="#apps" data-en="Apps & Games" data-tr="Uygulamalar ve Oyunlar">Apps & Games</a><a href="#about" data-en="About" data-tr="Hakkımda">About</a><a href="#contact" data-en="Contact" data-tr="İletişim">Contact</a></nav><div class="lang"><button id="enBtn" class="active" type="button" onclick="setLanguage('en')">EN</button><button id="trBtn" type="button" onclick="setLanguage('tr')">TR</button></div></header>
+<div class="hero-content"><div class="hero-copy"><div class="eyebrow" data-en="INDEPENDENT APP & GAME DEVELOPER" data-tr="BAĞIMSIZ UYGULAMA VE OYUN GELİŞTİRİCİ">INDEPENDENT APP & GAME DEVELOPER</div><h1 data-en="Small ideas.<br><span class='gradient'>Big experiences.</span>" data-tr="Küçük fikirler.<br><span class='gradient'>Büyük deneyimler.</span>">Small ideas.<br><span class="gradient">Big experiences.</span></h1><p data-en="Thoughtfully crafted mobile apps and games. From creative puzzles to immersive arcade adventures and useful everyday tools." data-tr="Özenle geliştirilen mobil uygulamalar ve oyunlar. Yaratıcı bulmacalardan arcade maceralarına ve günlük yaşamı kolaylaştıran araçlara.">Thoughtfully crafted mobile apps and games. From creative puzzles to immersive arcade adventures and useful everyday tools.</p><div class="actions"><a href="#apps" class="btn primary" data-en="Explore My Apps ↗" data-tr="Uygulamalarımı Keşfet ↗">Explore My Apps ↗</a><a href="#about" class="btn" data-en="About the Developer" data-tr="Geliştirici Hakkında">About the Developer</a></div><div class="stats"><div class="stat"><strong>04</strong><span data-en="Published Apps" data-tr="Uygulama">Published Apps</span></div><div class="stat"><strong>02</strong><span data-en="Platforms" data-tr="Platform">Platforms</span></div><div class="stat"><strong>∞</strong><span data-en="Ideas" data-tr="Fikir">Ideas</span></div></div></div>
+<div class="phones" aria-label="Four real mobile app screenshots"><div class="phone"><img data-shot="drone" src="assets/drone-en.webp" alt="Drone Rush app screenshot"></div><div class="phone"><img data-shot="drive" src="assets/drive-en.webp" alt="Drive Ride app screenshot"></div><div class="phone"><img data-shot="equal" src="assets/equal-en.webp" alt="Equal Cut game screenshot"></div><div class="phone"><img data-shot="wardrobe" src="assets/wardrobe-en.webp" alt="My Little Wardrobe game screenshot"></div></div></div></div></div>
+<main><section id="apps" class="section wrap"><div class="section-heading"><div><div class="overline" data-en="FEATURED APPS & GAMES" data-tr="ÖNE ÇIKAN UYGULAMALAR VE OYUNLAR">FEATURED APPS & GAMES</div><h2 data-en="My Apps & Games" data-tr="Uygulamalarım ve Oyunlarım">My Apps & Games</h2></div><a href="#contact" style="font-size:12px;color:#a3b7ff" data-en="Get in touch ↗" data-tr="İletişime geç ↗">Get in touch ↗</a></div><div class="app-grid" id="appGrid"></div></section>
+<section class="section wrap" id="about"><div class="about"><div class="desk" aria-hidden="true"><span class="desk-label">GK.</span></div><div class="about-copy"><div class="overline" data-en="BEHIND THE APPS" data-tr="UYGULAMALARIN ARKASINDA">BEHIND THE APPS</div><h2 data-en="Independent by design." data-tr="Bağımsız geliştirme.">Independent by design.</h2><p data-en="Hi, I'm Gökmen Keser. I build mobile apps and games with a focus on approachable experiences, useful features and thoughtful details." data-tr="Merhaba, ben Gökmen Keser. Kullanıcı dostu deneyimlere, işlevsel özelliklere ve özenli detaylara odaklanarak mobil uygulamalar ve oyunlar geliştiriyorum.">Hi, I'm Gökmen Keser. I build mobile apps and games with a focus on approachable experiences, useful features and thoughtful details.</p><p data-en="Each project starts with a simple idea and grows through design, development and continuous improvement." data-tr="Her proje basit bir fikirle başlıyor; tasarım, geliştirme ve sürekli iyileştirmeyle büyüyor.">Each project starts with a simple idea and grows through design, development and continuous improvement.</p><div class="values"><div class="value"><span>✧</span><b data-en="Ideas" data-tr="Fikirler">Ideas</b><small data-en="Simple ideas, real products." data-tr="Fikirden ürüne.">Simple ideas, real products.</small></div><div class="value"><span>⌘</span><b data-en="Development" data-tr="Geliştirme">Development</b><small data-en="Built with care." data-tr="Özenle geliştirildi.">Built with care.</small></div><div class="value"><span>♧</span><b data-en="Users" data-tr="Kullanıcılar">Users</b><small data-en="Useful experiences." data-tr="Faydalı deneyimler.">Useful experiences.</small></div><div class="value"><span>↗</span><b data-en="Growth" data-tr="Gelişim">Growth</b><small data-en="Always improving." data-tr="Sürekli iyileştirme.">Always improving.</small></div></div></div></div></section>
+<section class="section wrap" id="contact"><div class="contact"><div class="contact-content"><div class="overline" data-en="GET IN TOUCH" data-tr="İLETİŞİM">GET IN TOUCH</div><h2 data-en="Have something in mind?" data-tr="Bir fikriniz mi var?">Have something in mind?</h2><p data-en="Questions, feedback or collaboration ideas? Feel free to reach out." data-tr="Sorularınız, geri bildirimleriniz veya iş birliği fikirleriniz için iletişime geçebilirsiniz.">Questions, feedback or collaboration ideas? Feel free to reach out.</p><a class="btn primary" href="mailto:gokmenkeser@gmail.com" data-en="✉ Contact Me ↗" data-tr="✉ İletişime Geç ↗">✉ Contact Me ↗</a></div></div></section></main>
+<footer class="wrap footer"><a href="#home" class="brand"><b>GK.</b> GÖKMEN KESER</a><div class="footnav"><a href="#apps" data-en="Apps & Games" data-tr="Uygulamalar ve Oyunlar">Apps & Games</a><a href="#about" data-en="About" data-tr="Hakkımda">About</a><a href="#contact" data-en="Contact" data-tr="İletişim">Contact</a><a href="privacy.html" data-en="Privacy Policy" data-tr="Gizlilik Politikası">Privacy Policy</a><a href="mailto:gokmenkeser@gmail.com" data-en="Support" data-tr="Destek">Support</a></div><span>© <span id="year"></span> Gökmen Keser</span></footer>
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" onclick="if(event.target===this)closeInfo()"><div class="modal-inner"><button class="x" aria-label="Close" onclick="closeInfo()">×</button><h2 id="modalTitle"></h2><p id="modalDescription"></p><ul id="modalFeatures"></ul><div class="stores" id="modalLinks"></div></div></div>
+<div class="consent" id="consent"><p id="consentText"></p><button id="decline" onclick="saveConsent(false)">Decline</button><button id="accept" onclick="saveConsent(true)">Accept</button></div>
 <script>
-let lang=localStorage.getItem("site-language")||"en";
-
-const details={
- drone:{
-  title:"Drone Rush",
-  en:"A fast-paced arcade drone combat game.",
-  tr:"Hızlı tempolu arcade drone savaş oyunu.",
-  features:{
-   en:["Survive enemy waves","Battle powerful bosses","Upgrade your drone","Compete for high scores"],
-   tr:["Düşman dalgalarından kurtul","Güçlü bosslarla savaş","Drone'unu geliştir","Yüksek skor hedefle"]
-  },
-  support:"https://gokmenkeser.github.io/drone-rush-support/",
-  privacy:"https://gokmenkeser.github.io/drone-rush-support/"
- },
- drive:{
-  title:"Drive Ride",
-  en:"Record, explore and share your journeys.",
-  tr:"Yolculuklarını kaydet, keşfet ve paylaş.",
-  features:{
-   en:["GPS route recording","Photo stops","Distance, duration and speed","Route sharing"],
-   tr:["GPS rota kaydı","Fotoğraflı duraklar","Mesafe, süre ve hız bilgileri","Rota paylaşımı"]
-  },
-  support:"https://gokmenkeser.github.io/driveride/support/",
-  privacy:"https://gokmenkeser.github.io/driveride/privacy/"
- },
- equal:{
-  title:"Equal Cut",
-  en:"Test your precision in a satisfying slicing puzzle.",
-  tr:"Eğlenceli kesme bulmacalarıyla hassasiyetini test et.",
-  features:{
-   en:["Precision-based slicing","Target proportions","Increasing difficulty","Quick puzzle sessions"],
-   tr:["Hassas kesim mekaniği","Hedef oranlar","Artan zorluk","Kısa bulmaca bölümleri"]
-  },
-  privacy:"https://gokmenkeser.github.io/equalcut/"
- },
- wardrobe:{
-  title:"My Little Wardrobe",
-  en:"Explore your creativity with fashion and outfits.",
-  tr:"Kıyafetler ve kombinlerle yaratıcılığını keşfet.",
-  features:{
-   en:["Mix and match outfits","Choose accessories","Save favorite looks","Optional premium purchase"],
-   tr:["Kıyafet kombinleri oluştur","Aksesuarları seç","Favori kombinlerini kaydet","İsteğe bağlı premium satın alma"]
-  },
-  support:"https://gokmenkeser.github.io/MylittleWardrobe/support/",
-  privacy:"https://gokmenkeser.github.io/MylittleWardrobe/privacy/"
- }
+const apple=`<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M17.05 12.54c.02 2.18 1.91 2.91 1.93 2.92-.02.05-.3 1.03-.99 2.04-.6.87-1.22 1.73-2.2 1.75-.96.02-1.27-.57-2.37-.57-1.1 0-1.45.55-2.36.59-.95.04-1.67-.95-2.28-1.82-1.24-1.79-2.19-5.06-.91-7.26a3.53 3.53 0 0 1 2.98-1.82c.93-.02 1.81.63 2.38.63.57 0 1.64-.78 2.77-.66.47.02 1.79.19 2.64 1.43-.07.04-1.58.92-1.59 2.77ZM15.23 7.15c.5-.61.84-1.45.75-2.29-.72.03-1.6.48-2.12 1.09-.47.54-.88 1.39-.77 2.21.81.06 1.64-.41 2.14-1.01Z"/></svg>`;
+const play=`<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#34a853" d="M3 2v20l10-10z"/><path fill="#4285f4" d="M3 2l13 8-3 2z"/><path fill="#fbbc04" d="M13 12l3-2 5 3-5 2z"/><path fill="#ea4335" d="M3 22l13-7-3-3z"/></svg>`;
+const apps=[
+{key:'drone',name:'Drone Rush',tags:['ARCADE','ACTION'],en:'Fight enemy waves, upgrade your drone and survive intense arcade action.',tr:'Düşman dalgalarıyla savaş, drone’unu geliştir ve aksiyon dolu bölümlerde hayatta kal.',features:{en:['Arcade drone battles','Upgrades and achievements','Daily missions'],tr:['Arcade drone savaşları','Geliştirmeler ve başarımlar','Günlük görevler']},ios:'https://apps.apple.com/us/app/drone-rush/id6763133589',android:'https://play.google.com/store/apps/details?id=com.gokmen.dronerush',support:'https://gokmenkeser.github.io/drone-rush-support/',privacy:'https://gokmenkeser.github.io/drone-rush-support/'},
+{key:'drive',name:'Drive Ride',tags:['GPS','TRAVEL'],en:'Record GPS routes, remember your favorite journeys and keep your travel memories.',tr:'GPS rotalarını kaydet, yolculuklarını takip et ve seyahat anılarını sakla.',features:{en:['GPS route recording','Route history','Private journeys'],tr:['GPS rota kaydı','Rota geçmişi','Özel yolculuklar']},ios:'https://apps.apple.com/us/app/drive-ride-gps-routes/id6799442279',android:'https://play.google.com/store/apps/details?id=com.gokmenkeser.motorota',support:'https://gokmenkeser.github.io/driveride/support/',privacy:'https://gokmenkeser.github.io/driveride/privacy/'},
+{key:'equal',name:'Equal Cut',tags:['PUZZLE','CASUAL'],en:'Slice shapes precisely and solve satisfying proportion puzzles.',tr:'Şekilleri hassas biçimde kes ve oran bulmacalarını çöz.',features:{en:['Precision slicing','Challenging levels','Quick puzzle sessions'],tr:['Hassas kesimler','Zorlu seviyeler','Kısa bulmaca seansları']},ios:'https://apps.apple.com/tr/app/equal-cut-slice-puzzle/id6804606321?l=en',android:'https://play.google.com/store/apps/details?id=com.gokmen.equalcut',privacy:'https://gokmenkeser.github.io/equalcut/'},
+{key:'wardrobe',name:'My Little Wardrobe',tags:['DRESS UP','CREATIVE'],en:'Create adorable outfits, choose accessories and express your imagination.',tr:'Sevimli kombinler oluştur, aksesuarlar seç ve hayal gücünü yansıt.',features:{en:['Character styling','Outfits and accessories','Creative play'],tr:['Karakter giydirme','Kıyafetler ve aksesuarlar','Yaratıcı oyun']},ios:'https://apps.apple.com/tr/app/minik-gard%C4%B1robum-giydirme/id6810826860?l=en',support:'https://gokmenkeser.github.io/MylittleWardrobe/support/',privacy:'https://gokmenkeser.github.io/MylittleWardrobe/privacy/'}
+];
+let lang=localStorage.getItem('site-language')==='tr'?'tr':'en';
+function storeLink(app,platform){let url=app[platform];if(!url)return '';return `<a class="store" data-app="${app.name}" data-platform="${platform}" href="${url}" target="_blank" rel="noopener noreferrer">${platform==='ios'?apple:play}${platform==='ios'?'App Store':'Google Play'}</a>`}
+const iconCandidates={
+ drone:['assets/drone-rush-icon.png','assets/drone-rush-icon.webp','assets/drone-icon.png','images/drone-rush-icon.png'],
+ drive:['assets/drive-ride-icon.jpeg','assets/drive-ride-icon.png','assets/drive-icon.png','images/drive-ride-icon.jpeg'],
+ equal:['assets/equal-cut-icon.png','assets/equal-cut-icon.webp','assets/equal-icon.png','images/equal-cut-icon.png'],
+ wardrobe:['assets/app-icon.png','assets/my-little-wardrobe-icon.png','assets/wardrobe-icon.png','images/app-icon.png']
 };
-
-function setLanguage(next){
- lang=next;
- localStorage.setItem("site-language",lang);
- document.documentElement.lang=lang;
- document.querySelectorAll("[data-en][data-tr]").forEach(el=>{
-  el.innerHTML=el.dataset[lang];
- });
- document.getElementById("enBtn").classList.toggle("active",lang==="en");
- document.getElementById("trBtn").classList.toggle("active",lang==="tr");
- document.getElementById("consentText").textContent=lang==="tr"
-  ?"Site kullanımını anlamak için isteğe bağlı analiz çerezleri kullanıyoruz. Kabul edebilir veya reddedebilirsiniz."
-  :"We use analytics cookies to understand website usage. You can accept or decline optional analytics.";
- document.getElementById("accept").textContent=lang==="tr"?"Kabul Et":"Accept";
- document.getElementById("decline").textContent=lang==="tr"?"Reddet":"Decline";
-}
-
-function openInfo(key){
- const app=details[key];
- if(!app)return;
- document.getElementById("modalTitle").textContent=app.title;
- document.getElementById("modalDescription").textContent=app[lang];
- document.getElementById("modalFeatures").innerHTML=app.features[lang].map(x=>"<li>"+x+"</li>").join("");
- const links=[];
- if(app.support)links.push('<a href="'+app.support+'" target="_blank" rel="noopener">'+(lang==="tr"?"Destek":"Support")+' ↗</a>');
- if(app.privacy)links.push('<a href="'+app.privacy+'" target="_blank" rel="noopener">'+(lang==="tr"?"Gizlilik":"Privacy")+' ↗</a>');
- document.getElementById("modalLinks").innerHTML=links.join("");
- document.getElementById("modal").classList.add("open");
- document.body.style.overflow="hidden";
-}
-function closeInfo(){
- document.getElementById("modal").classList.remove("open");
- document.body.style.overflow="";
-}
-document.addEventListener("keydown",e=>{
- if(e.key==="Escape")closeInfo();
-});
-
-document.querySelectorAll("a[data-app]").forEach(link=>{
- link.addEventListener("click",()=>{
-  if(typeof gtag==="function"){
-   gtag("event","store_click",{
-    app_name:link.dataset.app,
-    app_key:link.dataset.app.toLowerCase().replaceAll(" ","_"),
-    platform:link.dataset.platform,
-    store:link.dataset.platform==="ios"?"app_store":"google_play",
-    link_url:link.href,
-    placement:"app_card"
-   });
-  }
- });
-});
-
-/* APP STORE & GOOGLE PLAY LOGOS */
-const appleLogo = `
-<svg class="apple-logo" viewBox="0 0 24 24"
- xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
- <path d="M17.05 12.54c.02 2.18 1.91 2.91 1.93 2.92-.02.05-.3 1.03-.99 2.04-.6.87-1.22 1.73-2.2 1.75-.96.02-1.27-.57-2.37-.57-1.1 0-1.45.55-2.36.59-.95.04-1.67-.95-2.28-1.82-1.24-1.79-2.19-5.06-.91-7.26a3.53 3.53 0 0 1 2.98-1.82c.93-.02 1.81.63 2.38.63.57 0 1.64-.78 2.77-.66.47.02 1.79.19 2.64 1.43-.07.04-1.58.92-1.59 2.77ZM15.23 7.15c.5-.61.84-1.45.75-2.29-.72.03-1.6.48-2.12 1.09-.47.54-.88 1.39-.77 2.21.81.06 1.64-.41 2.14-1.01Z"/>
-</svg>`;
-
-const googlePlayLogo = `
-<svg class="play-logo" viewBox="0 0 24 24"
- xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
- <path d="M3.6 2.4a1.7 1.7 0 0 0-.6 1.4v16.4c0 .6.2 1.1.6 1.4l9.3-9.6L3.6 2.4Z"/>
- <path d="m14.1 10.8 3.1-3.2L5.4 1.2l8.7 9.6Z" fill="#4285F4"/>
- <path d="m14.1 13.2 3.1 3.2-11.8 6.4 8.7-9.6Z" fill="#EA4335"/>
- <path d="m18.4 8.3 3 1.7c1.2.7 1.2 2.3 0 3l-3 1.7-3.2-3.2 3.2-3.2Z" fill="#FBBC04"/>
-</svg>`;
-
-document.querySelectorAll(".stores a[data-platform]").forEach(link=>{
- if(link.dataset.platform==="ios"){
-  link.innerHTML=appleLogo+"App Store ↗";
- }
- if(link.dataset.platform==="android"){
-  link.innerHTML=googlePlayLogo+"Google Play ↗";
- }
-});
-
-function saveConsent(accepted){
- localStorage.setItem("analytics-consent",accepted?"granted":"denied");
- gtag("consent","update",{
-  analytics_storage:accepted?"granted":"denied"
- });
- document.getElementById("consent").style.display="none";
-}
-const savedConsent=localStorage.getItem("analytics-consent");
-if(savedConsent==="granted"){
- gtag("consent","update",{analytics_storage:"granted"});
-}else if(savedConsent===null){
- document.getElementById("consent").style.display="flex";
-}
-document.getElementById("year").textContent=new Date().getFullYear();
-setLanguage(lang);
+function tryIcon(img){const list=iconCandidates[img.dataset.icon]||[];const idx=Number(img.dataset.attempt||0);if(idx<list.length){img.dataset.attempt=idx+1;img.src=list[idx]}else{img.style.display='none';img.parentElement.textContent=img.alt.slice(0,1)}}
+function renderApps(){document.getElementById('appGrid').innerHTML=apps.map(app=>`<article class="card"><div class="card-head"><div class="icon"><img data-icon="${app.key}" data-attempt="1" src="${iconCandidates[app.key][0]}" alt="${app.name} icon" onerror="tryIcon(this)" loading="lazy"></div><div><h3>${app.name}</h3><p>${app[lang]}</p></div></div><div class="pills">${app.tags.map(t=>`<span class="pill">${t}</span>`).join('')}</div><div class="card-shot"><div class="mini-phone"><img src="assets/${app.key}-${lang}.webp" alt="${app.name} screenshot" loading="lazy"></div></div><div class="stores">${storeLink(app,'ios')}${storeLink(app,'android')}</div><button class="detail" onclick="openInfo('${app.key}')">${lang==='tr'?'Detayları Gör':'View Details'} →</button></article>`).join('');document.querySelectorAll('a[data-app]').forEach(a=>a.addEventListener('click',()=>{gtag('event','store_click',{app_name:a.dataset.app,app_key:a.dataset.app.toLowerCase().replaceAll(' ','_'),platform:a.dataset.platform,store:a.dataset.platform==='ios'?'app_store':'google_play',link_url:a.href,placement:'app_card'})}))}
+function setLanguage(next){lang=next;localStorage.setItem('site-language',lang);document.documentElement.lang=lang;document.querySelectorAll('[data-en][data-tr]').forEach(el=>el.innerHTML=el.dataset[lang]);document.getElementById('enBtn').classList.toggle('active',lang==='en');document.getElementById('trBtn').classList.toggle('active',lang==='tr');document.querySelectorAll('[data-shot]').forEach(img=>img.src=`assets/${img.dataset.shot}-${lang}.webp`);document.getElementById('consentText').textContent=lang==='tr'?'Site kullanımını anlamak için isteğe bağlı analiz çerezleri kullanıyoruz. Kabul edebilir veya reddedebilirsiniz.':'We use optional analytics cookies to understand website usage. You can accept or decline.';document.getElementById('accept').textContent=lang==='tr'?'Kabul Et':'Accept';document.getElementById('decline').textContent=lang==='tr'?'Reddet':'Decline';renderApps()}
+function openInfo(key){let a=apps.find(x=>x.key===key);if(!a)return;document.getElementById('modalTitle').textContent=a.name;document.getElementById('modalDescription').textContent=a[lang];document.getElementById('modalFeatures').innerHTML=a.features[lang].map(x=>`<li>${x}</li>`).join('');document.getElementById('modalLinks').innerHTML=[a.support?`<a class="store" href="${a.support}" target="_blank" rel="noopener">${lang==='tr'?'Destek':'Support'} ↗</a>`:'',a.privacy?`<a class="store" href="${a.privacy}" target="_blank" rel="noopener">${lang==='tr'?'Gizlilik':'Privacy'} ↗</a>`:''].join('');document.getElementById('modal').classList.add('open');document.body.style.overflow='hidden'}
+function closeInfo(){document.getElementById('modal').classList.remove('open');document.body.style.overflow=''}document.addEventListener('keydown',e=>{if(e.key==='Escape')closeInfo()});
+function saveConsent(ok){localStorage.setItem('analytics-consent',ok?'granted':'denied');gtag('consent','update',{analytics_storage:ok?'granted':'denied'});document.getElementById('consent').style.display='none'}
+let consent=localStorage.getItem('analytics-consent');if(consent==='granted')gtag('consent','update',{analytics_storage:'granted'});else if(consent===null)document.getElementById('consent').style.display='flex';document.getElementById('year').textContent=new Date().getFullYear();setLanguage(lang);
 </script>
-</body>
-</html>
+</body></html>
