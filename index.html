@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -67,8 +66,11 @@ h2{font-size:clamp(28px,4vw,40px);letter-spacing:-1.5px;margin:8px 0}
 .app h3{font-size:24px;letter-spacing:-.6px;margin:14px 0 8px}
 .app p{font-size:14px;color:var(--muted);min-height:68px;margin:0 0 24px}
 .stores{display:flex;gap:9px;flex-wrap:wrap}
-.stores a,.stores button{border:1px solid #36425a;background:#202b3f;color:white;padding:10px 14px;border-radius:11px;font-size:12px;font-weight:700}
+.stores a,.stores button{display:inline-flex;align-items:center;justify-content:center;gap:9px;border:1px solid #36425a;background:#202b3f;color:white;padding:10px 14px;border-radius:11px;font-size:12px;font-weight:700}
 .stores a:hover,.stores button:hover{background:#344564}
+.stores svg{width:19px;height:19px;flex-shrink:0}
+.stores .apple-logo{fill:currentColor}
+.stores .play-logo{fill:#34d399}
 .about{background:linear-gradient(120deg,#151d2d,#101623);border:1px solid var(--line);border-radius:25px;padding:45px;display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:center}
 .about p{color:var(--muted)}
 .aboutmark{display:grid;place-items:center;min-height:230px;border:1px solid #ffffff13;border-radius:22px;background:radial-gradient(circle,#394c82 0%,#151d2d 65%)}
@@ -168,8 +170,8 @@ gtag('config','G-536YWXEMQ3');
     <h3>Drone Rush</h3>
     <p data-en="Fast-paced drone combat. Battle enemy waves, defeat bosses and upgrade your drone to reach the highest score." data-tr="Hızlı tempolu drone savaşları. Düşman dalgalarını geç, bossları yen ve drone'unu geliştirerek en yüksek skora ulaş.">Fast-paced drone combat. Battle enemy waves, defeat bosses and upgrade your drone to reach the highest score.</p>
     <div class="stores">
-     <a data-app="Drone Rush" data-platform="ios" href="https://apps.apple.com/us/app/drone-rush/id6763133589" target="_blank" rel="noopener"> App Store ↗</a>
-     <a data-app="Drone Rush" data-platform="android" href="https://play.google.com/store/apps/details?id=com.gokmen.dronerush" target="_blank" rel="noopener">▶ Google Play ↗</a>
+     <a data-app="Drone Rush" data-platform="ios" href="https://apps.apple.com/us/app/drone-rush/id6763133589" target="_blank" rel="noopener">App Store ↗</a>
+     <a data-app="Drone Rush" data-platform="android" href="https://play.google.com/store/apps/details?id=com.gokmen.dronerush" target="_blank" rel="noopener">Google Play ↗</a>
      <button onclick="openInfo('drone')" data-en="Details" data-tr="Detaylar">Details</button>
     </div>
    </div>
@@ -182,8 +184,8 @@ gtag('config','G-536YWXEMQ3');
     <h3>Drive Ride</h3>
     <p data-en="Track your journeys with GPS, capture memorable stops, review route statistics and share your adventures." data-tr="Yolculuklarını GPS ile kaydet, fotoğraflı duraklar oluştur, rota istatistiklerini incele ve maceralarını paylaş.">Track your journeys with GPS, capture memorable stops, review route statistics and share your adventures.</p>
     <div class="stores">
-     <a data-app="Drive Ride" data-platform="ios" href="https://apps.apple.com/us/app/drive-ride-gps-routes/id6799442279" target="_blank" rel="noopener"> App Store ↗</a>
-     <a data-app="Drive Ride" data-platform="android" href="https://play.google.com/store/apps/details?id=com.gokmenkeser.motorota" target="_blank" rel="noopener">▶ Google Play ↗</a>
+     <a data-app="Drive Ride" data-platform="ios" href="https://apps.apple.com/us/app/drive-ride-gps-routes/id6799442279" target="_blank" rel="noopener">App Store ↗</a>
+     <a data-app="Drive Ride" data-platform="android" href="https://play.google.com/store/apps/details?id=com.gokmenkeser.motorota" target="_blank" rel="noopener">Google Play ↗</a>
      <button onclick="openInfo('drive')" data-en="Details" data-tr="Detaylar">Details</button>
     </div>
    </div>
@@ -196,8 +198,8 @@ gtag('config','G-536YWXEMQ3');
     <h3>Equal Cut</h3>
     <p data-en="A satisfying precision puzzle. Slice shapes into the right proportions and master increasingly challenging levels." data-tr="Hassas kesimlere dayalı keyifli bir bulmaca. Şekilleri doğru oranlarda kes ve giderek zorlaşan seviyeleri tamamla.">A satisfying precision puzzle. Slice shapes into the right proportions and master increasingly challenging levels.</p>
     <div class="stores">
-     <a data-app="Equal Cut" data-platform="ios" href="https://apps.apple.com/tr/app/equal-cut-slice-puzzle/id6804606321?l=en" target="_blank" rel="noopener"> App Store ↗</a>
-     <a data-app="Equal Cut" data-platform="android" href="https://play.google.com/store/apps/details?id=com.gokmen.equalcut" target="_blank" rel="noopener">▶ Google Play ↗</a>
+     <a data-app="Equal Cut" data-platform="ios" href="https://apps.apple.com/tr/app/equal-cut-slice-puzzle/id6804606321?l=en" target="_blank" rel="noopener">App Store ↗</a>
+     <a data-app="Equal Cut" data-platform="android" href="https://play.google.com/store/apps/details?id=com.gokmen.equalcut" target="_blank" rel="noopener">Google Play ↗</a>
      <button onclick="openInfo('equal')" data-en="Details" data-tr="Detaylar">Details</button>
     </div>
    </div>
@@ -210,7 +212,7 @@ gtag('config','G-536YWXEMQ3');
     <h3>My Little Wardrobe</h3>
     <p data-en="Create beautiful outfits, mix and match accessories, express your style and save your favorite looks." data-tr="Güzel kombinler oluştur, kıyafet ve aksesuarları eşleştir, tarzını yansıt ve favori görünümlerini kaydet.">Create beautiful outfits, mix and match accessories, express your style and save your favorite looks.</p>
     <div class="stores">
-     <a data-app="My Little Wardrobe" data-platform="ios" href="https://apps.apple.com/tr/app/minik-gard%C4%B1robum-giydirme/id6810826860?l=en" target="_blank" rel="noopener"> App Store ↗</a>
+     <a data-app="My Little Wardrobe" data-platform="ios" href="https://apps.apple.com/tr/app/minik-gard%C4%B1robum-giydirme/id6810826860?l=en" target="_blank" rel="noopener">App Store ↗</a>
      <button onclick="openInfo('wardrobe')" data-en="Details" data-tr="Detaylar">Details</button>
     </div>
    </div>
@@ -366,6 +368,31 @@ document.querySelectorAll("a[data-app]").forEach(link=>{
    });
   }
  });
+});
+
+/* APP STORE & GOOGLE PLAY LOGOS */
+const appleLogo = `
+<svg class="apple-logo" viewBox="0 0 24 24"
+ xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+ <path d="M17.05 12.54c.02 2.18 1.91 2.91 1.93 2.92-.02.05-.3 1.03-.99 2.04-.6.87-1.22 1.73-2.2 1.75-.96.02-1.27-.57-2.37-.57-1.1 0-1.45.55-2.36.59-.95.04-1.67-.95-2.28-1.82-1.24-1.79-2.19-5.06-.91-7.26a3.53 3.53 0 0 1 2.98-1.82c.93-.02 1.81.63 2.38.63.57 0 1.64-.78 2.77-.66.47.02 1.79.19 2.64 1.43-.07.04-1.58.92-1.59 2.77ZM15.23 7.15c.5-.61.84-1.45.75-2.29-.72.03-1.6.48-2.12 1.09-.47.54-.88 1.39-.77 2.21.81.06 1.64-.41 2.14-1.01Z"/>
+</svg>`;
+
+const googlePlayLogo = `
+<svg class="play-logo" viewBox="0 0 24 24"
+ xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+ <path d="M3.6 2.4a1.7 1.7 0 0 0-.6 1.4v16.4c0 .6.2 1.1.6 1.4l9.3-9.6L3.6 2.4Z"/>
+ <path d="m14.1 10.8 3.1-3.2L5.4 1.2l8.7 9.6Z" fill="#4285F4"/>
+ <path d="m14.1 13.2 3.1 3.2-11.8 6.4 8.7-9.6Z" fill="#EA4335"/>
+ <path d="m18.4 8.3 3 1.7c1.2.7 1.2 2.3 0 3l-3 1.7-3.2-3.2 3.2-3.2Z" fill="#FBBC04"/>
+</svg>`;
+
+document.querySelectorAll(".stores a[data-platform]").forEach(link=>{
+ if(link.dataset.platform==="ios"){
+  link.innerHTML=appleLogo+"App Store ↗";
+ }
+ if(link.dataset.platform==="android"){
+  link.innerHTML=googlePlayLogo+"Google Play ↗";
+ }
 });
 
 function saveConsent(accepted){
