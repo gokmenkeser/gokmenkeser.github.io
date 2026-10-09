@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://gokmenkeser.github.io/sitemap.xml
+Sitemap: https://www.jgstudioapps.com/sitemap.xml

@@ -1,0 +1,13 @@
+{
+  "name": "JG Studio Apps",
+  "short_name": "JG Apps",
+  "description": "Independent mobile apps and games by Gökmen Keser.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#070c19",
+  "theme_color": "#070c19",
+  "icons": [
+    {"src":"/apple-touch-icon.png","sizes":"180x180","type":"image/png"},
+    {"src":"/assets/icon-512.png","sizes":"512x512","type":"image/png"}
+  ]
+}
